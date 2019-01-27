@@ -5,7 +5,7 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact").form
+      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact" @submit.prevent="sendMessage").form
         .name-box
           label.name(for="name")
             img(src=`${path}name.svg` alt="NAME")
@@ -21,7 +21,7 @@
             img(src=`${path}message.svg` alt="message")
           textarea.input-message(@input="textareaResize" maxlength="1000" id="message" name="message" v-model="message" ref="textarea" placeholder="お問い合わせの詳細を1,000文字以内でご入力ください" required)
           .bar
-        button.button(:data-can-submit="isFillAllInput" :disabled="!isFillAllInput" @submit.prevent="sendMessage")
+        button.button(type="submit" :data-can-submit="isFillAllInput" :disabled="!isFillAllInput" @submit.prevent="sendMessage")
           img(src=`${path}submit.svg` alt="SUBMIT")
 
 </template>
