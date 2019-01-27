@@ -17,13 +17,9 @@
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
-
-  export default {
-    components: {
-      Logo
-    }
-  }
+export default {
+    name: 'Top'
+}
 </script>
 
 <style lang="stylus" scoped>
