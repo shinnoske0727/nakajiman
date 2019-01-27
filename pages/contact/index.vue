@@ -5,9 +5,8 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact" action="/" method="POST").form
+      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact" action="complete" method="POST").form
         input(type="hidden" name="form-name" value="contact")
-        input(type="hidden" name="bot-field")
         .name-box
           label.name(for="name")
             img(src=`${path}name.svg` alt="NAME")
