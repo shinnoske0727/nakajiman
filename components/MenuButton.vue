@@ -1,6 +1,6 @@
 <template lang="pug">
   .menu-button(@click="toggleMenu")
-      button.button(:data-is-open="isOpen")
+    button.button(:data-is-open="isOpen")
 
 </template>
 
@@ -40,13 +40,13 @@ export default {
 
     &::before,
     &::after
-        content: ""
-        absolute top 0 left 50%
-        display: block
-        width: 100%
-        height: $bar-length
-        background-color: $text-black
-        transform-origin: 50% 0
+      content: ""
+      absolute top 0 left 50%
+      display: block
+      width: 100%
+      height: $bar-length
+      background-color: $text-black
+      transform-origin: 50% 0
 
     &::before
       transform: translate(-50%, -12px)
@@ -57,6 +57,7 @@ export default {
     &[data-is-open="true"]
       &::before
         animation: menuBefore 0.5s forwards
+
       &::after
         animation: menuAfter 0.5s forwards
 </style>

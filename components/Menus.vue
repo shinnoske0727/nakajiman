@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .menus
     position: absolute
     top: 32px
