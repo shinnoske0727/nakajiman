@@ -1,66 +1,62 @@
-<template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        nakaj1man
-      </h1>
-      <h2 class="subtitle">
-        My first-rate Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+  - path = "~/assets/img/top/";
+  section.top
+    .text-box
+      h1.title
+        img(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
+      ul.list
+        li.item
+          a.link: img(src=`${path}ui-white.svg` alt="UI")
+        li.item
+          a.link: img(src=`${path}web-white.svg` alt="WEB")
+        li.item
+          a.link: img(src=`${path}illust-white.svg` alt="ILLUST")
+        li.item
+          a.link: img(src=`${path}photograph-white.svg` alt="ILLUST")
+    .image-box ここに画像が入る
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+  import Logo from '~/components/Logo.vue'
 
-export default {
-  components: {
-    Logo
+  export default {
+    components: {
+      Logo
+    }
   }
-}
 </script>
 
-<style>
+<style lang="stylus" scoped>
+  .top
+    display: flex
+    justify-content: space-between
+    max-width: $max-width
+    margin: 0 auto
+    padding-top: 32px
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  .text-box
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .title
+    margin-bottom: 38px
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .list
+    display: flex
+    justify-content: space-between
+    width: 338px
 
-.links {
-  padding-top: 15px;
-}
+  .link
+    display: block
+    background-color: $bg-black;
+    padding: 8px 14px
+
+    & > img
+      display: block
+
+  .image-box
+    size: 391px 634px
+    background-color: red;
 </style>
