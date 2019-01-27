@@ -33,7 +33,7 @@ export default {
     margin 0 auto
     padding-top 32px
   .title
-    size 126px auto
+    size auto 23px
     margin 0 auto 104px
     line-height 0
     & > img
