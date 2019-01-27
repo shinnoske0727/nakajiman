@@ -1,7 +1,7 @@
 <template lang="pug">
   .menus
-    menu-content(:is-open="isOpen")
-    menu-button(@change="onChangeMenuState")
+    menu-content(:is-open="isOpen" @change="onChangeMenuState")
+    menu-button(@change="onChangeMenuState" :is-open="isOpen")
 
 </template>
 

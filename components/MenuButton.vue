@@ -7,15 +7,16 @@
 <script>
 export default {
     name: 'MenuButton',
-    data() {
-        return {
-            isOpen: false
+    props: {
+        isOpen: {
+            default: false,
+            type: Boolean
         }
     },
     methods: {
         toggleMenu() {
-            this.isOpen = !this.isOpen
-            this.$emit('change', this.isOpen)
+            const state = !this.isOpen
+            this.$emit('change', state)
         }
     }
 }

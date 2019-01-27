@@ -1,25 +1,17 @@
 <template lang="pug">
   - path = "~/assets/img/top/";
-  section.top
-    .text-box
-      h1.title
-        img(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
-      ul.list
-        li.item
-          a.link: img(src=`${path}ui-white.svg` alt="UI")
-        li.item
-          a.link: img(src=`${path}web-white.svg` alt="WEB")
-        li.item
-          a.link: img(src=`${path}illust-white.svg` alt="ILLUST")
-        li.item
-          a.link: img(src=`${path}photograph-white.svg` alt="ILLUST")
-    .image-box ここに画像が入る
+  section.works
+    p work page
 </template>
 
 <script>
-export default {
-    name: 'Top'
-}
+  import Logo from '~/components/Logo.vue'
+
+  export default {
+    components: {
+      Logo
+    }
+  }
 </script>
 
 <style lang="stylus" scoped>

@@ -1,16 +1,17 @@
 <template lang="pug">
   - path = "~/assets/img/menu/"
+  - cmnPath = "~/assets/img/common/"
   .menu-content(v-if="isOpen")
     .inner
       ul.list
-        li.item(data-is-current="true")
-          a.link(href="#home"): img(src=`${path}home-menu.svg` alt="HOME")
-        li.item(data-is-current="false")
-          a.link(href="#works"): img(src=`${path}works-menu.svg` alt="WORKS")
-        li.item(data-is-current="false")
-          a.link(href="#about"): img(src=`${path}about-menu.svg` alt="ABOUT")
-        li.item(data-is-current="false")
-          a.link(href="#contact"): img(src=`${path}contact-menu.svg` alt="CONTACT")
+        li.item(:data-is-current="current === 'index'")
+          a.link(data-href="/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_home.svg` alt="HOME")
+        li.item(:data-is-current="current === 'works'")
+          a.link(data-href="/works/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_works.svg` alt="WORKS")
+        li.item(:data-is-current="current === 'about'")
+          a.link(data-href="/about/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_about.svg` alt="ABOUT")
+        li.item(:data-is-current="current === 'contact'")
+          a.link(data-href="/contact/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
       ul.sns
         a.sns-link(href="" target="_blank"): img(src=`${path}twitter.svg` alt="twitter")
         a.sns-link(href="" target="_blank"): img(src=`${path}facebook.svg` alt="facebook")
@@ -25,6 +26,21 @@ export default {
         isOpen: {
             default: false,
             type: Boolean
+        }
+    },
+    computed: {
+        current() {
+            return this.$route.name
+        }
+    },
+    mounted() {
+        console.log(this.$route)
+    },
+    methods: {
+        clickLink(e) {
+            const link = e.currentTarget.getAttribute('data-href')
+            this.$router.push(link)
+            this.$emit('change', false)
         }
     }
 }
