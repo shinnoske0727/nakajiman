@@ -5,7 +5,7 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(netlify hidden name="contact" netlify-honeypot)
+      form(netlify hidden name="contact" netlify-honeypot="bot-field")
         input(type="text" name="name")
         input(type="email" name="mail")
         textarea(name="message")
