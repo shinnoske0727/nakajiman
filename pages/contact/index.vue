@@ -56,7 +56,6 @@ export default {
     },
     methods: {
         textareaResize() {
-            console.log(this.$refs.textarea.scrollHeight)
             this.$refs.textarea.style.minHeight =
                 this.$refs.textarea.scrollHeight + 'px'
         },
