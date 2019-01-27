@@ -5,7 +5,7 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(netlify hidden name="contact" netlify-honeypot="bot-field")
+      form(data-netlify="true" data-netlify-honeypot="bot-field" hidden name="contact")
         input(type="text" name="name")
         input(type="email" name="mail")
         textarea(name="message")
@@ -64,10 +64,11 @@ export default {
             params.append('form-name', 'contact')
             params.append('name', this.name)
             params.append('email', this.email)
-            params.append('content', this.content)
+            params.append('content', this.message)
 
-            axios.post('/', params).then(() => {
+            axios.post('/', params).then(response => {
                 this.isSubmit = true
+                console.log(response)
             })
         }
     }
