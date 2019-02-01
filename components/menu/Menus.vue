@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MenuButton from '@/components/MenuButton'
-import MenuContent from '@/components/MenuContent'
+import MenuButton from '@/components/menu/MenuButton'
+import MenuContent from '@/components/menu/MenuContent'
 
 export default {
     name: 'Menus',
@@ -27,8 +27,5 @@ export default {
 
 <style lang="stylus" scoped>
   .menus
-    position: absolute
-    top: 32px
-    left: 32px
-
+    fixed top 32px left 32px
 </style>

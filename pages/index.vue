@@ -6,13 +6,17 @@
         img(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
       ul.list
         li.item
-          a.link: img(src=`${path}ui-white.svg` alt="UI")
+          nuxt-link.link(:to="{name: 'works', params: { id: 'ui' }}")
+            img(src=`${path}ui-white.svg` alt="UI")
         li.item
-          a.link: img(src=`${path}web-white.svg` alt="WEB")
+          nuxt-link.link(:to="{name: 'works', params: { id: 'web' }}")
+            img(src=`${path}web-white.svg` alt="WEB")
         li.item
-          a.link: img(src=`${path}illust-white.svg` alt="ILLUST")
+          nuxt-link.link(:to="{name: 'works', params: { id: 'illustration' }}")
+            img(src=`${path}illust-white.svg` alt="ILLUST")
         li.item
-          a.link: img(src=`${path}photograph-white.svg` alt="ILLUST")
+          nuxt-link.link(:to="{name: 'works', params: { id: 'photograph' }}")
+            img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
     .image-box ここに画像が入る
 </template>
 
