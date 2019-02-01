@@ -23,8 +23,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  $menu-width = 42px
-  $bar-length = 3px
   .menu-button
     size: $menu-width 27px;
     cursor: pointer

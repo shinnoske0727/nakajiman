@@ -1,50 +1,129 @@
 <template lang="pug">
-  - path = "~/assets/img/top/";
   section.works
-    p work page
+    work-menu(@change="changeCategory" :category="currentCategory")
+    .inner
+      template(v-for="image in visbleImages")
+        .dammy-image(:data-category="image.category" :key="image.id") {{ image.name }}
+    work-modal
 </template>
 
 <script>
-  import Logo from '~/components/Logo.vue'
+import _ from 'lodash'
+import WorkMenu from '@/components/work/WorkMenu'
+import WorkModal from '@/components/work/WorkModal'
 
-  export default {
-    components: {
-      Logo
+const dammyData = [
+    {
+        name: 'イラスト',
+        category: 'illustration',
+        id: 1
+    },
+    {
+        name: 'UI',
+        category: 'ui',
+        id: 2
+    },
+    {
+        name: 'WEB',
+        category: 'web',
+        id: 3
+    },
+    {
+        name: 'PHOTOGRAPH',
+        category: 'photograph',
+        id: 4
+    },
+    {
+        name: 'イラスト',
+        category: 'illustration',
+        id: 5
+    },
+    {
+        name: 'UI',
+        category: 'ui',
+        id: 6
+    },
+    {
+        name: 'WEB',
+        category: 'web',
+        id: 7
+    },
+    {
+        name: 'PHOTOGRAPH',
+        category: 'photograph',
+        id: 8
+    },
+    {
+        name: 'イラスト',
+        category: 'illustration',
+        id: 9
+    },
+    {
+        name: 'UI',
+        category: 'ui',
+        id: 10
+    },
+    {
+        name: 'WEB',
+        category: 'web',
+        id: 11
+    },
+    {
+        name: 'PHOTOGRAPH',
+        category: 'photograph',
+        id: 12
     }
-  }
+]
+export default {
+    name: 'Works',
+    components: {
+      WorkModal,
+        WorkMenu
+    },
+    data() {
+        return {
+            currentCategory: this.$route.params.id
+        }
+    },
+    computed: {
+        visbleImages() {
+            if (!this.currentCategory) return dammyData
+            return _.filter(
+                dammyData,
+                data => data.category === this.currentCategory
+            )
+        }
+    },
+    mounted() {},
+    methods: {
+        changeCategory(val) {
+            this.currentCategory = val
+        }
+    }
+}
 </script>
 
 <style lang="stylus" scoped>
-  .top
-    display: flex
-    justify-content: space-between
-    max-width: $max-width
-    margin: 0 auto
-    padding-top: 32px
+  .works
+    padding-top 91px
 
-  .text-box
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: flex-start
+  .inner
+    size 100%
+    display grid
+    grid-template-columns: auto auto auto
 
-  .title
-    margin-bottom: 38px
-
-  .list
-    display: flex
-    justify-content: space-between
-    width: 338px
-
-  .link
-    display: block
-    background-color: $bg-black;
-    padding: 8px 14px
-
-    & > img
-      display: block
-
-  .image-box
-    size: 391px 634px
-    background-color: red;
+  .dammy-image
+    min-size 480px 270px
+    background-color red
+    box-sizing border-box
+    line-height: 270px;
+    text-align: center
+    &[data-category="ui"]
+      background-color: #FFC1CF;
+    &[data-category="web"]
+      background-color: #E8FFB6;
+    &[data-category="illustration"]
+      background-color: #E2A0FF;
+    &[data-category="photograph"]
+      background-color: #C4F5FC;
 </style>

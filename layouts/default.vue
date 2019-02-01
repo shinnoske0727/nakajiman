@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Menus from '@/components/Menus'
+import Menus from '@/components/menu/Menus'
 export default {
   components: {
     Menus

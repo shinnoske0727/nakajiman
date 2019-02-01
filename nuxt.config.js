@@ -25,7 +25,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: ['@/assets/stylus/base.styl'],
 
   /*
   ** Plugins to load before mounting the App
@@ -38,7 +38,9 @@ module.exports = {
   modules: [
     [
       'nuxt-stylus-resources-loader',
-      path.resolve(__dirname, 'assets/stylus/base.styl')
+      [
+        path.resolve(__dirname, 'assets/stylus/base.styl')
+      ]
     ]
   ],
 
