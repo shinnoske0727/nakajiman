@@ -4,7 +4,7 @@
     .inner
       template(v-for="image in visbleImages")
         .dammy-image(:data-category="image.category" :key="image.id") {{ image.name }}
-    work-modal
+    //work-modal
 </template>
 
 <script>
