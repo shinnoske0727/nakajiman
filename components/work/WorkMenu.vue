@@ -63,16 +63,23 @@ export default {
     position: relative
     margin-right: 56px
     opacity 0.3
+    transition opacity 0.1s ease-in
     &:last-of-type
       margin-right: 0
+    &::after
+      content ""
+      display block
+      absolute bottom -32px left 0
+      size: 100% 3px
+      opacity 0
+      background-color $bg-black;
+      transition opacity .5s cubic-bezier(.165,.84,.44,1), transform .5s cubic-bezier(.165,.84,.44,1)
+      transform scale(0)
     &[data-is-current="true"]
       opacity 1
       &::after
-        content: ""
-        display: block
-        absolute bottom -32px left 0
-        size: 100% 3px
-        background-color: $bg-black;
+        opacity 1
+        transform scale(1)
     &:hover
       opacity 1
 </style>
