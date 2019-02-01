@@ -50,6 +50,7 @@ export default {
       size 100%
   .text-box
     size 404px auto
+    margin-top: 114px
   .name
     margin-bottom 9px
   .name-box

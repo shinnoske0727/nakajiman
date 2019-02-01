@@ -41,7 +41,7 @@ export default {
     align-items: flex-start
 
   .title
-    margin-bottom: 38px
+    margin-bottom: 22px
 
   .list
     display: flex
