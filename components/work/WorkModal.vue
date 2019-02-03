@@ -2,14 +2,15 @@
   - path = "~/assets/img/works/";
   - path = "~/assets/img/works/";
   .work-modal(ref="modal")
-    work-modal-content
-    button.arrow--right 右
-    button.arrow--left 左
+    work-modal-content(v-if="currentData" :modal-data="currentData")
+    button.arrow--right(@click="goNext") 右
+    button.arrow--left(@click="goPrev") 左
     button.button(@click="closeModal")
 
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import WorkModalContent from '@/components/work/WorkModalContent'
 export default {
     name: 'WorkModal',
@@ -22,7 +23,17 @@ export default {
             type: Array
         }
     },
+    computed: {
+        ...mapGetters(['currentData'])
+    },
     methods: {
+        ...mapActions(['increaseId', 'decreaseId']),
+        goNext() {
+            this.increaseId()
+        },
+        goPrev() {
+            this.decreaseId()
+        },
         closeModal() {
             this.$emit('close')
         }

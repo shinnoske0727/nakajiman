@@ -3,9 +3,8 @@
   .work-modal-content(ref="content")
     .content
       .kv
-      .title UTGP2018
-      p.explain
-        | あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+      .title {{ modalData.name }}
+      p.explain {{ modalData.explain }}
       .role
         ul.role-list
           li.role-item CLIENT：UNIQLO
@@ -25,9 +24,15 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
 export default {
     name: 'WorkModalContent',
-    computed: {
-        ...mapGetters(['modalData'])
+    props: {
+        modalData: {
+            default: function() {
+                return {}
+            },
+            type: Object
+        }
     },
+    computed: {},
     methods: {
         moveToTop: function() {
             TweenLite.to(this.$parent.$refs.modal, 1.0, {
@@ -67,6 +72,7 @@ export default {
     color $text-black
   .explain
     margin-bottom: 2em;
+    word-wrap:break-word;
   .role
     margin: 0 auto 96px
 
