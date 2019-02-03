@@ -44,4 +44,16 @@ export default {
       transform: translate(-50%, 0) rotate(45deg);
     &::after
       transform: translate(-50%, 0) rotate(-45deg);
+
+  .arrow--right,
+  .arrow--left
+    width: 42px;
+    height: 42px;
+    background-color: $bg-black;
+
+  .arrow--right
+    background-image: url("~assets/img/works/icn_arrow_right.svg")
+
+  .arrow--left
+    background-image: url("~assets/img/works/icn_arrow_left.svg")
 </style>
