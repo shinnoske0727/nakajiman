@@ -4,7 +4,7 @@
     .inner
       template(v-for="image in visbleImages")
         .dammy-image(:data-category="image.category" :key="image.id") {{ image.name }}
-    //work-modal
+    work-modal
 </template>
 
 <script>
@@ -111,6 +111,7 @@ export default {
     size 100%
     display grid
     grid-template-columns: auto auto auto
+
 
   .dammy-image
     min-size 480px 270px

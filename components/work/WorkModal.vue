@@ -2,14 +2,18 @@
   - path = "~/assets/img/works/";
   - path = "~/assets/img/works/";
   .work-modal
+    work-modal-content
+    button.arrow--right 右
+    button.arrow--left 左
     button.button(:data-is-open="isOpen")
-    p WorkModal
 
 </template>
 
 <script>
+import WorkModalContent from '@/components/work/WorkModalContent'
 export default {
-    name: 'WorkModal'
+    name: 'WorkModal',
+    components: { WorkModalContent }
 }
 </script>
 
