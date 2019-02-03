@@ -1,11 +1,11 @@
 <template lang="pug">
   - path = "~/assets/img/works/";
   - path = "~/assets/img/works/";
-  .work-modal
+  .work-modal(ref="modal")
     work-modal-content
     button.arrow--right 右
     button.arrow--left 左
-    button.button(:data-is-open="isOpen")
+    button.button(@click="closeModal")
 
 </template>
 
@@ -13,7 +13,20 @@
 import WorkModalContent from '@/components/work/WorkModalContent'
 export default {
     name: 'WorkModal',
-    components: { WorkModalContent }
+    components: { WorkModalContent },
+    props: {
+        worksData: {
+            default: function() {
+                return []
+            },
+            type: Array
+        }
+    },
+    methods: {
+        closeModal() {
+            this.$emit('close')
+        }
+    }
 }
 </script>
 
@@ -23,9 +36,10 @@ export default {
     size 100% 100%
     opacity 0.98
     background-color $bg-white
+    overflow auto
 
   .button
-    position: relative
+    fixed top 32px left 32px
     size: $menu-width $bar-length
     background-color transparent
     transition 0
@@ -47,13 +61,18 @@ export default {
 
   .arrow--right,
   .arrow--left
+    absolute: top 312px
     width: 42px;
     height: 42px;
     background-color: $bg-black;
+    background-size: 12px 22px
+    hide-text()
 
   .arrow--right
+    right: 32px
     background-image: url("~assets/img/works/icn_arrow_right.svg")
 
   .arrow--left
+    left: 32px
     background-image: url("~assets/img/works/icn_arrow_left.svg")
 </style>
