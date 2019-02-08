@@ -138,23 +138,31 @@ export default {
 
 <style lang="stylus" scoped>
   .works
-    padding-top 36px
     +sp-layout()
       width: $max-width-sp
       margin: 0 auto
 
   .title
     text-align: center
+    padding-top 36px
+    box-sizing: content-box
     height: 23px
+    line-height: 0
+    background-color: #fff;
     & > img
       height: 100%
-
+    +sp-layout()
+      fixed left 0
+      size: 100% 16px
+      padding-top 26px
 
   .inner
     size 100%
     +pc-layout()
       display grid
       grid-template-columns: auto auto auto
+    +sp-layout()
+      padding-top: 100px
 
 
   .dammy-image
@@ -179,6 +187,8 @@ export default {
       margin-bottom: 16px
 
   .work-title
+    +pc-layout()
+      display: none
     margin-bottom: 56px
     text-align: center
     font-size 12px

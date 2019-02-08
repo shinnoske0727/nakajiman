@@ -50,11 +50,16 @@ export default {
 <style scoped lang="stylus">
   .work-menu
     background-color: $bg-white;
-    sticky top 0 left 0;
-    size 100% 91px
-    padding-top: 40px
+    size 100% 51px
+    box-sizing: content-box
+    +pc-layout()
+      sticky top 0 left 0;
+      padding-top: 40px
     +sp-layout()
-      size 100% 64px
+      fixed left 0
+      size 100% 24px
+      margin-top: 42px
+      padding-top: 34px
 
   .work-menu__list
     display: flex
