@@ -66,7 +66,7 @@ export default {
     background-color: $bg-black;
     padding: 8px 14px
     +sp-layout()
-      padding: 9px 14px
+      padding: 9px 17px
 
     & > img
       display: block

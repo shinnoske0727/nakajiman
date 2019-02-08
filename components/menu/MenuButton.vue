@@ -24,14 +24,20 @@ export default {
 
 <style scoped lang="stylus">
   .menu-button
-    size: $menu-width 27px;
     cursor: pointer
+    +pc-layout()
+      size: $menu-width 27px;
+    +sp-layout()
+      size: $menu-width-sp 27px;
 
   .button
     position: relative
-    size: $menu-width $bar-length
     background-color: $text-black
     transition 0
+    +pc-layout()
+      size: $menu-width $bar-length
+    +sp-layout()
+      size: $menu-width-sp $bar-length-sp
 
     &[data-is-open="true"]
       background-color transparent
@@ -42,16 +48,21 @@ export default {
       content: ""
       absolute top 0 left 50%
       display: block
-      width: 100%
-      height: $bar-length
+      size: 100% $bar-length
       background-color: $text-black
-      transform-origin: 50% 0
+      transform-origin: 50% 50%
+      +sp-layout()
+        size: 100% $bar-length-sp
 
     &::before
       transform: translate(-50%, -12px)
+      +sp-layout()
+        transform: translate(-50%, -9px)
 
     &::after
       transform: translate(-50%, 12px)
+      +sp-layout()
+        transform: translate(-50%, 9px)
 
     &[data-is-open="true"]
       &::before
