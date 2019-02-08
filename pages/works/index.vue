@@ -1,5 +1,8 @@
 <template lang="pug">
+  - cmnPath = "~/assets/img/common/";
   section.works
+    h1.title
+      img(src=`${cmnPath}txt_works.svg` alt="WORKS")
     work-menu(@change="changeCategory" :category="currentCategory")
     .inner
       template(v-for="data in visibleData")
@@ -133,7 +136,14 @@ export default {
 
 <style lang="stylus" scoped>
   .works
-    padding-top 91px
+    padding-top 36px
+
+  .title
+    text-align: center
+    height: 23px
+    & > img
+      height: 100%
+
 
   .inner
     size 100%

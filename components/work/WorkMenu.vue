@@ -50,7 +50,7 @@ export default {
 <style scoped lang="stylus">
   .work-menu
     background-color: $bg-white;
-    fixed top 0 left 0;
+    sticky top 0 left 0;
     size 100% 91px
     padding-top: 40px
 
@@ -69,7 +69,7 @@ export default {
     &::after
       content ""
       display block
-      absolute bottom -32px left 0
+      absolute bottom -33px left 0
       size: 100% 3px
       opacity 0
       background-color $bg-black;
