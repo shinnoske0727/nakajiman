@@ -1,6 +1,7 @@
 <template lang="pug">
   - path = "~/assets/img/top/";
   section.top
+    .image-box--sp
     .text-box
       h1.title
         img(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
@@ -17,7 +18,7 @@
         li.item
           nuxt-link.link(:to="{name: 'works', params: { id: 'photograph' }}")
             img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
-    .image-box ここに画像が入る
+    .image-box--pc ここに画像が入る
 </template>
 
 <script>
@@ -28,11 +29,16 @@ export default {
 
 <style lang="stylus" scoped>
   .top
-    display: flex
-    justify-content: space-between
-    max-width: $max-width
     margin: 0 auto
-    padding-top: 32px
+    +pc-layout()
+      display: flex
+      justify-content: space-between
+      max-width: $max-width
+      padding-top: 32px
+    +sp-layout()
+      max-width: $max-width-sp
+      padding-top: 68px
+
 
   .text-box
     display: flex
@@ -42,21 +48,41 @@ export default {
 
   .title
     margin-bottom: 22px
+    +sp-layout()
+      size 230px auto
+      margin-bottom: 26px
+      & > img
+        width: 100%
 
   .list
     display: flex
     justify-content: space-between
     width: 338px
+    +sp-layout()
+      width: 100%
 
   .link
     display: block
     background-color: $bg-black;
     padding: 8px 14px
+    +sp-layout()
+      padding: 9px 14px
 
     & > img
       display: block
+      +sp-layout()
+        size auto 9px
 
-  .image-box
+  .image-box--pc
     size: 391px 634px
     background-color: red;
+    +sp-layout()
+      display: none
+
+  .image-box--sp
+    size: 343px
+    background-color: blue;
+    margin-bottom: 64px
+    +pc-layout()
+      display: none
 </style>

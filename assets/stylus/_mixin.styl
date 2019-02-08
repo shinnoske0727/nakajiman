@@ -1,3 +1,11 @@
+pc-layout()
+  @media (min-width $pc_min_width)
+    {block}
+
+sp-layout()
+  @media (max-width ($pc_min_width - 1))
+    {block}
+
 resetInput()
   padding: 0;
   border: none;
