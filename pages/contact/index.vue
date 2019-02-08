@@ -7,21 +7,9 @@
     .inner
       form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact" action="complete" method="POST").form
         input(type="hidden" name="form-name" value="contact")
-        .name-box
-          label.name(for="name")
-            img(src=`${path}name.svg` alt="NAME")
-          input.input-name(type="text" v-model="name" id="name" name="name" autocomplete="name" placeholder="お名前をご入力ください" required)
-          .bar
-        .mail-box
-          label.mail(for="mail")
-            img(src=`${path}email-address.svg` alt="EMAIL ADDRESS")
-          input.input-mail(type="email" v-model="mail" id="mail" name="mail" autocomplete="email" placeholder="ご連絡先メールアドレスをご入力ください" required)
-          .bar
-        .message-box
-          label.message(for="message")
-            img(src=`${path}message.svg` alt="message")
-          textarea.input-message(@input="textareaResize" maxlength="1000" id="message" name="message" v-model="message" ref="textarea" placeholder="お問い合わせの詳細を1,000文字以内でご入力ください" required)
-          .bar
+        form-name(@update="updateName")
+        form-mail(@update="updateMail")
+        form-message(@update="updateMessage")
         button.button(type="submit" :data-can-submit="isFillAllInput" :disabled="!isFillAllInput")
           img(src=`${path}submit.svg` alt="SUBMIT")
 
@@ -30,10 +18,16 @@
 <script>
 import _ from 'lodash'
 import axios from 'axios'
+import FormName from '@/components/contact/FormName'
+import FormMail from '@/components/contact/FormMail'
+import FormMessage from '@/components/contact/FormMessage'
 
 export default {
     components: {
-        name: 'contact'
+        name: 'contact',
+        FormMessage,
+        FormMail,
+        FormName
     },
     data() {
         return {
@@ -48,13 +42,15 @@ export default {
             return _.every([this.name, this.mail, this.message])
         }
     },
-    mounted() {
-        this.textareaResize()
-    },
     methods: {
-        textareaResize() {
-            this.$refs.textarea.style.minHeight =
-                this.$refs.textarea.scrollHeight + 'px'
+        updateName(name) {
+            this.name = name
+        },
+        updateMail(mail) {
+            this.mail = mail
+        },
+        updateMessage(msg) {
+            this.message = msg
         },
         sendMessage() {
             const params = new URLSearchParams()
@@ -77,15 +73,22 @@ export default {
     max-width: $max-width
     margin: 0 auto
     padding-top: 32px
+    +sp-layout()
+      max-width: $max-width-sp
   .title
     size auto 23px
     margin 0 auto 88px
     line-height 0
     & > img
       size 100%
+    +sp-layout()
+      size auto 16px
+      margin 0 auto 82px
   .inner
     size 546px auto
     margin 0 auto
+    +sp-layout()
+      size 100% auto
 
   .name-box,
   .mail-box
@@ -93,12 +96,20 @@ export default {
 
   .message-box
     margin-bottom 149px
+    +sp-layout()
+      margin-bottom: 116px
 
   .name,
   .mail,
   .message
     display: block
     margin-bottom: 15px
+    +sp-layout()
+      margin-bottom: 11px
+      line-height: 0
+      height: 8px
+      & > img
+        height: 100%
 
   .input-name,
   .input-mail
@@ -116,6 +127,9 @@ export default {
     font-size 14px
     +ks-placeholder()
       color: rgba(0, 0, 0, 0.5)
+    +sp-layout()
+      font-size: 12px
+
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
