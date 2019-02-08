@@ -31,18 +31,30 @@ export default {
   .about
     max-width $max-width
     margin 0 auto
-    padding-top 32px
   .title
     size auto 23px
+    padding-top 32px
     margin 0 auto 104px
     line-height 0
+    box-sizing: content-box
     & > img
       size 100%
+    +sp-layout()
+      sticky top 0 left 0
+      height: 16px
+      margin 0 auto 20px
+      padding: 26px 0;
+      background-color: #fff;
   .inner
-    display flex
+    +pc-layout()
+      display flex
   .image-box
-    size 351px 413px
-    margin-right 31px
+    +pc-layout()
+      size 351px 413px
+      margin-right 31px
+    +sp-layout()
+      size 295px 347px
+      margin: 0 auto
   .picture
     display block
     size 100%
@@ -51,17 +63,32 @@ export default {
   .text-box
     size 404px auto
     margin-top: 114px
+    +sp-layout()
+      size 100% auto
+      margin-top: 40px
   .name
     margin-bottom 9px
+    +sp-layout()
+      height: 21px
+      text-align: center
+      margin-bottom 10px
+      & > img
+        height: 100%
   .name-box
     display flex
     font-size 14px
     line-height 22px / 14px
     margin-bottom: 32px
+    +sp-layout()
+      justify-content: center
   .bar
     margin: 0 12px
 
   .explain
     font-size 12px
     line-height 2
+    +sp-layout()
+      width: 311px
+      margin: 0 auto
+      padding-bottom: 68px
 </style>
