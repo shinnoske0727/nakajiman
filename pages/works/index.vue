@@ -6,7 +6,9 @@
     work-menu(@change="changeCategory" :category="currentCategory")
     .inner
       template(v-for="data in visibleData")
-        .dammy-image(@click="openModal(data.id)" :data-category="data.category" :key="data.id") {{ data.name }}
+        .work
+          .dammy-image(@click="openModal(data.id)" :data-category="data.category" :key="data.id") {{ data.name }}
+          .work-title {{ data.name }}
     menus
     work-modal(v-if="isOpenModal" @close="closeModal" :works-data="visibleData")
 </template>
@@ -137,6 +139,9 @@ export default {
 <style lang="stylus" scoped>
   .works
     padding-top 36px
+    +sp-layout()
+      width: $max-width-sp
+      margin: 0 auto
 
   .title
     text-align: center
@@ -147,8 +152,9 @@ export default {
 
   .inner
     size 100%
-    display grid
-    grid-template-columns: auto auto auto
+    +pc-layout()
+      display grid
+      grid-template-columns: auto auto auto
 
 
   .dammy-image
@@ -165,4 +171,16 @@ export default {
       background-color: #E2A0FF;
     &[data-category="photograph"]
       background-color: #C4F5FC;
+
+    +sp-layout()
+      size 343px 193px
+      min-size 343px 193px
+      line-height: 193px;
+      margin-bottom: 16px
+
+  .work-title
+    margin-bottom: 56px
+    text-align: center
+    font-size 12px
+
 </style>

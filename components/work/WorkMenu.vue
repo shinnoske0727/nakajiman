@@ -53,6 +53,8 @@ export default {
     sticky top 0 left 0;
     size 100% 91px
     padding-top: 40px
+    +sp-layout()
+      size 100% 64px
 
   .work-menu__list
     display: flex
@@ -70,7 +72,7 @@ export default {
       content ""
       display block
       absolute bottom -33px left 0
-      size: 100% 3px
+      size: 100% $bar-length
       opacity 0
       background-color $bg-black;
       transition opacity .5s cubic-bezier(.165,.84,.44,1), transform .5s cubic-bezier(.165,.84,.44,1)
@@ -82,4 +84,17 @@ export default {
         transform scale(1)
     &:hover
       opacity 1
+    +sp-layout()
+      height: 10px
+      margin-right: 20px
+      &::after
+        absolute bottom -14px left 0
+        size: 100% $bar-length-sp
+
+  .work-menu__link
+    +sp-layout()
+      display: block
+      height: 100%
+      & > img
+        height: 100%
 </style>
