@@ -50,9 +50,16 @@ export default {
 <style scoped lang="stylus">
   .work-menu
     background-color: $bg-white;
-    fixed top 0 left 0;
-    size 100% 91px
-    padding-top: 40px
+    size 100% 51px
+    box-sizing: content-box
+    +pc-layout()
+      sticky top 0 left 0;
+      padding-top: 40px
+    +sp-layout()
+      fixed left 0
+      size 100% 24px
+      margin-top: 42px
+      padding-top: 34px
 
   .work-menu__list
     display: flex
@@ -69,8 +76,8 @@ export default {
     &::after
       content ""
       display block
-      absolute bottom -32px left 0
-      size: 100% 3px
+      absolute bottom -33px left 0
+      size: 100% $bar-length
       opacity 0
       background-color $bg-black;
       transition opacity .5s cubic-bezier(.165,.84,.44,1), transform .5s cubic-bezier(.165,.84,.44,1)
@@ -82,4 +89,17 @@ export default {
         transform scale(1)
     &:hover
       opacity 1
+    +sp-layout()
+      height: 10px
+      margin-right: 20px
+      &::after
+        absolute bottom -14px left 0
+        size: 100% $bar-length-sp
+
+  .work-menu__link
+    +sp-layout()
+      display: block
+      height: 100%
+      & > img
+        height: 100%
 </style>

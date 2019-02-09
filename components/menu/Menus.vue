@@ -27,5 +27,8 @@ export default {
 
 <style lang="stylus" scoped>
   .menus
-    fixed top 32px left 32px
+    +pc-layout()
+      fixed top 32px left 32px
+    +sp-layout()
+      fixed top 24px right 16px
 </style>

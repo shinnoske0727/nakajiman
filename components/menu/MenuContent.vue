@@ -63,6 +63,10 @@ export default {
     padding-left: 240px
     line-height: 0;
     opacity: 0.5
+    +sp-layout()
+      height: 20px
+      margin-bottom: 40px;
+      padding-left: 64px
 
     &[data-is-current="true"],
     &:hover
@@ -81,17 +85,23 @@ export default {
     &[data-is-current="true"],
     &:hover
       &::before
-        width: 208px
+        width: 44px
 
     &:last-of-type
       margin-bottom: 72px
+      +sp-layout()
+        margin-bottom: 44px;
 
   .link
     display: inline-block
     line-height: 1
+    +sp-layout()
+      height: 100%
 
     & > img
       display: block
+      +sp-layout()
+        height: 100%
 
   .sns
     display: flex
@@ -99,6 +109,8 @@ export default {
     align-items: center
     width: 130px
     padding-left: 240px
+    +sp-layout()
+      padding-left: 64px
 
   .sns-link
     margin-right: 8px
