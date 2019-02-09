@@ -57,7 +57,7 @@ export default {
   .list
     display: flex
     justify-content: space-between
-    width: 338px
+    width: 388px
     +sp-layout()
       width: 100%
 
