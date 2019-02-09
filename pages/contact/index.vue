@@ -5,12 +5,12 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact"   @submit.prevent="sendMessage").form
+      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact"   @submit.prevent="").form
         input(type="hidden" name="form-name" value="contact")
         form-name(@update="updateName")
         form-mail(@update="updateMail")
         form-message(@update="updateMessage")
-        button.button(type="submit" :data-can-submit="isFillAllInput" :disabled="!isFillAllInput" @click="sendMessage")
+        button.button(:data-can-submit="isFillAllInput" :disabled="!isFillAllInput" @click="sendMessage")
           img(src=`${path}submit.svg` alt="SUBMIT")
 
 </template>
@@ -64,6 +64,7 @@ export default {
                 .then(response => {
                     this.isSubmit = true
                     console.log(response)
+                    this.$router.push('/contact/complete/')
                 })
                 .catch(err => {
                     throw new Error(err)
