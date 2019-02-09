@@ -5,12 +5,12 @@
     h1.title
       img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
     .inner
-      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact" action="/contact/complete/" method="POST").form
+      form(data-netlify="true" data-netlify-honeypot="bot-field" name="contact"   @submit.prevent="sendMessage").form
         input(type="hidden" name="form-name" value="contact")
         form-name(@update="updateName")
         form-mail(@update="updateMail")
         form-message(@update="updateMessage")
-        button.button(type="submit" :data-can-submit="isFillAllInput" :disabled="!isFillAllInput")
+        button.button(type="submit" :data-can-submit="isFillAllInput" :disabled="!isFillAllInput" @click="sendMessage")
           img(src=`${path}submit.svg` alt="SUBMIT")
 
 </template>
@@ -59,10 +59,15 @@ export default {
             params.append('email', this.email)
             params.append('message', this.message)
 
-            axios.post('/', params).then(response => {
-                this.isSubmit = true
-                console.log(response)
-            })
+            axios
+                .post('/', params)
+                .then(response => {
+                    this.isSubmit = true
+                    console.log(response)
+                })
+                .catch(err => {
+                    throw new Error(err)
+                })
         }
     }
 }
