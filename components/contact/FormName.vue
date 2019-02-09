@@ -3,8 +3,8 @@
   .form-name
     label.label(for="name")
       img(src=`${path}name.svg` alt="NAME")
-    input.input(type="text" v-model="formName" id="name" name="name" autocomplete="name" placeholder="お名前をご入力ください" required)
-    .bar
+    input.input(type="text" v-model="formName" id="name" name="name" autocomplete="name" placeholder="お名前をご入力ください" required @focus="isFocus(true)" @blur="isFocus(false)")
+    .bar(:data-is-focus="isFocused")
 </template>
 
 <script>
@@ -14,12 +14,18 @@ export default {
     },
     data() {
         return {
-            formName: ''
+            formName: '',
+            isFocused: false
         }
     },
     watch: {
         formName: function(newValue) {
             this.$emit('update', newValue)
+        }
+    },
+    methods: {
+        isFocus(bool) {
+            this.isFocused = bool
         }
     }
 }
@@ -54,5 +60,7 @@ export default {
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    &[data-is-focus="true"]
+      border-bottom: 1px solid rgba(0, 0, 0, 1);
 
 </style>

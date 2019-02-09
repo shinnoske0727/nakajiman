@@ -3,8 +3,8 @@
   .form-mail
     label.label(for="mail")
       img(src=`${path}email-address.svg` alt="EMAIL ADDRESS")
-    input.input(type="email" v-model="mail" id="mail" name="mail" autocomplete="email" placeholder="ご連絡先メールアドレスをご入力ください" required)
-    .bar
+    input.input(type="email" v-model="mail" id="mail" name="mail" autocomplete="email" placeholder="メールアドレスをご入力ください" required @focus="isFocus(true)" @blur="isFocus(false)")
+    .bar(:data-is-focus="isFocused")
 </template>
 
 <script>
@@ -14,12 +14,18 @@ export default {
     },
     data() {
         return {
-            mail: ''
+            mail: '',
+            isFocused: false
         }
     },
     watch: {
         mail: function(newValue) {
             this.$emit('update', newValue)
+        }
+    },
+    methods: {
+        isFocus(bool) {
+            this.isFocused = bool
         }
     }
 }
@@ -54,5 +60,8 @@ export default {
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    &[data-is-focus="true"]
+      border-bottom: 1px solid rgba(0, 0, 0, 1);
+
 
 </style>

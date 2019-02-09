@@ -3,18 +3,21 @@
   .form-message
     label.label(for="message")
       img(src=`${path}message.svg` alt="message")
-    textarea.input(@input="textareaResize" maxlength="1000" id="message" name="message" v-model="message" ref="textarea" placeholder="お問い合わせの詳細を1,000文字以内でご入力ください" required)
-    .bar
+    textarea.input(@input="textareaResize" maxlength="1000" id="message" name="message" v-model="message" ref="textarea" placeholder="お問い合わせ内容をご入力ください" required @focus="isFocus(true)" @blur="isFocus(false)")
+    .bar(:data-is-focus="isFocused")
 </template>
 
 <script>
+import _ from 'lodash'
+import UA from '@/assets/helper/getUA'
 export default {
     components: {
         name: 'formMessage'
     },
     data() {
         return {
-            message: ''
+            message: '',
+            isFocused: false
         }
     },
     watch: {
@@ -27,8 +30,16 @@ export default {
     },
     methods: {
         textareaResize() {
-            this.$refs.textarea.style.minHeight =
-                this.$refs.textarea.scrollHeight + 'px'
+            const maxHeight = UA.isPC ? 84 : 72
+            const height = _.clamp(
+                this.$refs.textarea.scrollHeight,
+                0,
+                maxHeight
+            )
+            this.$refs.textarea.style.minHeight = height + 'px'
+        },
+        isFocus(bool) {
+            this.isFocused = bool
         }
     }
 }
@@ -66,5 +77,7 @@ export default {
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    &[data-is-focus="true"]
+      border-bottom: 1px solid rgba(0, 0, 0, 1);
 
 </style>
