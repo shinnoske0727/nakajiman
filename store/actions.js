@@ -14,5 +14,11 @@ export default {
         const prev = getters.prevData
         console.log(prev.id)
         commit('setWorksId', prev.id)
+    },
+    showMenu({ commit }) {
+        commit('setIsShowMenu', true)
+    },
+    hideMenu({ commit }) {
+        commit('setIsShowMenu', false)
     }
 }
