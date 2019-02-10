@@ -62,6 +62,7 @@ export default {
       width: 100%
 
   .link
+    position: relative
     display: block
     background-color: $bg-black;
     padding: 8px 14px
@@ -69,9 +70,24 @@ export default {
       padding: 9px 17px
 
     & > img
+      position: relative
       display: block
+      transition: filter 0.35s ease-in
       +sp-layout()
         size auto 9px
+    &::before
+      content: ""
+      width: 0
+      transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+    &:hover
+      & > img
+        filter: brightness(0)
+      &::before
+        absolute top 0 left 0
+        content: ""
+        width: 100%
+        height: 90%
+        background-color: $bg-white;
 
   .image-box--pc
     size: 391px 634px
