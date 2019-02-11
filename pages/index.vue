@@ -18,19 +18,14 @@
         li.item
           nuxt-link.link(:to="{name: 'works', params: { id: 'photograph' }}")
             img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
-    .image-box--pc
-      .grid1 139x139
-      .grid2 241x241
-      .grid3 148x148
-      .grid4 91x91
-      .grid5 55x55
-      .grid6 34x34
-      .grid7 19x34
+    keyvisual-pc
 </template>
 
 <script>
+import KeyvisualPc from '../components/top/KeyvisualPc'
 export default {
-    name: 'Top'
+    name: 'Top',
+  components: { KeyvisualPc }
 }
 </script>
 
@@ -95,41 +90,6 @@ export default {
         width: 100%
         height: 90%
         background-color: $bg-white;
-
-  .image-box--pc
-    size: 391px 634px
-    background-color: red;
-    display: grid;
-    grid-template-columns: 91px 19px 34px 241px
-    grid-template-row: 391px 55px 34px 148px
-    grid-template-areas:
-  "a a a a"
-  "d e e b"
-  "d g f b"
-  "c c c b";
-    +sp-layout()
-      display: none
-
-  .grid1
-    grid-area: a
-
-  .grid2
-    grid-area: b
-
-  .grid3
-    grid-area: c
-
-  .grid4
-    grid-area: d
-
-  .grid5
-    grid-area: e
-
-  .grid6
-    grid-area: f
-
-  .grid7
-    grid-area: g
 
   .image-box--sp
     size: 343px
