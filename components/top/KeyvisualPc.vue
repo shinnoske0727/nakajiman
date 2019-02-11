@@ -2,19 +2,19 @@
   - path = "http://placehold.it/"
   .keyvisual--pc
     .grid1.grid
-      grid-item(:direction="'top'" width="391" height="391")
+      grid-item(:direction="'top'" :width="391" :height="391")
     .grid2.grid
-      grid-item(:direction="'right'" width="241" height="241")
+      grid-item(:direction="'right'" :width="241" :height="241")
     .grid3.grid
-      grid-item(:direction="'bottom'" width="148" height="148")
+      grid-item(:direction="'bottom'" :width="148" :height="148")
     .grid4.grid
-      grid-item(:direction="'left'" width="91" height="91")
+      grid-item(:direction="'left'" :width="91" :height="91")
     .grid5.grid
-      grid-item(:direction="'top'" width="55" height="55")
+      grid-item(:direction="'top'" :width="55" :height="55")
     .grid6.grid
-      grid-item(:direction="'right'" width="34" height="34")
+      grid-item(:direction="'right'" :width="34" :height="34")
     .grid7.grid
-      grid-item(:direction="'bottom'" width="19" height="34")
+      grid-item(:direction="'bottom'" :width="19" :height="34")
 </template>
 
 <script>

@@ -51,15 +51,22 @@ export default {
     overflow auto
 
   .button-wrapper
-    fixed top 32px left 32px
     padding: 0 0 20px 0;
     box-sizing: content-box
+    +pc-layout()
+      fixed top 32px left 32px
+    +sp-layout()
+      fixed top 24px right 16px
 
   .button
     position: relative
     size: $menu-width $bar-length
     background-color transparent
     transition none
+    +pc-layout()
+      size: $menu-width $bar-length
+    +sp-layout()
+      size: $menu-width-sp $bar-length-sp
 
     &::before,
     &::after
@@ -70,6 +77,8 @@ export default {
       height: $bar-length
       background-color: $text-black
       transform-origin: 50% 50%
+      +sp-layout()
+        size: 100% $bar-length-sp
 
     &::before
       transform: translate(-50%, 0) rotate(45deg);
@@ -78,18 +87,27 @@ export default {
 
   .arrow--right,
   .arrow--left
-    absolute: top 312px
-    width: 42px;
-    height: 42px;
     background-color: $bg-black;
     background-size: 12px 22px
     hide-text()
+    +pc-layout()
+      fixed top 312px
+      size 42px
+    +sp-layout()
+      fixed top 493px
+      size 38px
 
   .arrow--right
-    right: 32px
     background-image: url("~assets/img/works/icn_arrow_right.svg")
+    +pc-layout()
+      right: 32px
+    +sp-layout()
+      right: 16px
 
   .arrow--left
-    left: 32px
     background-image: url("~assets/img/works/icn_arrow_left.svg")
+    +pc-layout()
+      left: 32px
+    +sp-layout()
+      left: 16px
 </style>
