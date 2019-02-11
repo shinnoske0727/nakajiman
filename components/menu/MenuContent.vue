@@ -1,7 +1,7 @@
 <template lang="pug">
   - path = "~/assets/img/menu/"
   - cmnPath = "~/assets/img/common/"
-  .menu-content(v-if="isOpen")
+  .menu-content
     .inner
       ul.list
         li.item(:data-is-current="current === 'index'")
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { TweenMax } from 'gsap'
 export default {
     name: 'MenuContent',
     props: {
@@ -52,6 +53,7 @@ export default {
     fixed top left
     size 100%
     background: $bg-gray
+    overflow: hidden
 
   .inner
     max-width: $max-width
@@ -85,7 +87,9 @@ export default {
     &[data-is-current="true"],
     &:hover
       &::before
-        width: 44px
+        width: 208px
+        +sp-layout()
+          width: 44px
 
     &:last-of-type
       margin-bottom: 72px

@@ -4,5 +4,8 @@ export default {
     },
     setWorksId(state, id) {
         state.worksId = id
+    },
+    setIsShowMenu(state, bool) {
+      state.isShowMenu = bool
     }
 }

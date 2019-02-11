@@ -9,7 +9,6 @@
         .work
           .dammy-image(@click="openModal(data.id)" :data-category="data.category" :key="data.id") {{ data.name }}
           .work-title {{ data.name }}
-    menus
     work-modal(v-if="isOpenModal" @close="closeModal" :works-data="visibleData")
 </template>
 
@@ -90,7 +89,6 @@ const dammyData = [
     }
 ]
 export default {
-    layout: 'hasModalLayout',
     name: 'Works',
     async fetch({ store }) {
         return store.dispatch('loadWorksData', dammyData)
@@ -121,13 +119,20 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['loadWorksData', 'registerWorksId']),
+        ...mapActions([
+            'loadWorksData',
+            'registerWorksId',
+            'showMenu',
+            'hideMenu'
+        ]),
         openModal(id) {
             this.registerWorksId(id)
             this.isOpenModal = true
+            this.hideMenu()
         },
         closeModal() {
             this.isOpenModal = false
+            this.showMenu()
         },
         changeCategory(val) {
             this.currentCategory = val

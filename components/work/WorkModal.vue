@@ -5,7 +5,8 @@
     work-modal-content(v-if="currentData" :modal-data="currentData")
     button.arrow--right(@click="goNext") 右
     button.arrow--left(@click="goPrev") 左
-    button.button(@click="closeModal")
+    .button-wrapper
+      button.button(@click="closeModal")
 
 </template>
 
@@ -49,11 +50,16 @@ export default {
     background-color $bg-white
     overflow auto
 
-  .button
+  .button-wrapper
     fixed top 32px left 32px
+    padding: 0 0 20px 0;
+    box-sizing: content-box
+
+  .button
+    position: relative
     size: $menu-width $bar-length
     background-color transparent
-    transition 0
+    transition none
 
     &::before,
     &::after
@@ -63,7 +69,7 @@ export default {
       width: 100%
       height: $bar-length
       background-color: $text-black
-      transform-origin: 50% 0
+      transform-origin: 50% 50%
 
     &::before
       transform: translate(-50%, 0) rotate(45deg);

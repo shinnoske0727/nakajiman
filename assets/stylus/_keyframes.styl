@@ -1,15 +1,30 @@
 @keyframes menuBefore {
   0% {
-    transform: translate(-50%, -12px);
+    transform: translate(-50%, -12px) rotate(0);
   }
   40% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0);
   }
   60% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0);
   }
   100% {
     transform: translate(-50%, 0) rotate(45deg);
+  }
+}
+
+@keyframes menuBeforeReverse {
+  0% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  40% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  60% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -12px) rotate(0);
   }
 }
 
@@ -28,33 +43,79 @@
   }
 }
 
+@keyframes menuBeforeReverseSp {
+  0% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  40% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  60% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -9px) rotate(0);
+  }
+}
+
 
 @keyframes menuAfter {
   0% {
-    transform: translate(-50%, 9px);
+    transform: translate(-50%, 12px) rotate(0);
   }
   40% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0);
   }
   60% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0);
   }
   100% {
     transform: translate(-50%, 0) rotate(-45deg);
+  }
+}
+
+@keyframes menuAfterReverse {
+  0% {
+    transform: translate(-50%, 0) rotate(-45deg);
+  }
+  40% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  60% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, 12px) rotate(0);
   }
 }
 
 @keyframes menuAfterSp {
   0% {
-    transform: translate(-50%, 12px);
+    transform: translate(-50%, 9px) rotate(0);
   }
   40% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0)j;
   }
   60% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(0);
   }
   100% {
     transform: translate(-50%, 0) rotate(-45deg);
   }
 }
+
+@keyframes menuAfterReverseSp {
+  0% {
+    transform: translate(-50%, 0) rotate(-45deg);
+  }
+  40% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  60% {
+    transform: translate(-50%, 0) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, 9px) rotate(0);
+  }
+}
+

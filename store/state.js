@@ -1,4 +1,5 @@
 export default () => ({
     worksData: [],
-    worksId: null
+    worksId: null,
+    isShowMenu: true
 })
