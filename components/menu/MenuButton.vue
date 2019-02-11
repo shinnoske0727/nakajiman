@@ -39,7 +39,7 @@ export default {
   .button
     position: relative
     background-color: $text-black
-    transition 0
+    transition none
     +pc-layout()
       size: $menu-width $bar-length
     +sp-layout()
