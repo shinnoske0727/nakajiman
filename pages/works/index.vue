@@ -3,7 +3,7 @@
   section.works
     h1.title
       img(src=`${cmnPath}txt_works.svg` alt="WORKS")
-    work-menu(@change="changeCategory" :category="currentCategory")
+    work-menu.menu(@change="changeCategory" :category="currentCategory")
     .inner
       template(v-for="data in visibleData")
         work-thumbnail(:content-data="data" :key="data.id")
@@ -66,7 +66,7 @@ export default {
 
   .title
     text-align: center
-    padding-top 36px
+    padding 36px 0 16px
     box-sizing: content-box
     height: 23px
     line-height: 0
@@ -76,9 +76,14 @@ export default {
     +sp-layout()
       fixed left 0
       size: 100% 16px
-      padding-top 26px
+      padding-top $title-padding-top-sp
+      z-index: 2;
+
+  .menu
+    z-index: 2;
 
   .inner
+    z-index: 1;
     size 100%
     +pc-layout()
       display grid

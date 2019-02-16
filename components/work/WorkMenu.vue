@@ -23,6 +23,7 @@
 
 <script>
 import _ from 'lodash'
+
 export default {
     name: 'WorkMenu',
     props: {
@@ -68,29 +69,39 @@ export default {
 
   .work-menu__item
     position: relative
-    margin-right: 56px
+    padding: 0 8px;
+    margin-right: 48px
     opacity 0.3
-    transition opacity 0.1s ease-in
+    transition opacity 0.2s ease-in
+
     &:last-of-type
       margin-right: 0
+
     &::after
       content ""
       display block
       absolute bottom -33px left 0
-      size: 100% $bar-length
+      size: 100% 3px
       opacity 0
       background-color $bg-black;
-      transition opacity .5s cubic-bezier(.165,.84,.44,1), transform .5s cubic-bezier(.165,.84,.44,1)
-      transform scale(0)
+      transition opacity .4s cubic-bezier(.165, .84, .44, 1), transform .4s cubic-bezier(.165, .84, .44, 1)
+      transform scaleX(0)
+
     &[data-is-current="true"]
       opacity 1
+
       &::after
         opacity 1
-        transform scale(1)
-    &:hover
-      opacity 1
+        transform scaleX(1)
+    +pc-layout()
+      &:hover
+        opacity 1
+        &::after
+          opacity 1
+          transform scaleX(1)
     +sp-layout()
       height: 10px
+      padding: 0 1px;
       margin-right: 20px
       &::after
         absolute bottom -14px left 0

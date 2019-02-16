@@ -32,6 +32,7 @@ export default {
 
 <style lang="stylus" scoped>
   .menus
+    z-index: 3;
     +pc-layout()
       fixed top 38px left 32px
     +sp-layout()
