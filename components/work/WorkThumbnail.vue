@@ -19,6 +19,7 @@ const showOption = {
         ease
     },
     text: {
+        delay: 0.1,
         y: 0,
         autoAlpha: 1,
         ease
