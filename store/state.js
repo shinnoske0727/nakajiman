@@ -1,5 +1,6 @@
 export default () => ({
     worksData: [],
     worksId: null,
-    isShowMenu: true
+    isShowMenu: true,
+    isChangeWindow: false
 })

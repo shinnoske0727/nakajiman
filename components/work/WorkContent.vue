@@ -160,9 +160,10 @@ export default {
     display: block
     size 46px 25px
     margin: 112px auto 0
-    &:hover
-      img
-        animation pageTopButton 0.25s ease-in
+    +pc-layout()
+      &:hover
+        img
+          animation pageTopButton 0.25s ease-in
 
     +sp-layout()
       size 23px 13px
