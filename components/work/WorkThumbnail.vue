@@ -13,6 +13,7 @@ import { TweenMax, Power1 } from 'gsap'
 import UA from '@/assets/helper/getUA'
 
 const ease = Power1.easeOut
+const easeReverse = Power1.easeIn
 const showOption = {
     info: {
         autoAlpha: 1,
@@ -28,8 +29,9 @@ const showOption = {
 
 const hideOption = {
     info: {
+        delay: 0.1,
         autoAlpha: 0,
-        ease
+        ease: easeReverse
     },
     text: {
         y: 10,
@@ -54,14 +56,14 @@ export default {
     },
     methods: {
         showInfo() {
-            if (UA.isSP) return
+            if (UA.isSP || !this.$refs.info || !this.$refs.text) return
             const $info = this.$refs.info.$el
             const $text = this.$refs.text
             TweenMax.to($info, 0.5, showOption.info)
             TweenMax.fromTo($text, 0.5, hideOption.text, showOption.text)
         },
         hideInfo() {
-            if (UA.isSP) return
+            if (UA.isSP || !this.$refs.info || !this.$refs.text) return
             const $info = this.$refs.info.$el
             const $text = this.$refs.text
             TweenMax.to($info, 0.5, hideOption.info)
