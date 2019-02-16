@@ -29,9 +29,9 @@ export const dammyData = [
         },
         works: {
             kv: 'works_kv_utgp.png',
-            pic: ['works_kv_utgp.png', 'works_kv_utgp.png', 'works_kv_utgp.png']
+            pic: ['works_pic_utgp_1.png']
         },
-        link: ''
+        link: 'google.com'
     },
     {
         name: 'キン肉マン',
@@ -79,11 +79,11 @@ export const dammyData = [
         works: {
             kv: 'works_kv_bne.png',
             pic: [
-                'works_pic_bne_1.png',
-                'works_pic_bne_2.png',
-                'works_pic_bne_3.png',
-                'works_pic_bne_4.png',
-                'works_pic_bne_5.png'
+                'works_pic_bne_1.jpg',
+                'works_pic_bne_2.jpg',
+                'works_pic_bne_3.jpg',
+                'works_pic_bne_4.jpg',
+                'works_pic_bne_5.jpg'
             ]
         },
         link: ''

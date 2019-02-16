@@ -2,23 +2,25 @@
   - path = "~/assets/img/works/";
   .work-content(ref="content")
     .content
-      img.kv(:src="kvSrc")
-      template(v-if="workData.name")
-        .title {{ workData.name }}
-      p.explain(v-if="workData.explain") {{ workData.explain }}
+      img.kv(:src="kvSrc" :data-is-picture="workData.layout === 'picture'")
+      template(v-if="workData.layout === 'article'")
+        template(v-if="workData.name")
+          .title {{ workData.name }}
+        p.explain(v-if="workData.explain") {{ workData.explain }}
 
-      .picture-wrapper
-        template(v-for="pic in picSrcArray")
-          img.picture(:src="pic")
-      //- a.button--site(v-if="modalData.link" :href="modalData.link", target="_blank")
-      a.button--site(href="", target="_blank")
-        img(src=`${path}visit-site.svg` alt="visit site")
-      button.to-top(@click="moveToTop")
+        .picture-wrapper
+          template(v-for="pic in picSrcArray")
+            img.picture(:src="pic")
+        template(v-if="workData.link")
+          a.button--site(:href="workData.link", target="_blank")
+            img(src=`${path}visit-site.svg` alt="visit site")
+        button.to-top(@click="moveToTop")
 </template>
 
 <script>
 import { TweenLite, Power1 } from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
+
 const plugins = [ScrollToPlugin]
 
 export default {
@@ -66,13 +68,17 @@ export default {
       padding-bottom: 32px
 
   .kv
-    background-color: red;
     +pc-layout()
       size $max-width 539px
       margin-bottom: 96px
     +sp-layout()
       size $max-width-sp 193px
       margin-bottom: 40px
+
+    &[data-is-picture="true"]
+      size auto
+      max-size $max-width 90vh
+      margin-bottom: 0
 
   .title
     margin-bottom: 48px
@@ -94,12 +100,14 @@ export default {
     +sp-layout()
       font-size: 12px
       max-width: $max-width-sp
+
   .explain
     margin-bottom: 2em;
-    word-wrap:break-word;
+    word-wrap: break-word;
     +sp-layout()
       font-size: 12px
       max-width: $max-width-sp
+
   .role
     margin: 0 auto 96px
     +sp-layout()
@@ -108,12 +116,14 @@ export default {
   .picture
     display: block
     width: 100%
+
     & + .picture
       margin-top: 24px
       +sp-layout()
         margin-top: 16px
 
   $button
+    position: relative
     display: block
     size 200px 40px
     line-height: 40px
@@ -125,14 +135,30 @@ export default {
 
   .button--site
     @extend $button
+    +pc-layout()
+      &::before
+        content: ""
+        width: 0
+        transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+      &:hover
+        & > img
+          filter: brightness(0)
+
+        &::before
+          absolute top 0 left 0
+          content: ""
+          width: 100%
+          height: 38px
+          background-color: $bg-white;
 
   .to-top
     display: block
     size 46px 25px
-    margin: 0 auto
+    margin: 112px auto 0
     background-image: url("~assets/img/works/icn_arrow_top_pc.svg");
     +sp-layout()
       size 23px 13px
+      margin-top: 64px
       background-size: contain
 
 </style>
