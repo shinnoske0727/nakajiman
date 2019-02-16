@@ -15,10 +15,11 @@
           a.button--site(:href="workData.link", target="_blank")
             img(src=`${path}visit-site.svg` alt="visit site")
         button.to-top(@click="moveToTop")
+          img(src=`${path}icn_arrow_top_pc.svg`)
 </template>
 
 <script>
-import { TweenLite, Power1 } from 'gsap'
+import { TweenLite, Expo } from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
 const plugins = [ScrollToPlugin]
@@ -49,7 +50,7 @@ export default {
         moveToTop: function() {
             TweenLite.to(this.$parent.$refs.modal, 1.0, {
                 scrollTo: this.$refs.content,
-                ease: Power1.easeOut
+                ease: Expo.easeOut
             })
         }
     }
@@ -131,7 +132,11 @@ export default {
     margin: 112px auto
     background-color: $bg-black;
     +sp-layout()
+      size 152px 36px
+      line-height: 36px
       margin 56px auto 64px
+      & > img
+        height: 10px;
 
   .button--site
     @extend $button
@@ -155,10 +160,15 @@ export default {
     display: block
     size 46px 25px
     margin: 112px auto 0
-    background-image: url("~assets/img/works/icn_arrow_top_pc.svg");
+    &:hover
+      img
+        animation pageTopButton 0.25s ease-in
+
     +sp-layout()
       size 23px 13px
       margin-top: 64px
       background-size: contain
+      & > img
+        size 100%
 
 </style>
