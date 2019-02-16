@@ -1,40 +1,27 @@
 <template lang="pug">
   - path = "~/assets/img/works/";
   .work(ref="modal")
-    work-content(v-if="currentData" :modal-data="currentData")
+    work-content(v-if="workData" :work-data="workData")
     button.arrow--right(@click="goNext") 右
     button.arrow--left(@click="goPrev") 左
 
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import WorkModalContent from '@/components/work/WorkContent'
+import WorkContent from '@/components/work/WorkContent'
+import { dammyData } from '@/assets/data/dammyData'
+import _ from 'lodash'
+
 export default {
-    name: 'WorkModal',
-    components: { WorkModalContent },
-    props: {
-        worksData: {
-            default: function() {
-                return []
-            },
-            type: Array
-        }
+    name: 'Work',
+    asyncData: async function({ params }) {
+        const currentData = _.find(dammyData, data => data.id == params.id)
+        return { workData: currentData }
     },
-    computed: {
-        ...mapGetters(['currentData'])
-    },
+    components: { WorkContent },
     methods: {
-        ...mapActions(['increaseId', 'decreaseId']),
-        goNext() {
-            this.increaseId()
-        },
-        goPrev() {
-            this.decreaseId()
-        },
-        closeModal() {
-            this.$emit('close')
-        }
+        goNext() {},
+        goPrev() {}
     }
 }
 </script>

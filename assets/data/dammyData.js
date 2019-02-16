@@ -29,7 +29,7 @@ export const dammyData = [
         },
         works: {
             kv: 'works_kv_utgp.png',
-            pic: []
+            pic: ['works_kv_utgp.png', 'works_kv_utgp.png', 'works_kv_utgp.png']
         },
         link: ''
     },

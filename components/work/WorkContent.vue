@@ -2,16 +2,14 @@
   - path = "~/assets/img/works/";
   .work-content(ref="content")
     .content
-      .kv //-(v-if="modalData.thumbnail")
-      .title {{ modalData.name }}
-      p.explain(v-if="modalData.explain") {{ modalData.explain }}
-      .role(v-if="modalData.role !== []")
-        ul.role-list
-          li.role-item CLIENT：UNIQLO
-          li.role-item ART DIRECTOR：TORU OBARA
-          li.role-item DESIGNER：KENTA NAKAJIMA
-      .picture //-(v-if="modalData.picture")
+      img.kv(:src="kvSrc")
+      template(v-if="workData.name")
+        .title {{ workData.name }}
+      p.explain(v-if="workData.explain") {{ workData.explain }}
 
+      .picture-wrapper
+        template(v-for="pic in picSrcArray")
+          img.picture(:src="pic")
       //- a.button--site(v-if="modalData.link" :href="modalData.link", target="_blank")
       a.button--site(href="", target="_blank")
         img(src=`${path}visit-site.svg` alt="visit site")
@@ -19,21 +17,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { TweenLite, Power1 } from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
+const plugins = [ScrollToPlugin]
 
 export default {
-    name: 'WorkModalContent',
+    name: 'WorkContent',
     props: {
-        modalData: {
+        workData: {
             default: function() {
                 return {}
             },
             type: Object
         }
     },
-    computed: {},
+    computed: {
+        kvSrc() {
+            if (!this.workData.works.kv) return
+            return require(`@/assets/data/${this.workData.works.kv}`)
+        },
+        picSrcArray() {
+            if (!this.workData.works.pic.length) return
+            return this.workData.works.pic.map(pic =>
+                require(`@/assets/data/${pic}`)
+            )
+        }
+    },
     methods: {
         moveToTop: function() {
             TweenLite.to(this.$parent.$refs.modal, 1.0, {
@@ -97,11 +106,12 @@ export default {
       margin: 0 auto 48px
 
   .picture
+    display: block
     width: 100%
-    height: 1334px;
-    background-color: red;
-    +sp-layout()
-      height 476px + 193px
+    & + .picture
+      margin-top: 24px
+      +sp-layout()
+        margin-top: 16px
 
   $button
     display: block
