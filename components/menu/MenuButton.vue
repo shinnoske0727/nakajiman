@@ -30,6 +30,7 @@ export default {
 
 <style scoped lang="stylus">
   .menu-button
+    position: relative
     cursor: pointer
     +pc-layout()
       size: $menu-width 16px;
@@ -37,7 +38,7 @@ export default {
       size: $menu-width-sp 16px;
 
   .button
-    position: relative
+    absolute top 7px
     background-color: $text-black
     transition none
     +pc-layout()
