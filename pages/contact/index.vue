@@ -78,7 +78,7 @@ export default {
   .contact
     max-width: $max-width
     margin: 0 auto
-    padding-top: 32px
+    padding-top: $title-padding-top
     +sp-layout()
       max-width: $max-width-sp
       padding-top: $title-padding-top-sp;

@@ -33,7 +33,7 @@ export default {
     margin 0 auto
   .title
     size auto 23px
-    padding-top 32px
+    padding-top $title-padding-top
     margin 0 auto 104px
     line-height 0
     box-sizing: content-box
@@ -43,7 +43,7 @@ export default {
       sticky top 0 left 0
       height: 16px
       margin 0 auto 20px
-      padding: 26px 0;
+      padding: $title-padding-top-sp 0;
       background-color: #fff;
   .inner
     +pc-layout()
@@ -67,17 +67,17 @@ export default {
       size 100% auto
       margin-top: 40px
   .name
-    margin-bottom 9px
+    margin-bottom 8px
     +sp-layout()
       height: 21px
       text-align: center
-      margin-bottom 10px
+      margin-bottom 11px
       & > img
         height: 100%
   .name-box
     display flex
     font-size 14px
-    line-height 22px / 14px
+    line-height 1
     margin-bottom: 32px
     +sp-layout()
       justify-content: center

@@ -66,7 +66,7 @@ export default {
 
   .title
     text-align: center
-    padding 36px 0 16px
+    padding $title-padding-top 0 16px
     box-sizing: content-box
     height: 23px
     line-height: 0
