@@ -8,25 +8,35 @@
         img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
       ul.list
         li.item
-          nuxt-link.link(data-type="ui" :to="{name: 'works', params: { id: 'ui' }}")
+          .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
             img(src=`${path}ui-white.svg` alt="UI")
         li.item
-          nuxt-link.link(data-type="web" :to="{name: 'works', params: { id: 'web' }}")
+          .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
             img(src=`${path}web-white.svg` alt="WEB")
         li.item
-          nuxt-link.link(data-type="illustration" :to="{name: 'works', params: { id: 'illustration' }}")
+          .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'illustration' } })")
             img(src=`${path}illust-white.svg` alt="ILLUST")
         li.item
-          nuxt-link.link(data-type="photograph" :to="{name: 'works', params: { id: 'photograph' }}")
+          .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
             img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
     keyvisual-pc
 </template>
 
 <script>
 import KeyvisualPc from '../components/top/KeyvisualPc'
+import { mapActions } from 'vuex'
 export default {
     name: 'Top',
-  components: { KeyvisualPc }
+    components: { KeyvisualPc },
+    methods: {
+        ...mapActions(['changeWindow']),
+        move(option) {
+            this.changeWindow()
+            setTimeout(() => {
+                this.$router.push(option)
+            }, 800)
+        }
+    }
 }
 </script>
 
@@ -82,6 +92,7 @@ export default {
     justify-content: center
     align-items: center
     background-color: $bg-black;
+    cursor pointer
 
     & > img
       position: relative

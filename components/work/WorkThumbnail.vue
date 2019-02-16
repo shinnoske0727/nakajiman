@@ -3,12 +3,13 @@
     .image-wrapper(:data-category="contentData.category" @mouseenter="showInfo" @mouseleave="hideInfo")
       template(v-if="contentData.works && contentData.works.kv")
         img.image(:src="imageSrc")
-        nuxt-link.link(:to="{name: 'works-id', params: {id: contentData.id}}" ref="info")
+        .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.id}})")
           p.link-text(ref="text") {{ contentData.name }}
     .title {{ contentData.name }}
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { TweenMax, Power1 } from 'gsap'
 import UA from '@/assets/helper/getUA'
 
@@ -55,6 +56,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['changeWindow']),
         showInfo() {
             if (UA.isSP || !this.$refs.info || !this.$refs.text) return
             const $info = this.$refs.info.$el
@@ -68,6 +70,12 @@ export default {
             const $text = this.$refs.text
             TweenMax.to($info, 0.5, hideOption.info)
             TweenMax.fromTo($text, 0.5, showOption.text, hideOption.text)
+        },
+        move(option) {
+            this.changeWindow()
+            setTimeout(() => {
+                this.$router.push(option)
+            }, 800)
         }
     }
 }
@@ -114,6 +122,7 @@ export default {
     text-decoration: none
     background-color: rgba(177, 178, 176, 0.9);
     opacity 0
+    cursor pointer
 
   .link-text
     font-size: 16px

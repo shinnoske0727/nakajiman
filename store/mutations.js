@@ -6,6 +6,9 @@ export default {
         state.worksId = id
     },
     setIsShowMenu(state, bool) {
-      state.isShowMenu = bool
+        state.isShowMenu = bool
+    },
+    setIsChangeWindow(state, bool) {
+        state.isChangeWindow = bool
     }
 }
