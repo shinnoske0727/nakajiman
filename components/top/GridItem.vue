@@ -6,7 +6,7 @@
 
 <script>
 import _ from 'lodash'
-import { TweenMax, Power1 } from 'gsap'
+import { TweenMax, Expo } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
 export default {
@@ -106,12 +106,12 @@ export default {
             const option = {
                 x: this.positionX,
                 y: this.positionY,
-                ease: Power1.easeIn,
+                ease: Expo.easeInOut,
                 onComplete: () => {
                     this.reset()
                 }
             }
-            return TweenMax.to(this.$refs.item, 1, option)
+            return TweenMax.to(this.$refs.item, 1.5, option)
         }
     }
 }

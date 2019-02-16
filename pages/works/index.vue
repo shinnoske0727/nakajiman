@@ -6,19 +6,16 @@
     work-menu(@change="changeCategory" :category="currentCategory")
     .inner
       template(v-for="data in visibleData")
-        .work
-          .dammy-image(@click="openModal(data.id)" :data-category="data.category" :key="data.id") {{ data.name }}
-          .work-title {{ data.name }}
-    work-modal(v-if="isOpenModal" @close="closeModal" :works-data="visibleData")
+        work-thumbnail(:content-data="data" :key="data.id")
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import filter from 'lodash/filter'
 import WorkMenu from '@/components/work/WorkMenu'
-import WorkModal from '@/components/work/WorkModal'
 import Menus from '@/components/menu/Menus'
 import { dammyData } from '@/assets/data/dammyData'
+import WorkThumbnail from '@/components/work/WorkThumbnail'
 
 export default {
     name: 'Works',
@@ -26,14 +23,13 @@ export default {
         return store.dispatch('loadWorksData', dammyData)
     },
     components: {
+        WorkThumbnail,
         Menus,
-        WorkModal,
         WorkMenu
     },
     data() {
         return {
-            currentCategory: this.$route.params.id,
-            isOpenModal: false
+            currentCategory: this.$route.params.id
         }
     },
     computed: {
@@ -54,18 +50,7 @@ export default {
         ...mapActions([
             'loadWorksData',
             'registerWorksId',
-            'showMenu',
-            'hideMenu'
         ]),
-        openModal(id) {
-            this.registerWorksId(id)
-            this.isOpenModal = true
-            this.hideMenu()
-        },
-        closeModal() {
-            this.isOpenModal = false
-            this.showMenu()
-        },
         changeCategory(val) {
             this.currentCategory = val
         }
@@ -102,7 +87,7 @@ export default {
       padding-top: 100px
 
 
-  .dammy-image
+  .image-wrapper
     min-size 480px 270px
     background-color red
     box-sizing border-box
