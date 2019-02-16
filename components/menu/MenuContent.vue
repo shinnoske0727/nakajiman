@@ -13,9 +13,9 @@
         li.item(:data-is-current="current === 'contact'")
           a.link(data-href="/contact/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
       ul.sns
-        a.sns-link(href="" target="_blank"): img(src=`${path}twitter.svg` alt="twitter")
-        a.sns-link(href="" target="_blank"): img(src=`${path}facebook.svg` alt="facebook")
-        a.sns-link(href="" target="_blank"): img(src=`${path}instagram.svg` alt="instagram")
+        a.sns-link(href="https://twitter.com/nakaj1_man" target="_blank"): img(src=`${path}twitter.svg` alt="twitter")
+        a.sns-link(href="https://www.facebook.com/kenta.nakajima.7399" target="_blank"): img(src=`${path}facebook.svg` alt="facebook")
+        a.sns-link(href="https://www.instagram.com/nakaj1_man/" target="_blank"): img(src=`${path}instagram.svg` alt="instagram")
 
 </template>
 
@@ -66,7 +66,7 @@ export default {
     line-height: 0;
     opacity: 0.5
     +sp-layout()
-      height: 20px
+      height: 15px
       margin-bottom: 40px;
       padding-left: 64px
 
@@ -92,7 +92,7 @@ export default {
           width: 44px
 
     &:last-of-type
-      margin-bottom: 72px
+      margin-bottom: 64px
       +sp-layout()
         margin-bottom: 44px;
 
@@ -112,11 +112,23 @@ export default {
     justify-content: flex-start
     align-items: center
     width: 130px
-    padding-left: 240px
+    padding-left: 233px
     +sp-layout()
-      padding-left: 64px
+      width: auto;
+      padding-left: 59px
 
   .sns-link
     margin-right: 8px
+    & > img
+      display: block
+    +pc-layout()
+      opacity 0.5
+      &:hover
+        opacity 1
+    +sp-layout()
+      size 28px 28px
+      margin-right: 12px
+      & > img
+        size 100% 100%
 
 </style>

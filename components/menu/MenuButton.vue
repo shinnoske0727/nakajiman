@@ -30,14 +30,15 @@ export default {
 
 <style scoped lang="stylus">
   .menu-button
+    position: relative
     cursor: pointer
     +pc-layout()
-      size: $menu-width 27px;
+      size: $menu-width 16px;
     +sp-layout()
-      size: $menu-width-sp 27px;
+      size: $menu-width-sp 16px;
 
   .button
-    position: relative
+    absolute top 7px
     background-color: $text-black
     transition none
     +pc-layout()
@@ -67,18 +68,18 @@ export default {
 
     &::before
       +pc-layout()
-        transform: translate(-50%, -12px)
+        transform: translate(-50%, -7px)
         animation: menuBeforeReverse 0.5s forwards
       +sp-layout()
-        transform: translate(-50%, -9px)
+        transform: translate(-50%, -7px)
         animation: menuBeforeReverseSp 0.5s forwards
 
     &::after
       +pc-layout()
-        transform: translate(-50%, 12px)
+        transform: translate(-50%, 7px)
         animation: menuAfterReverse 0.5s forwards
       +sp-layout()
-        transform: translate(-50%, 9px)
+        transform: translate(-50%, 7px)
         animation: menuAfterReverseSp 0.5s forwards
 
     &[data-is-open="true"]

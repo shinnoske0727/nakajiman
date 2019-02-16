@@ -78,9 +78,11 @@ export default {
   .contact
     max-width: $max-width
     margin: 0 auto
-    padding-top: 32px
+    padding-top: $title-padding-top
     +sp-layout()
       max-width: $max-width-sp
+      padding-top: $title-padding-top-sp;
+      overflow: hidden
   .title
     size auto 23px
     margin 0 auto 88px
@@ -89,7 +91,7 @@ export default {
       size 100%
     +sp-layout()
       size auto 16px
-      margin 0 auto 82px
+      margin 0 auto 84px
   .inner
     size 546px auto
     margin 0 auto
@@ -99,6 +101,8 @@ export default {
   .name-box,
   .mail-box
     margin-bottom 56px
+    +sp-layout()
+      margin-bottom: 42px
 
   .message-box
     margin-bottom 149px
@@ -143,10 +147,17 @@ export default {
     height 17px
 
   .button
+    absolute top 576px left 50%
     display block
     size 200px 40px
     margin: 0 auto
     background-color: rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%)
     &[data-can-submit="true"]
       background-color: $bg-black;
+    +sp-layout()
+      absolute top 474px left 50%
+      size 152px 36px
+      & > img
+        height: 10px
 </style>

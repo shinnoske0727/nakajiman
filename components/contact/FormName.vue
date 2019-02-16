@@ -34,12 +34,14 @@ export default {
 <style lang="stylus" scoped>
   .form-name
     margin-bottom 56px
+    +sp-layout()
+      margin-bottom: 46px
 
   .label
     display: block
     margin-bottom: 15px
     +sp-layout()
-      margin-bottom: 11px
+      margin-bottom: 6px
       line-height: 0
       height: 8px
       & > img
@@ -56,7 +58,10 @@ export default {
     +ks-placeholder()
       color: rgba(0, 0, 0, 0.5)
     +sp-layout()
-      font-size: 12px
+      width: 133%
+      font-size: 16px
+      transform: scale(0.75)
+      transform-origin: left bottom
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
