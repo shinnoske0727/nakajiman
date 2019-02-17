@@ -74,16 +74,11 @@ export default {
         }
     },
     computed: {
-        ...mapState(['kVImages', 'currentKVImages'])
+        ...mapState(['KVImages', 'currentKVImages'])
     },
     mounted() {
-        // const images = this.images.map(img => img.src)
-        // // ここでスライドを管理する
-        // console.log()
-        const images = pickRandomItems(this.kVImages, 7)
-        this.registerCurrentKVImages(images)
         this.timer = setInterval(() => {
-            const images = pickRandomItems(this.kVImages, 7)
+            const images = pickRandomItems(this.KVImages, 7)
             this.registerCurrentKVImages(images)
             this.counter += 1
         }, 2500)

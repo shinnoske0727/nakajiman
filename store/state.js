@@ -3,6 +3,6 @@ export default () => ({
     worksId: null,
     isShowMenu: true,
     isChangeWindow: {},
-    kVImages: [],
+    KVImages: [],
     currentKVImages: []
 })

@@ -6,7 +6,8 @@
 
 <script>
 import _ from 'lodash'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import pickRandomItems from '@/assets/helper/pickRandomItems'
 import { TweenMax, Expo } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
@@ -45,7 +46,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['currentKVImages']),
+        ...mapState(['currentKVImages', 'KVImages']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -80,7 +81,16 @@ export default {
             this.slide()
         }
     },
+    mounted() {
+        let images = pickRandomItems(this.KVImages, 7)
+        this.registerCurrentKVImages(images)
+        this.firstImgSrc = this.currentKVImages[this.index]
+        images = pickRandomItems(this.KVImages, 7)
+        this.registerCurrentKVImages(images)
+        this.nextImgSrc = this.currentKVImages[this.index]
+    },
     methods: {
+        ...mapActions(['registerCurrentKVImages']),
         replaceImage(firstImage, secondImage) {
             if (_.includes(['bottom', 'right'], this.direction)) {
                 firstImage.src = secondImage.src
@@ -89,7 +99,6 @@ export default {
             }
         },
         resetImage(firstImage, secondImage) {
-            // todo ここで新しい画像をもらう
             if (_.includes(['bottom', 'right'], this.direction)) {
                 secondImage.src = this.currentKVImages[this.index]
             } else {
