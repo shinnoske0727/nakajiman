@@ -26,5 +26,11 @@ export default {
     },
     waitWindow({ commit }) {
         commit('setIsChangeWindow', { state: false, direction: 'right' })
+    },
+    registerKVImages({ commit }, array) {
+        commit('setKVImages', array)
+    },
+    registerCurrentKVImages({ commit }, array) {
+        commit('setCurrentKVImages', array)
     }
 }

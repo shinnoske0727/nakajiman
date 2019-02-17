@@ -29,12 +29,13 @@ export default {
 
 <style lang="stylus" scoped>
   .about
-    max-width $max-width
+    +pc-layout()
+      width $max-width
     margin 0 auto
   .title
     size auto 23px
     padding-top $title-padding-top
-    margin 0 auto 104px
+    margin 0 auto 14.9vh
     line-height 0
     box-sizing: content-box
     & > img

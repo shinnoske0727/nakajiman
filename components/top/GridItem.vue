@@ -1,11 +1,12 @@
 <template lang="pug">
   .grid-inner(ref="item" :data-type="direction")
-    img(:src="firstImgSrc")
-    img(:src="nextImgSrc")
+    img(:src="firstImgSrc" :width="width" :height="height")
+    img(:src="nextImgSrc" :width="width" :height="height")
 </template>
 
 <script>
 import _ from 'lodash'
+import { mapState } from 'vuex'
 import { TweenMax, Expo } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
@@ -23,6 +24,14 @@ export default {
         height: {
             default: 0,
             type: Number
+        },
+        counter: {
+            default: 0,
+            type: Number
+        },
+        index: {
+            default: 0,
+            type: Number
         }
     },
     data() {
@@ -32,11 +41,11 @@ export default {
             }/${getRandomHex()}/`,
             nextImgSrc: `http://placehold.it/${this.width}x${
                 this.height
-            }/${getRandomHex()}/`,
-            timer: null
+            }/${getRandomHex()}/`
         }
     },
     computed: {
+        ...mapState(['currentKVImages']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -66,12 +75,10 @@ export default {
             return y
         }
     },
-    mounted() {
-        this.timer = setInterval(this.slide.bind(this), 2500)
-    },
-    destroyed() {
-        clearTimeout(this.timer)
-        this.timer = null
+    watch: {
+        counter: function() {
+            this.slide()
+        }
     },
     methods: {
         replaceImage(firstImage, secondImage) {
@@ -82,14 +89,11 @@ export default {
             }
         },
         resetImage(firstImage, secondImage) {
+            // todo ここで新しい画像をもらう
             if (_.includes(['bottom', 'right'], this.direction)) {
-                secondImage.src = `http://placehold.it/${this.width}x${
-                    this.height
-                }/${getRandomHex()}/`
+                secondImage.src = this.currentKVImages[this.index]
             } else {
-                firstImage.src = `http://placehold.it/${this.width}x${
-                    this.height
-                }/${getRandomHex()}/`
+                firstImage.src = this.currentKVImages[this.index]
             }
         },
         reset() {

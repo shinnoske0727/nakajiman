@@ -1,33 +1,44 @@
 <template lang="pug">
   - path = "~/assets/img/top/";
   section.top
-    .image-box--sp
-    .text-box
-      h1.title
-        img.isPC(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
-        img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
-      ul.list
-        li.item
-          .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
-            img(src=`${path}ui-white.svg` alt="UI")
-        li.item
-          .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
-            img(src=`${path}web-white.svg` alt="WEB")
-        li.item
-          .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'illustration' } })")
-            img(src=`${path}illust-white.svg` alt="ILLUST")
-        li.item
-          .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
-            img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
-    keyvisual-pc
+    .inner
+      .image-box--sp
+      .text-box
+        h1.title
+          img.isPC(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
+          img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
+        ul.list
+          li.item
+            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
+              img(src=`${path}ui-white.svg` alt="UI")
+          li.item
+            .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
+              img(src=`${path}web-white.svg` alt="WEB")
+          li.item
+            .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'illustration' } })")
+              img(src=`${path}illust-white.svg` alt="ILLUST")
+          li.item
+            .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
+              img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
+      keyvisual-pc
 </template>
 
 <script>
-import KeyvisualPc from '../components/top/KeyvisualPc'
+import _ from 'lodash'
 import { mapActions } from 'vuex'
+import { dammyData } from '@/assets/data/dammyData'
+import { preloadImages } from '@/assets/helper/preloadImage'
+import KeyvisualPc from '../components/top/KeyvisualPc'
 
 export default {
     name: 'Top',
+    async fetch({ store }) {
+        const kvImageArray = _.map(dammyData, data =>
+            require(`@/assets/data/${data.top.kv}`)
+        )
+        const images = await preloadImages(kvImageArray)
+        store.dispatch('registerKVImages', images.map(img => img.src))
+    },
     components: { KeyvisualPc },
     methods: {
         ...mapActions(['changeWindow']),
@@ -43,16 +54,21 @@ export default {
 
 <style lang="stylus" scoped>
   .top
+    +pc-layout()
+      display: flex
+      height: 100vh
+      flex-direction: column
+      justify-content: center
+      align-items center
+  .inner
     margin: 0 auto
     +pc-layout()
       display: flex
       justify-content: space-between
-      max-width: $max-width
-      padding-top: 32px
+      width: $max-width
     +sp-layout()
       max-width: $max-width-sp
       padding-top: 64px
-
 
   .text-box
     display: flex

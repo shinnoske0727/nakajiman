@@ -10,5 +10,11 @@ export default {
     },
     setIsChangeWindow(state, payload) {
         state.isChangeWindow = payload
+    },
+    setKVImages(state, array) {
+        state.kVImages = array
+    },
+    setCurrentKVImages(state, array) {
+        state.currentKVImages = array
     }
 }
