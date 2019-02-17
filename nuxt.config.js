@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
     head: {
-        title: 'タイトル',
+        title: 'KENTA NAKAJIMA',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=375' },
@@ -15,46 +15,48 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: ''
+                content:
+                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:title',
                 name: 'og:title',
-                content: ''
+                content: 'KENTA NAKAJIMA'
             },
             { hid: 'og:type', name: 'og:type', content: 'website' },
             {
                 hid: 'og:url',
                 name: 'og:url',
-                content: ''
+                content: 'kenta-nakajima.com'
             },
             {
                 hid: 'og:site_name',
                 name: 'og:site_name',
-                content: ''
+                content: 'website'
             },
             {
                 hid: 'og:description',
                 name: 'og:description',
-                content: ''
+                content:
+                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:image',
                 name: 'og:image',
-                content: ''
+                content: 'kenta-nakajima.com/ogp.png'
             }
         ],
         link: [
-            { rel: 'icon', type: 'image/png', href: '/favicon_32x32.ico' },
+            { rel: 'icon', type: 'image/png', href: '/favicon_32x32.png' },
             {
                 rel: 'apple-touch-icon',
                 sizes: '152x152',
-                href: '/apple-touch-icon-152x152.ico'
+                href: '/apple-touch-icon-152x152.png'
             },
             {
                 rel: 'icon',
                 type: 'image/png',
-                href: '/favicon_192x192.ico',
+                href: '/favicon_192x192.png',
                 sizes: '192x192'
             }
         ]
