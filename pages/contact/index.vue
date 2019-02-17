@@ -63,7 +63,6 @@ export default {
                 .post('/', params)
                 .then(response => {
                     this.isSubmit = true
-                    console.log(response)
                     this.$router.push('/contact/complete/')
                 })
                 .catch(err => {

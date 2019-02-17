@@ -1,11 +1,13 @@
 <template lang="pug">
   .grid-inner(ref="item" :data-type="direction")
-    img(:src="firstImgSrc")
-    img(:src="nextImgSrc")
+    img(:src="firstImgSrc" :width="width" :height="height")
+    img(:src="nextImgSrc" :width="width" :height="height")
 </template>
 
 <script>
 import _ from 'lodash'
+import { mapState, mapActions } from 'vuex'
+import pickRandomItems from '@/assets/helper/pickRandomItems'
 import { TweenMax, Expo } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
@@ -23,6 +25,14 @@ export default {
         height: {
             default: 0,
             type: Number
+        },
+        counter: {
+            default: 0,
+            type: Number
+        },
+        index: {
+            default: 0,
+            type: Number
         }
     },
     data() {
@@ -32,11 +42,11 @@ export default {
             }/${getRandomHex()}/`,
             nextImgSrc: `http://placehold.it/${this.width}x${
                 this.height
-            }/${getRandomHex()}/`,
-            timer: null
+            }/${getRandomHex()}/`
         }
     },
     computed: {
+        ...mapState(['currentKVImages', 'KVImages']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -66,14 +76,21 @@ export default {
             return y
         }
     },
-    mounted() {
-        this.timer = setInterval(this.slide.bind(this), 2500)
+    watch: {
+        counter: function() {
+            this.slide()
+        }
     },
-    destroyed() {
-        clearTimeout(this.timer)
-        this.timer = null
+    mounted() {
+        let images = pickRandomItems(this.KVImages, 7)
+        this.registerCurrentKVImages(images)
+        this.firstImgSrc = this.currentKVImages[this.index]
+        images = pickRandomItems(this.KVImages, 7)
+        this.registerCurrentKVImages(images)
+        this.nextImgSrc = this.currentKVImages[this.index]
     },
     methods: {
+        ...mapActions(['registerCurrentKVImages']),
         replaceImage(firstImage, secondImage) {
             if (_.includes(['bottom', 'right'], this.direction)) {
                 firstImage.src = secondImage.src
@@ -83,13 +100,9 @@ export default {
         },
         resetImage(firstImage, secondImage) {
             if (_.includes(['bottom', 'right'], this.direction)) {
-                secondImage.src = `http://placehold.it/${this.width}x${
-                    this.height
-                }/${getRandomHex()}/`
+                secondImage.src = this.currentKVImages[this.index]
             } else {
-                firstImage.src = `http://placehold.it/${this.width}x${
-                    this.height
-                }/${getRandomHex()}/`
+                firstImage.src = this.currentKVImages[this.index]
             }
         },
         reset() {

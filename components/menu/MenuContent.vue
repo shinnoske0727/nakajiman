@@ -34,9 +34,6 @@ export default {
             return this.$route.name
         }
     },
-    mounted() {
-        console.log(this.$route)
-    },
     methods: {
         clickLink(e) {
             const link = e.currentTarget.getAttribute('data-href')

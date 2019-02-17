@@ -2,5 +2,7 @@ export default () => ({
     worksData: [],
     worksId: null,
     isShowMenu: true,
-    isChangeWindow: {}
+    isChangeWindow: {},
+    KVImages: [],
+    currentKVImages: []
 })

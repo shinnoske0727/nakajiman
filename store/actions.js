@@ -7,12 +7,10 @@ export default {
     },
     increaseId({ commit, getters }) {
         const next = getters.nextData
-        console.log(next.id)
         commit('setWorksId', next.id)
     },
     decreaseId({ commit, getters }) {
         const prev = getters.prevData
-        console.log(prev.id)
         commit('setWorksId', prev.id)
     },
     showMenu({ commit }) {
@@ -26,5 +24,11 @@ export default {
     },
     waitWindow({ commit }) {
         commit('setIsChangeWindow', { state: false, direction: 'right' })
+    },
+    registerKVImages({ commit }, array) {
+        commit('setKVImages', array)
+    },
+    registerCurrentKVImages({ commit }, array) {
+        commit('setCurrentKVImages', array)
     }
 }

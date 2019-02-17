@@ -59,14 +59,14 @@ export default {
         ...mapActions(['changeWindow']),
         showInfo() {
             if (UA.isSP || !this.$refs.info || !this.$refs.text) return
-            const $info = this.$refs.info.$el
+            const $info = this.$refs.info
             const $text = this.$refs.text
             TweenMax.to($info, 0.5, showOption.info)
             TweenMax.fromTo($text, 0.5, hideOption.text, showOption.text)
         },
         hideInfo() {
             if (UA.isSP || !this.$refs.info || !this.$refs.text) return
-            const $info = this.$refs.info.$el
+            const $info = this.$refs.info
             const $text = this.$refs.text
             TweenMax.to($info, 0.5, hideOption.info)
             TweenMax.fromTo($text, 0.5, showOption.text, hideOption.text)
