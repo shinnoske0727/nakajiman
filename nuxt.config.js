@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
     head: {
-        title: 'タイトル',
+        title: 'KENTA NAKAJIMA',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=375' },
@@ -15,33 +15,33 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: ''
+                content: 'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:title',
                 name: 'og:title',
-                content: ''
+                content: 'KENTA NAKAJIMA'
             },
             { hid: 'og:type', name: 'og:type', content: 'website' },
             {
                 hid: 'og:url',
                 name: 'og:url',
-                content: ''
+                content: 'kenta-nakajima.com'
             },
             {
                 hid: 'og:site_name',
                 name: 'og:site_name',
-                content: ''
+                content: 'website'
             },
             {
                 hid: 'og:description',
                 name: 'og:description',
-                content: ''
+                content: 'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:image',
                 name: 'og:image',
-                content: ''
+                content: 'kenta-nakajima.com'
             }
         ],
         link: [
