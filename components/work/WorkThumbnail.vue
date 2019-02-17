@@ -120,7 +120,7 @@ export default {
     align-items center
     size 100%
     text-decoration: none
-    background-color: rgba(177, 178, 176, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     opacity 0
     cursor pointer
 

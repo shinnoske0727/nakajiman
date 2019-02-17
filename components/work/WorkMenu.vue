@@ -82,9 +82,8 @@ export default {
       display block
       absolute bottom -33px left 0
       size: 100% 3px
-      opacity 0
       background-color $bg-black;
-      transition opacity .4s cubic-bezier(.165, .84, .44, 1), transform .4s cubic-bezier(.165, .84, .44, 1)
+      transition transform .4s cubic-bezier(.165, .84, .44, 1)
       transform scaleX(0)
 
     &[data-is-current="true"]
