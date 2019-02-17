@@ -51,12 +51,12 @@ export default {
         },
         goNext() {
             this.changeWindow('right')
-            const next = this.isLast ? this.first : this.currentPageId + 1
+            const next = this.isLast ? this.first : Number(this.currentPageId) + 1
             this.move(next)
         },
         goPrev() {
             this.changeWindow('left')
-            const prev = this.isFirst ? this.last : this.currentPageId - 1
+            const prev = this.isFirst ? this.last : Number(this.currentPageId) - 1
             this.move(prev)
         }
     }

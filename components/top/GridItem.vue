@@ -1,14 +1,14 @@
 <template lang="pug">
   .grid-inner(ref="item" :data-type="direction")
-    img(:src="firstImgSrc" :width="width" :height="height")
-    img(:src="nextImgSrc" :width="width" :height="height")
+    img(:src="firstImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
+    img(:src="nextImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
 </template>
 
 <script>
 import _ from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
-import { TweenMax, Expo } from 'gsap'
+import { TweenMax, Expo, Power4 } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
 export default {
@@ -33,6 +33,10 @@ export default {
         index: {
             default: 0,
             type: Number
+        },
+        isLast: {
+            default: false,
+            type: Boolean
         }
     },
     data() {
@@ -119,7 +123,7 @@ export default {
             const option = {
                 x: this.positionX,
                 y: this.positionY,
-                ease: Expo.easeInOut,
+                ease: Power4.easeInOut,
                 onComplete: () => {
                     this.reset()
                 }
@@ -144,4 +148,8 @@ export default {
     &[data-type="right"]
       absolute top 0 left 0
       display: flex
+
+    & > img[data-is-last="true"]
+      transform: translateX(-8px)
+
 </style>

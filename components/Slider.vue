@@ -6,13 +6,14 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { TweenMax, Expo, TimelineMax } from 'gsap'
+import { TweenMax, Expo, TimelineMax, Power4, Power3 } from 'gsap'
 
 export default {
     name: 'Slider',
     data() {
         return {
             tl: '',
+            tlReverse: '',
             direction: 'right'
         }
     },
@@ -23,12 +24,17 @@ export default {
         isChangeWindow: function(payload) {
             if (payload.state) {
                 this.direction = payload.direction
-                this.tl.restart()
+                if(this.direction === 'left') {
+                  this.tl.restart()
+                } else {
+                  this.tlReverse.restart()
+                }
             }
         }
     },
     mounted() {
         this.tl = new TimelineMax({ paused: true })
+        this.tlReverse = new TimelineMax({ paused: true })
         this.tl
             .set(this.$refs.slide, {
                 scaleX: 0
@@ -38,19 +44,50 @@ export default {
             })
             .to(this.$refs.slide, 0.75, {
                 scaleX: 1,
-                ease: Expo.easeOut
+                ease: Power4.easeOut
+            })
+            .set(this.$refs.slide, {
+                transformOrigin: 'center right'
             })
             .to(this.$refs.second, 0.75, {
                 scaleX: 0,
-                ease: Expo.easeOut,
+                ease: Power4.easeOut,
+                onComplete: () => {
+                    this.waitWindow()
+                },
                 onStart: () => {
                     TweenMax.to(this.$refs.slide, 0.75, {
-                        delay: 0.3,
+                        delay: 0.25,
                         scaleX: 0,
-                        ease: Expo.easeOut,
-                        onComplete: () => {
-                            this.waitWindow()
-                        }
+                        ease: Power4.easeOut
+                    })
+                }
+            })
+        this.tlReverse
+            .set(this.$refs.slide, {
+                scaleX: 0
+            })
+            .set(this.$refs.second, {
+                scaleX: 1
+            })
+            .to(this.$refs.slide, 0.75, {
+                scaleX: 1,
+                ease: Power4.easeOut
+            })
+            .set(this.$refs.slide, {
+                transformOrigin: 'center left'
+            })
+            .to(this.$refs.second, 0.75, {
+                scaleX: 0,
+                ease: Power4.easeOut,
+                onComplete: () => {
+                    this.waitWindow()
+                },
+                onStart: () => {
+                    TweenMax.to(this.$refs.slide, 0.75, {
+                        delay: 0.25,
+                        scaleX: 0,
+                        ease: Power4.easeOut
                     })
                 }
             })
@@ -68,9 +105,9 @@ export default {
     z-index: 4
     transform: scaleX(0)
     &[data-direction="right"]
-      transform-origin center left
-    &[data-direction="left"]
       transform-origin center right
+    &[data-direction="left"]
+      transform-origin center left
 
   $layer
     absolute top 0 left 0
@@ -81,7 +118,7 @@ export default {
       transform-origin center right
 
   .first-layer
-    background-color: $bg-white;
+    background-color: $bg-black;
     @extend $layer
 
   .second-layer
