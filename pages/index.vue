@@ -25,6 +25,7 @@
 <script>
 import KeyvisualPc from '../components/top/KeyvisualPc'
 import { mapActions } from 'vuex'
+
 export default {
     name: 'Top',
     components: { KeyvisualPc },
@@ -61,12 +62,14 @@ export default {
 
   .title
     margin-bottom: 22px
+
     & > img
       &.isPC
         +pc-layout()
           display: block
         +sp-layout()
           display: none
+
       &.isSP
         +pc-layout()
           display: none
@@ -99,31 +102,38 @@ export default {
       transition: filter 0.35s ease-in
       +sp-layout()
         size auto 9px
+
     &::before
       content: ""
       width: 0
       transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
-    &:hover
-      & > img
-        filter: brightness(0)
-      &::before
-        absolute top 0 left 0
-        content: ""
-        width: 100%
-        height: 93%
-        background-color: $bg-white;
+    +pc-layout()
+      &:hover
+        & > img
+          filter: brightness(0)
+
+        &::before
+          absolute top 0 left 0
+          content: ""
+          width: 100%
+          height: 93%
+          background-color: $bg-white;
+
   .link[data-type="ui"]
     size 40px 26px
     +sp-layout()
       size 40px 28px
+
   .link[data-type="web"]
     size 56px 26px
     +sp-layout()
       size 55px 28px
+
   .link[data-type="illustration"]
     size 111px 26px
     +sp-layout()
       size 119px 28px
+
   .link[data-type="photograph"]
     size 110px 26px
     +sp-layout()
