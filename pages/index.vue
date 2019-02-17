@@ -2,7 +2,7 @@
   - path = "~/assets/img/top/";
   section.top
     .inner
-      .image-box--sp
+      keyvisual-sp
       .text-box
         h1.title
           img.isPC(src=`${path}title-pc.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
@@ -29,6 +29,7 @@ import { mapActions } from 'vuex'
 import { dammyData } from '@/assets/data/dammyData'
 import { preloadImages } from '@/assets/helper/preloadImage'
 import KeyvisualPc from '../components/top/KeyvisualPc'
+import KeyvisualSp from '@/components/top/KeyvisualSp'
 
 export default {
     name: 'Top',
@@ -39,7 +40,7 @@ export default {
         const images = await preloadImages(kvImageArray)
         store.dispatch('registerKVImages', images.map(img => img.src))
     },
-    components: { KeyvisualPc },
+    components: { KeyvisualSp, KeyvisualPc },
     methods: {
         ...mapActions(['changeWindow']),
         move(option) {
@@ -155,10 +156,4 @@ export default {
     +sp-layout()
       size 117px 28px
 
-  .image-box--sp
-    size: 343px
-    background-color: blue;
-    margin-bottom: 39px
-    +pc-layout()
-      display: none
 </style>
