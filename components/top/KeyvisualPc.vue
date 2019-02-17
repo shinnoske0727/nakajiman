@@ -82,7 +82,7 @@ export default {
             const images = pickRandomItems(this.KVImages, 7)
             this.registerCurrentKVImages(images)
             this.counter += 1
-        }, 2500)
+        }, 3000)
     },
     destroyed() {
         clearTimeout(this.timer)

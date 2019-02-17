@@ -8,7 +8,7 @@
 
 <script>
 import _ from 'lodash'
-import { TweenMax, Expo } from 'gsap'
+import { TweenMax, Power2, Power4 } from 'gsap'
 import { mapState } from 'vuex'
 
 export default {
@@ -18,6 +18,7 @@ export default {
             counter: 0,
             timer: null,
             slideItems: null,
+            slideInnerItems: null,
             current: null,
             next: null
         }
@@ -30,7 +31,7 @@ export default {
         this.timer = setInterval(() => {
             this.counter++
             this.slide()
-        }, 2500)
+        }, 3000)
     },
     destroyed() {
         clearTimeout(this.timer)
@@ -39,48 +40,102 @@ export default {
     methods: {
         init() {
             this.slideItems = Array.from(
+                this.$refs.item.querySelectorAll('.image-wrapper')
+            )
+            this.slideInnerItems = Array.from(
                 this.$refs.item.querySelectorAll('img')
             )
             this.current = _.first(this.slideItems)
             TweenMax.set(_.first(this.slideItems), {
-                x: 0
+                width: '100%'
+            })
+            const img = this.current.querySelector('img')
+            TweenMax.set(img, {
+                left: 'auto',
+                right: 0
             })
         },
-        slide() {
-            this.next = this.slideItems[this.counter % this.slideItems.length]
+        slideIn() {
+            const img = this.next.querySelector('img')
+            TweenMax.fromTo(
+                this.next,
+                1,
+                {
+                    width: '0%'
+                },
+                {
+                    width: '100%',
+                    delay: 0.16,
+                    ease: Power2.easeInOut,
+                    onComplete: () => {
+                        this.current = this.next
+                    }
+                }
+            )
+            TweenMax.fromTo(
+                img,
+                1,
+                {
+                    x: '-100'
+                },
+                {
+                    x: '0',
+                    ease: Power2.easeInOut
+                }
+            )
+        },
+        slideOut() {
+            const img = this.current.querySelector('img')
             TweenMax.fromTo(
                 this.current,
                 1,
                 {
-                    x: '0%'
+                    width: '100%',
+                    left: 'auto',
+                    right: '0'
                 },
                 {
-                    x: '100%',
-                    ease: Expo.easeInOut,
+                    width: '0%',
+                    ease: Power4.easeInOut,
                     onComplete: () => {
                         this.resetPosition(this.current)
                     }
                 }
             )
             TweenMax.fromTo(
-                this.next,
+                img,
                 1,
                 {
-                    x: '-100%'
+                    left: 'auto',
+                    right: 0,
+                    x: '0'
                 },
                 {
-                    x: '0%',
-                    delay: 0.2,
-                    ease: Expo.easeInOut,
+                    x: '100',
+                    ease: Power4.easeInOut,
                     onComplete: () => {
-                        this.current = this.next
+                        this.resetInnerPosition(img)
                     }
                 }
             )
         },
+        slide() {
+            this.slideOut()
+            this.next = this.slideItems[this.counter % this.slideItems.length]
+            this.slideIn()
+        },
         resetPosition($elm) {
             TweenMax.set($elm, {
-                x: '-100%'
+                width: '0%',
+                right: 'auto',
+                left: '0'
+            })
+        },
+        resetInnerPosition($elm) {
+            TweenMax.set($elm, {
+                right: 'auto',
+                left: '0',
+                x: '0'
             })
         }
     }
@@ -101,9 +156,10 @@ export default {
 
   .image-wrapper
     absolute top 0 left 0
-    size 100%
+    size 0 100%
     overflow: hidden
+
     & > img
-      transform: translateX(-100%)
+      absolute top 0 left 0
 
 </style>

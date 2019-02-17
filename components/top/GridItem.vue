@@ -8,7 +8,7 @@
 import _ from 'lodash'
 import { mapState, mapActions } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
-import { TweenMax, Expo } from 'gsap'
+import { TweenMax, Expo, Power4 } from 'gsap'
 import getRandomHex from '@/assets/helper/getRandomHex'
 
 export default {
@@ -123,7 +123,7 @@ export default {
             const option = {
                 x: this.positionX,
                 y: this.positionY,
-                ease: Expo.easeInOut,
+                ease: Power4.easeInOut,
                 onComplete: () => {
                     this.reset()
                 }
