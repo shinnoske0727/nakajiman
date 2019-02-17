@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { TweenMax } from 'gsap'
 export default {
     name: 'MenuContent',
     props: {
