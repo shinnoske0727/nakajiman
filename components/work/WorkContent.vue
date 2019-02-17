@@ -1,8 +1,9 @@
 <template lang="pug">
   - path = "~/assets/img/works/";
-  .work-content(ref="content")
+  .work-content(ref="content" v-if="workData.works")
     .content
-      img.kv(:src="kvSrc" :data-is-picture="workData.layout === 'picture'")
+      template(v-if="workData.works.kv")
+        img.kv(:src="kvSrc" :data-is-picture="workData.layout === 'picture'")
       template(v-if="workData.layout === 'article'")
         template(v-if="workData.name")
           .title {{ workData.name }}

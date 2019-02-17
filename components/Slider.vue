@@ -1,7 +1,7 @@
 <template lang="pug">
-  .slider(ref="slide")
-    .first-layer(ref="first")
-    .second-layer(ref="second")
+  .slider(ref="slide" :data-direction="direction")
+    .first-layer(ref="first" :data-direction="direction")
+    .second-layer(ref="second" :data-direction="direction")
 </template>
 
 <script>
@@ -12,15 +12,17 @@ export default {
     name: 'Slider',
     data() {
         return {
-            tl: ''
+            tl: '',
+            direction: 'right'
         }
     },
     computed: {
         ...mapState(['isChangeWindow'])
     },
     watch: {
-        isChangeWindow: function(state) {
-            if (state) {
+        isChangeWindow: function(payload) {
+            if (payload.state) {
+                this.direction = payload.direction
                 this.tl.restart()
             }
         }
@@ -29,22 +31,22 @@ export default {
         this.tl = new TimelineMax({ paused: true })
         this.tl
             .set(this.$refs.slide, {
-                width: 0
+                scaleX: 0
             })
             .set(this.$refs.second, {
-                width: '100%'
+                scaleX: 1
             })
             .to(this.$refs.slide, 0.75, {
-                width: '100%',
+                scaleX: 1,
                 ease: Expo.easeOut
             })
             .to(this.$refs.second, 0.75, {
-                width: 0,
+                scaleX: 0,
                 ease: Expo.easeOut,
                 onStart: () => {
                     TweenMax.to(this.$refs.slide, 0.75, {
                         delay: 0.3,
-                        width: 0,
+                        scaleX: 0,
                         ease: Expo.easeOut,
                         onComplete: () => {
                             this.waitWindow()
@@ -62,16 +64,27 @@ export default {
 <style lang="stylus">
   .slider
     fixed top 0 left 0
-    size 0 100%
+    size 100%
     z-index: 4
+    transform: scaleX(0)
+    &[data-direction="right"]
+      transform-origin center left
+    &[data-direction="left"]
+      transform-origin center right
+
+  $layer
+    absolute top 0 left 0
+    size 100%
+    &[data-direction="right"]
+      transform-origin center left
+    &[data-direction="left"]
+      transform-origin center right
 
   .first-layer
     background-color: $bg-white;
-    absolute top 0 left 0
-    size 100%
+    @extend $layer
 
   .second-layer
     background-color: $bg-black;
-    absolute top 0 left 0
-    size 100%
+    @extend $layer
 </style>
