@@ -56,6 +56,7 @@
       :height="34"
       :counter="counter"
       :index="6"
+      :is-last="true"
       )
 </template>
 

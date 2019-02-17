@@ -1,7 +1,7 @@
 <template lang="pug">
   .grid-inner(ref="item" :data-type="direction")
-    img(:src="firstImgSrc" :width="width" :height="height")
-    img(:src="nextImgSrc" :width="width" :height="height")
+    img(:src="firstImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
+    img(:src="nextImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
 </template>
 
 <script>
@@ -33,6 +33,10 @@ export default {
         index: {
             default: 0,
             type: Number
+        },
+        isLast: {
+            default: false,
+            type: Boolean
         }
     },
     data() {
@@ -144,4 +148,8 @@ export default {
     &[data-type="right"]
       absolute top 0 left 0
       display: flex
+
+    & > img[data-is-last="true"]
+      transform: translateX(-8px)
+
 </style>
