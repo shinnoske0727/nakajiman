@@ -15,7 +15,8 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: 'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
+                content:
+                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:title',
@@ -36,12 +37,13 @@ module.exports = {
             {
                 hid: 'og:description',
                 name: 'og:description',
-                content: 'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
+                content:
+                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
             },
             {
                 hid: 'og:image',
                 name: 'og:image',
-                content: 'kenta-nakajima.com'
+                content: 'kenta-nakajima.com/ogp.png'
             }
         ],
         link: [
