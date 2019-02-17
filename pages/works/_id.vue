@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import WorkContent from '@/components/work/WorkContent'
 import { dammyData } from '@/assets/data/dammyData'
 import _ from 'lodash'
@@ -17,13 +18,47 @@ import _ from 'lodash'
 export default {
     name: 'Work',
     asyncData: async function({ params }) {
-        const currentData = _.find(dammyData, data => data.id == params.id)
-        return { workData: currentData }
+        const workData = _.find(dammyData, data => data.id == params.id)
+        const pageIdArray = _.map(dammyData, data => data.id)
+        const currentPageId = params.id
+
+        return { workData, pageIdArray, currentPageId }
     },
     components: { WorkContent },
+    computed: {
+        isFirst() {
+            return this.currentPageId === this.first
+        },
+        isLast() {
+            return this.currentPageId === this.last
+        },
+        first() {
+            return _.first(this.pageIdArray)
+        },
+        last() {
+            return _.last(this.pageIdArray)
+        }
+    },
     methods: {
-        goNext() {},
-        goPrev() {}
+        ...mapActions(['changeWindow']),
+        move(id) {
+            setTimeout(() => {
+                this.$router.push({
+                    name: 'works-id',
+                    params: { id }
+                })
+            }, 800)
+        },
+        goNext() {
+            this.changeWindow('right')
+            const next = this.isLast ? this.first : this.currentPageId + 1
+            this.move(next)
+        },
+        goPrev() {
+            this.changeWindow('left')
+            const prev = this.isFirst ? this.last : this.currentPageId - 1
+            this.move(prev)
+        }
     }
 }
 </script>

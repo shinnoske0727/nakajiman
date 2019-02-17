@@ -21,10 +21,10 @@ export default {
     hideMenu({ commit }) {
         commit('setIsShowMenu', false)
     },
-    changeWindow({ commit }) {
-        commit('setIsChangeWindow', true)
+    changeWindow({ commit }, direction = 'right') {
+        commit('setIsChangeWindow', { state: true, direction })
     },
     waitWindow({ commit }) {
-        commit('setIsChangeWindow', false)
+        commit('setIsChangeWindow', { state: false, direction: 'right' })
     }
 }

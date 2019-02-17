@@ -8,7 +8,7 @@ export default {
     setIsShowMenu(state, bool) {
         state.isShowMenu = bool
     },
-    setIsChangeWindow(state, bool) {
-        state.isChangeWindow = bool
+    setIsChangeWindow(state, payload) {
+        state.isChangeWindow = payload
     }
 }
