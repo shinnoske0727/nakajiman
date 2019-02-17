@@ -47,16 +47,16 @@ module.exports = {
             }
         ],
         link: [
-            { rel: 'icon', type: 'image/png', href: '/favicon_32x32.ico' },
+            { rel: 'icon', type: 'image/png', href: '/favicon_32x32.png' },
             {
                 rel: 'apple-touch-icon',
                 sizes: '152x152',
-                href: '/apple-touch-icon-152x152.ico'
+                href: '/apple-touch-icon-152x152.png'
             },
             {
                 rel: 'icon',
                 type: 'image/png',
-                href: '/favicon_192x192.ico',
+                href: '/favicon_192x192.png',
                 sizes: '192x192'
             }
         ]
