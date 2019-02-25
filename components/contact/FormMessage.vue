@@ -54,7 +54,7 @@ export default {
       line-height: 0
       height: 8px
       & > img
-        height: 100%
+        height: 8px
 
   .input
     resetTextarea()

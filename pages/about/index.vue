@@ -46,6 +46,8 @@ export default {
       margin 0 auto 20px
       padding: $title-padding-top-sp 0;
       background-color: #fff;
+      & > img
+        height: 16px;
   .inner
     +pc-layout()
       display flex
@@ -74,7 +76,7 @@ export default {
       text-align: center
       margin-bottom 11px
       & > img
-        height: 100%
+        height: 21px
   .name-box
     display flex
     font-size 14px
