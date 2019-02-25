@@ -101,7 +101,7 @@ export default {
     & > img
       display: block
       +sp-layout()
-        height: 100%
+        height: 15px
 
   .sns
     display: flex

@@ -107,9 +107,10 @@ export default {
         size: 100% $bar-length-sp
 
   .work-menu__link
+    line-height: 0
     +sp-layout()
       display: block
       height: 100%
       & > img
-        height: 100%
+        height: 10px
 </style>

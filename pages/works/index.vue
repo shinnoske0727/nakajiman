@@ -68,12 +68,14 @@ export default {
     line-height: 0
     background-color: #fff;
     & > img
-      height: 100%
+      height: 23px
     +sp-layout()
       fixed left 0
       size: 100% 16px
       padding-top $title-padding-top-sp
       z-index: 2;
+      & > img
+        height: 16px;
 
   .menu
     z-index: 2;
