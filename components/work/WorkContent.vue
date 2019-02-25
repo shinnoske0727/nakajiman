@@ -81,6 +81,8 @@ export default {
       size auto
       max-size $max-width 90vh
       margin-bottom: 0
+      +sp-layout()
+        max-size 100%
 
   .title
     margin-bottom: 48px
