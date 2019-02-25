@@ -85,22 +85,9 @@ export default {
   .image-wrapper
     position: relative
     min-size 480px 270px
-    background-color red
     box-sizing border-box
     line-height: 270px;
     text-align: center
-
-    &[data-category="ui"]
-      background-color: #FFC1CF;
-
-    &[data-category="web"]
-      background-color: #E8FFB6;
-
-    &[data-category="illustration"]
-      background-color: #E2A0FF;
-
-    &[data-category="photograph"]
-      background-color: #C4F5FC;
 
     +sp-layout()
       size 343px 193px
