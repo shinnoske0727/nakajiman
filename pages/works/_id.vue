@@ -1,7 +1,8 @@
 <template lang="pug">
   - path = "~/assets/img/works/";
-  .work(ref="modal")
+  .work
     work-content(v-if="workData" :work-data="workData")
+    .header
     button.arrow--right(@click="goNext")
       img(src=`${path}icn_arrow_right.svg`)
     button.arrow--left(@click="goPrev")
@@ -65,11 +66,14 @@ export default {
 
 <style scoped lang="stylus">
   .work
-    fixed top 0 left 0
     size 100% 100%
-    opacity 0.98
     background-color $bg-white
     overflow auto
+
+  .header
+    fixed top 0
+    size 100% 64px
+    background-color $bg-white
 
   .arrow--right,
   .arrow--left
@@ -78,7 +82,7 @@ export default {
       fixed top 312px
       size 42px
     +sp-layout()
-      fixed top 493px
+      fixed bottom 24px
       size 38px
     & > img
       size: 12px 22px
