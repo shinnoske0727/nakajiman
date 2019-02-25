@@ -94,7 +94,7 @@ export default {
           display: block
     +sp-layout()
       size 227px auto
-      margin-bottom: 25px
+      margin-bottom: 24px
       & > img
         width: 100%
 
