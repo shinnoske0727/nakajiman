@@ -10,8 +10,8 @@
           a.link(data-href="/works/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_works.svg` alt="WORKS")
         li.item(:data-is-current="current === 'about'")
           a.link(data-href="/about/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_about.svg` alt="ABOUT")
-        li.item(:data-is-current="current === 'contact'")
-          a.link(data-href="/contact/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
+        li.item.disabled(:data-is-current="current === 'contact'")
+          a.link(href="javascript:void(0)"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
       ul.sns
         a.sns-link(href="https://twitter.com/nakaj1_man" target="_blank"): img(src=`${path}twitter.svg` alt="twitter")
         a.sns-link(href="https://www.facebook.com/kenta.nakajima.7399" target="_blank"): img(src=`${path}facebook.svg` alt="facebook")
@@ -61,31 +61,35 @@ export default {
     padding-left: 240px
     line-height: 0;
     opacity: 0.5
+    &.disabled {
+      opacity 0.2
+    }
     +sp-layout()
       height: 15px
       margin-bottom: 40px;
       padding-left: 64px
 
-    &[data-is-current="true"],
-    &:hover
-      opacity: 1
+    &:not(.disabled)
+        &[data-is-current="true"],
+        &:hover
+          opacity: 1
 
-    &::before
-      content: ""
-      absolute: top 0 left 0 bottom 0
-      margin: auto 0;
-      width: 0
-      height: 2px
-      background-color: $text-black;
-      pointer-events none
-      transition width 0.25s ease-out
+        &::before
+          content: ""
+          absolute: top 0 left 0 bottom 0
+          margin: auto 0;
+          width: 0
+          height: 2px
+          background-color: $text-black;
+          pointer-events none
+          transition width 0.25s ease-out
 
-    &[data-is-current="true"],
-    &:hover
-      &::before
-        width: 208px
-        +sp-layout()
-          width: 44px
+        &[data-is-current="true"],
+        &:hover
+          &::before
+            width: 208px
+            +sp-layout()
+              width: 44px
 
     &:last-of-type
       margin-bottom: 64px
