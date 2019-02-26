@@ -121,19 +121,20 @@ export default {
 
     &::before
       content: ""
-      width: 0
-      transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+      absolute top 3px left 3px
+      $border-size = 6px
+      size: "calc(100% - %s)" % $border-size
+      background-color: $bg-white;
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+      transform: scaleX(0)
+      transform-origin: center left
     +pc-layout()
       &:hover
         & > img
           filter: brightness(0)
 
         &::before
-          absolute top 0 left 0
-          content: ""
-          width: 100%
-          height: 93%
-          background-color: $bg-white;
+          transform: scaleX(1)
 
   .link[data-type="ui"]
     size 40px 26px
