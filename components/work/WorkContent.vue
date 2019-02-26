@@ -81,6 +81,8 @@ export default {
       size auto
       max-size $max-width 90vh
       margin-bottom: 0
+      +sp-layout()
+        max-size 100%
 
   .title
     margin-bottom: 48px
@@ -143,19 +145,19 @@ export default {
     @extend $button
     +pc-layout()
       &::before
+        absolute top 3px left 3px
         content: ""
-        width: 0
-        transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+        size: 194px 34px
+        background-color: $bg-white;
+        transform: scaleX(0)
+        transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
+        transform-origin: left center
       &:hover
         & > img
           filter: brightness(0)
 
         &::before
-          absolute top 0 left 0
-          content: ""
-          width: 100%
-          height: 38px
-          background-color: $bg-white;
+          transform: scaleX(1)
 
   .to-top
     display: block
