@@ -92,7 +92,9 @@ export default {
       right: 32px
       &::before
         content: ""
-        width: 100%
+        absolute top 3px left 3px
+        size: 36px
+        background-color: $bg-white;
         transform: scaleX(0)
         transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
         transform-origin: left center
@@ -101,10 +103,6 @@ export default {
           filter: brightness(0)
 
         &::before
-          absolute top 0 left 0
-          content: ""
-          height: 39px
-          background-color: $bg-white;
           transform: scaleX(1)
     +sp-layout()
       right: 16px
@@ -114,7 +112,9 @@ export default {
       left: 32px
       &::before
         content: ""
-        width: 100%
+        absolute top 3px right 3px
+        size: 36px
+        background-color: $bg-white;
         transform: scaleX(0)
         transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
         transform-origin: right center
@@ -123,10 +123,6 @@ export default {
           filter: brightness(0)
 
         &::before
-          absolute top 0 left 0
-          content: ""
-          height: 39px
-          background-color: $bg-white;
           transform: scaleX(1)
     +sp-layout()
       left: 16px
