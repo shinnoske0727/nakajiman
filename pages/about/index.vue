@@ -43,7 +43,7 @@ export default {
     +sp-layout()
       sticky top 0 left 0
       height: 16px
-      margin 0 auto 20px
+      margin 0 auto 23px
       padding: $title-padding-top-sp 0;
       background-color: #fff;
       & > img
@@ -82,11 +82,11 @@ export default {
     display flex
     font-size 14px
     line-height 1
-    margin-bottom: 32px
+    margin-bottom: 29px
     +sp-layout()
       justify-content: center
   .bar
-    margin: 0 12px
+    margin: 0 10px
 
   .explain
     font-size 12px
