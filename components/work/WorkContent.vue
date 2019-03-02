@@ -1,6 +1,6 @@
 <template lang="pug">
   - path = "~/assets/img/works/";
-  .work-content(ref="content" v-if="workData.works")
+  .work-content(ref="content" v-if="workData.works" :data-is-picture="workData.layout === 'picture'")
     .content
       template(v-if="workData.works.kv")
         img.kv(:src="kvSrc" :data-is-picture="workData.layout === 'picture'")
@@ -77,7 +77,8 @@ export default {
       width: $max-width-sp
       padding-top: 64px
       padding-bottom: 32px
-
+    &[data-is-picture="true"]
+      padding-bottom: 0
   .kv
     +pc-layout()
       size $max-width 539px
@@ -87,9 +88,10 @@ export default {
       margin-bottom: 40px
 
     &[data-is-picture="true"]
+      display: block
       size auto
-      max-size $max-width 90vh
-      margin-bottom: 0
+      max-size $max-width 85vh
+      margin: 0 auto
       +sp-layout()
         max-size 100%
 
