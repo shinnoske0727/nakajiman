@@ -20,6 +20,7 @@
           li.item
             .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
               img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
+      .header
       keyvisual-pc
 </template>
 
@@ -75,6 +76,12 @@ export default {
       max-width: $max-width-sp
       padding-top: 64px
 
+  .header
+    +pc-layout()
+      display: none
+    +sp-layout()
+      fixed top 0 left 0
+      size 100% 64px
   .text-box
     display: flex
     flex-direction: column

@@ -72,8 +72,10 @@ export default {
 
   .header
     fixed top 0
-    size 100% 64px
+    size 100% 92px
     background-color $bg-white
+    +sp-layout()
+      size 100% 64px
 
   .arrow--right,
   .arrow--left
@@ -95,6 +97,8 @@ export default {
   .arrow--right
     +pc-layout()
       right: 32px
+      & > img
+        margin-left: 3px;
       &::before
         content: ""
         absolute top 2px right 2px
@@ -112,10 +116,14 @@ export default {
           transform: scaleX(1)
     +sp-layout()
       right: 16px
+      & > img
+        margin-left: 2px;
 
   .arrow--left
     +pc-layout()
       left: 32px
+      & > img
+        margin-right: 3px;
       &::before
         content: ""
         absolute top 2px right 2px
@@ -132,4 +140,6 @@ export default {
           transform: scaleX(1)
     +sp-layout()
       left: 16px
+      & > img
+        margin-right: 2px;
 </style>

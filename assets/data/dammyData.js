@@ -84,7 +84,7 @@ export const dammyData = [
         },
         works: {
             kv: 'tobu_PCthumb.jpg',
-            pic: ['tobu/01.jpg', 'tobu/02.jpg', 'tobu/03.jpg']
+            pic: ['tobu/01.jpg', 'tobu/02.jpg', 'tobu/03.jpg', 'tobu/04.jpg']
         },
         link: ''
     },
@@ -315,10 +315,26 @@ export const dammyData = [
     link: ''
   },
   {
+    name: 'Girl 1',
+    category: 'illustration',
+    layout: 'picture',
+    id: 17,
+    explain: ``,
+    top: {
+      kv: ''//manga_SPthumb.jpg'
+    },
+    works: {
+      kv: 'Girl1_WORKSthumb.jpg',
+      detail: '15_1/01.jpg',
+      pic: []
+    },
+    link: ''
+  },
+  {
     name: 'ニライビーチ',
     category: 'photograph',
     layout: 'picture',
-    id: 17,
+    id: 18,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -334,7 +350,7 @@ export const dammyData = [
     name: '瀬長島',
     category: 'photograph',
     layout: 'picture',
-    id: 18,
+    id: 19,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -350,7 +366,7 @@ export const dammyData = [
     name: '瀬長島',
     category: 'photograph',
     layout: 'picture',
-    id: 19,
+    id: 20,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -366,7 +382,7 @@ export const dammyData = [
     name: '支笏湖',
     category: 'photograph',
     layout: 'picture',
-    id: 20,
+    id: 21,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -382,7 +398,7 @@ export const dammyData = [
     name: '草津温泉',
     category: 'photograph',
     layout: 'picture',
-    id: 21,
+    id: 22,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -398,7 +414,7 @@ export const dammyData = [
     name: '草津温泉',
     category: 'photograph',
     layout: 'picture',
-    id: 22,
+    id: 23,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -414,7 +430,7 @@ export const dammyData = [
     name: '沖縄美ら海水族館',
     category: 'photograph',
     layout: 'picture',
-    id: 23,
+    id: 24,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'
@@ -427,10 +443,10 @@ export const dammyData = [
     link: ''
   },
   {
-    name: 'マクセル アクアパーク品川',
+    name: 'マクセル アクアパーク品川',
     category: 'photograph',
     layout: 'picture',
-    id: 24,
+    id: 25,
     explain: ``,
     top: {
       kv: ''//kingdom_spthumb.jpg'

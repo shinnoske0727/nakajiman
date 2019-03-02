@@ -99,6 +99,7 @@ export default {
 </script>
 
 <style lang="stylus">
+  $color = #E3E4E6
   .slider
     fixed top 0 left 0
     size 100%
@@ -118,10 +119,10 @@ export default {
       transform-origin center right
 
   .first-layer
-    background-color: $bg-black;
+    background-color: $color;
     @extend $layer
 
   .second-layer
-    background-color: $bg-black;
+    background-color: $color;
     @extend $layer
 </style>

@@ -51,14 +51,14 @@ export default {
 <style scoped lang="stylus">
   .work-menu
     background-color: $bg-white;
-    size 100% 51px
     box-sizing: content-box
     +pc-layout()
+      size 100% 51px
       sticky top 0 left 0;
       padding-top: 40px
     +sp-layout()
-      fixed left 0
-      size 100% 24px
+      fixed left ( (375px - $max-width-sp) / 2 )
+      size $max-width-sp 24px
       margin-top: 42px
       padding-top: 32px
 
@@ -66,11 +66,12 @@ export default {
     display: flex
     justify-content: center
     margin: 0 auto
+    +sp-layout()
+      justify-content: space-between
 
   .work-menu__item
     position: relative
     padding: 0 4px;
-    margin-right: 48px
     opacity 0.3
     transition opacity 0.2s ease-in
 
@@ -93,6 +94,7 @@ export default {
         opacity 1
         transform scaleX(1)
     +pc-layout()
+      margin-right: 48px
       &:hover
         opacity 1
         &::after
@@ -101,7 +103,6 @@ export default {
     +sp-layout()
       height: 10px
       padding: 0 1px;
-      margin-right: 20px
       &::after
         absolute bottom -16px left 0
         size: 100% $bar-length-sp

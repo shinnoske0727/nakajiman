@@ -68,13 +68,14 @@ export default {
 
 <style scoped lang="stylus">
   .work-content
-    padding-top: 64px
     margin: 0 auto
     +pc-layout()
       width: $max-width
+      padding-top: 92px
       padding-bottom: 73px
     +sp-layout()
       width: $max-width-sp
+      padding-top: 64px
       padding-bottom: 32px
 
   .kv
@@ -114,18 +115,15 @@ export default {
       max-width: $max-width-sp
 
   .explain
-    margin-bottom: 2em;
     word-wrap: break-word;
     line-height: 2
+    +pc-layout()
+      margin-bottom: 96px;
     +sp-layout()
+      margin-bottom: 48px;
       font-size: 12px
       line-height: 1.83
       max-width: $max-width-sp
-
-  .role
-    margin: 0 auto 96px
-    +sp-layout()
-      margin: 0 auto 48px
 
   .picture
     display: block
