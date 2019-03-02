@@ -34,9 +34,11 @@ import KeyvisualSp from '@/components/top/KeyvisualSp'
 export default {
     name: 'Top',
     async fetch({ store }) {
-        const kvImageArray = _.map(dammyData, data =>
-            require(`@/assets/data/${data.top.kv}`)
-        )
+        const kvImageArray = _.chain(dammyData)
+            .filter(data => data.top.kv)
+            .map(data => require(`@/assets/data/${data.top.kv}`))
+            .value()
+        console.log(kvImageArray)
         const images = await preloadImages(kvImageArray)
         store.dispatch('registerKVImages', images.map(img => img.src))
     },
