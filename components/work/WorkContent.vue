@@ -7,7 +7,7 @@
       template(v-if="workData.layout === 'article'")
         template(v-if="workData.name")
           .title {{ workData.name }}
-        p.explain(v-if="workData.explain") {{ workData.explain }}
+        p.explain(v-if="workData.explain" v-html="nl2br(workData.explain)")
 
         .picture-wrapper
           template(v-for="pic in picSrcArray")
@@ -39,7 +39,7 @@ export default {
         kvSrc() {
             if (!this.workData.works.kv) return
             if (this.workData.works.detail) {
-              return require(`@/assets/data/${this.workData.works.detail}`)
+                return require(`@/assets/data/${this.workData.works.detail}`)
             }
             return require(`@/assets/data/${this.workData.works.kv}`)
         },
@@ -56,6 +56,11 @@ export default {
                 scrollTo: this.$refs.content,
                 ease: Expo.easeOut
             })
+        },
+        nl2br: function(str) {
+          str = str.replace(/\r\n/g, "<br />");
+          str = str.replace(/(\n|\r)/g, "<br />");
+          return str;
         }
     }
 }

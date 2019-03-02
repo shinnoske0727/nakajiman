@@ -110,7 +110,7 @@ export const dammyData = [
                 'lobito/04.jpg'
             ]
         },
-        link: ''
+        link: 'https://vs.lobi.co/'
     },
     {
         name: 'Mirrativ',
@@ -144,7 +144,7 @@ export const dammyData = [
             kv: 'oneidea_PCthumb.jpg',
             pic: ['one_idea/01.jpg', 'one_idea/02.jpg', 'one_idea/03.jpg']
         },
-        link: 'google.com'
+        link: 'https://www.kayac.com/nenga/2018/one-idea/'
     },
     {
         name: 'A-CHARA Maker',
@@ -178,7 +178,7 @@ export const dammyData = [
             kv: 'UTGP_PCthumb.jpg',
             pic: ['utgp/01.jpg']
         },
-        link: ''
+        link: 'https://www.uniqlo.com/utgp/2018/ph/'
     },
     {
         name: 'キン肉マン マッスルショット',
@@ -246,7 +246,7 @@ export const dammyData = [
             kv: 'kamakura_PCthumb.jpg',
             pic: ['kamakura/01.jpg']
         },
-        link: ''
+        link: 'https://kamakura-jitakusou.com/'
     },
     {
         name: '社内勉強会',

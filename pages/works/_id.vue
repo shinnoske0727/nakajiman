@@ -88,6 +88,7 @@ export default {
     +sp-layout()
       fixed bottom 24px
       size 38px
+      opacity 0.8
     & > img
       size: 12px 22px
 
