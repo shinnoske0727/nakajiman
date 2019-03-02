@@ -60,7 +60,7 @@ export default {
       fixed left 0
       size 100% 24px
       margin-top: 42px
-      padding-top: 34px
+      padding-top: 32px
 
   .work-menu__list
     display: flex
@@ -69,7 +69,7 @@ export default {
 
   .work-menu__item
     position: relative
-    padding: 0 8px;
+    padding: 0 4px;
     margin-right: 48px
     opacity 0.3
     transition opacity 0.2s ease-in
@@ -103,7 +103,7 @@ export default {
       padding: 0 1px;
       margin-right: 20px
       &::after
-        absolute bottom -14px left 0
+        absolute bottom -16px left 0
         size: 100% $bar-length-sp
 
   .work-menu__link

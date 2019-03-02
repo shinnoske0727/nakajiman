@@ -15,7 +15,7 @@
           p.bar |
           p.role UI Designer
         p.explain
-          | 1990年長野県飯田市生まれ。多摩美術大学情報デザイン学科情報デザインコース卒業後、面白法人カヤックに新卒入社。大学時代はデザイニング・エモーションゼミに所属し、人の感覚や感情に働きかけるデザインについて研究を行なっていた。ユーザビリティ&エモーションを念頭に置いて、設計を行う。
+          | 1990年長野県飯田市生まれ。多摩美術大学情報デザイン学科情報デザインコース卒業後、面白法人カヤックに新卒入社。大学時代はデザイニング・エモーションゼミに所属し、人の感覚や感情に働きかけるデザインについて研究を行なっていた。ロジックとエモーションのバランスを大切にして、デザイン・設計を行なう。
 
 </template>
 
@@ -51,6 +51,7 @@ export default {
   .inner
     +pc-layout()
       display flex
+      justify-content: center;
   .image-box
     +pc-layout()
       size 351px 413px
@@ -92,6 +93,7 @@ export default {
     line-height 2
     +sp-layout()
       width: 311px
+      line-height 1.83
       margin: 0 auto
       padding-bottom: 68px
 </style>

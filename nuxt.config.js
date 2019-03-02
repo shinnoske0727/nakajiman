@@ -1,8 +1,11 @@
+import { dammyData } from './assets/data/dammyData'
 const path = require('path')
 
 module.exports = {
     mode: 'spa',
-
+    generate: {
+        routes: dammyData.map(d => `/works/${d.id}`)
+    },
     /*
   ** Headers of the page
   */
@@ -16,7 +19,7 @@ module.exports = {
                 hid: 'description',
                 name: 'description',
                 content:
-                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
+                    'デザイナーの中島健太のポートフォリオサイトです。ロジックとエモーションのバランスを大切にして、デザイン・設計を行っています。'
             },
             {
                 hid: 'og:title',
@@ -38,7 +41,7 @@ module.exports = {
                 hid: 'og:description',
                 name: 'og:description',
                 content:
-                    'デザイナーの中島健太のポートフォリオサイトです。UI・WEB・ILLUSTRATIONをメインに制作を行っています。'
+                    'デザイナーの中島健太のポートフォリオサイトです。ロジックとエモーションのバランスを大切にして、デザイン・設計を行っています。'
             },
             {
                 hid: 'og:image',
