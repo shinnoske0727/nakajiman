@@ -11,7 +11,7 @@
           li.item
             .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
               img(src=`${path}ui-white.svg` alt="UI")
-          li.item
+          li.tem
             .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
               img(src=`${path}web-white.svg` alt="WEB")
           li.item
@@ -61,6 +61,8 @@ export default {
       flex-direction: column
       justify-content: center
       align-items center
+    +sp-layout()
+      padding-bottom: 24px
   .inner
     margin: 0 auto
     +pc-layout()
@@ -93,7 +95,7 @@ export default {
         +sp-layout()
           display: block
     +sp-layout()
-      margin-bottom: 24px
+      margin-bottom: 34px
       & > img
         width: 100%
 
@@ -115,14 +117,14 @@ export default {
 
     & > img
       position: relative
-      transition: filter 0.35s ease-in
+      height: 10px;
       +sp-layout()
         size auto 9px
 
     &::before
       content: ""
-      absolute top 3px left 3px
-      $border-size = 6px
+      absolute top 2px left 2px
+      $border-size = 4px
       size: "calc(100% - %s)" % $border-size
       background-color: $bg-white;
       transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)

@@ -78,6 +78,10 @@ export default {
   .arrow--right,
   .arrow--left
     background-color: $bg-black;
+    display: flex
+    flex-direction:column
+    justify-content: center
+    align-items: center
     +pc-layout()
       fixed top 312px
       size 42px
@@ -92,12 +96,13 @@ export default {
       right: 32px
       &::before
         content: ""
-        absolute top 3px left 3px
-        size: 36px
+        absolute top 2px right 2px
+        size: 38px
         background-color: $bg-white;
         transform: scaleX(0)
         transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)
         transform-origin: left center
+
       &:hover
         & > img
           filter: brightness(0)
@@ -112,8 +117,8 @@ export default {
       left: 32px
       &::before
         content: ""
-        absolute top 3px right 3px
-        size: 36px
+        absolute top 2px right 2px
+        size: 38px
         background-color: $bg-white;
         transform: scaleX(0)
         transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)

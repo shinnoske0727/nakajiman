@@ -38,6 +38,9 @@ export default {
     computed: {
         kvSrc() {
             if (!this.workData.works.kv) return
+            if (this.workData.works.detail) {
+              return require(`@/assets/data/${this.workData.works.detail}`)
+            }
             return require(`@/assets/data/${this.workData.works.kv}`)
         },
         picSrcArray() {
@@ -49,7 +52,7 @@ export default {
     },
     methods: {
         moveToTop: function() {
-            TweenLite.to(this.$parent.$refs.modal, 1.0, {
+            TweenLite.to(window, 1.0, {
                 scrollTo: this.$refs.content,
                 ease: Expo.easeOut
             })
@@ -108,8 +111,10 @@ export default {
   .explain
     margin-bottom: 2em;
     word-wrap: break-word;
+    line-height: 2
     +sp-layout()
       font-size: 12px
+      line-height: 1.83
       max-width: $max-width-sp
 
   .role
@@ -145,9 +150,9 @@ export default {
     @extend $button
     +pc-layout()
       &::before
-        absolute top 3px left 3px
+        absolute top 2px left 2px
         content: ""
-        size: 194px 34px
+        size: 196px 36px
         background-color: $bg-white;
         transform: scaleX(0)
         transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1)

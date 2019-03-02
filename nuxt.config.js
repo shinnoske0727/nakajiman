@@ -1,8 +1,11 @@
+import { dammyData } from './assets/data/dammyData'
 const path = require('path')
 
 module.exports = {
     mode: 'spa',
-
+    generate: {
+        routes: dammyData.map(d => `/works/${d.id}`)
+    },
     /*
   ** Headers of the page
   */

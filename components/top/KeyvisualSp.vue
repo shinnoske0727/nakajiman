@@ -146,7 +146,7 @@ export default {
   .image-box--sp
     position: relative
     size: 343px
-    margin-bottom: 39px
+    margin-bottom: 32px
     overflow: hidden
     +pc-layout()
       display: none
