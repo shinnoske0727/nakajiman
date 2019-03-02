@@ -72,8 +72,10 @@ export default {
 
   .header
     fixed top 0
-    size 100% 64px
+    size 100% 92px
     background-color $bg-white
+    +sp-layout()
+      size 100% 64px
 
   .arrow--right,
   .arrow--left

@@ -68,13 +68,14 @@ export default {
 
 <style scoped lang="stylus">
   .work-content
-    padding-top: 64px
     margin: 0 auto
     +pc-layout()
       width: $max-width
+      padding-top: 92px
       padding-bottom: 73px
     +sp-layout()
       width: $max-width-sp
+      padding-top: 64px
       padding-bottom: 32px
 
   .kv
