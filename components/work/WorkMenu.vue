@@ -103,10 +103,6 @@ export default {
     +sp-layout()
       height: 10px
       padding: 0 1px;
-      &:first-of-type
-        padding: 0 2px;
-      &:last-of-type
-        padding: 0 2px;
       &::after
         absolute bottom -16px left 0
         size: 100% $bar-length-sp
