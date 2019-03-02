@@ -1,5 +1,5 @@
 <template lang="pug">
-  .grid-inner(ref="item" :data-type="direction")
+  .grid-inner(v-if="firstImgSrc" ref="item" :data-type="direction")
     img(:src="firstImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
     img(:src="nextImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
 </template>
@@ -7,9 +7,7 @@
 <script>
 import _ from 'lodash'
 import { mapState, mapActions } from 'vuex'
-import pickRandomItems from '@/assets/helper/pickRandomItems'
 import { TweenMax, Expo, Power4 } from 'gsap'
-import getRandomHex from '@/assets/helper/getRandomHex'
 
 export default {
     name: 'GridItem',
@@ -41,12 +39,8 @@ export default {
     },
     data() {
         return {
-            firstImgSrc: `http://placehold.it/${this.width}x${
-                this.height
-            }/${getRandomHex()}/`,
-            nextImgSrc: `http://placehold.it/${this.width}x${
-                this.height
-            }/${getRandomHex()}/`
+            firstImgSrc: '',
+            nextImgSrc: ''
         }
     },
     computed: {
@@ -86,12 +80,8 @@ export default {
         }
     },
     mounted() {
-        let images = pickRandomItems(this.KVImages, 7)
-        this.registerCurrentKVImages(images)
-        this.firstImgSrc = this.currentKVImages[this.index]
-        images = pickRandomItems(this.KVImages, 7)
-        this.registerCurrentKVImages(images)
-        this.nextImgSrc = this.currentKVImages[this.index]
+        this.firstImgSrc = this.KVImages[this.KVImages.length - this.index -1]
+        this.nextImgSrc = this.KVImages[this.index]
     },
     methods: {
         ...mapActions(['registerCurrentKVImages']),

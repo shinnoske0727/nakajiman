@@ -1,6 +1,6 @@
 <template lang="pug">
   - path = "http://placehold.it/"
-  .keyvisual--pc
+  .keyvisual--pc(v-if="currentKVImages")
     .grid1.grid
       grid-item(
       :direction="'top'"
