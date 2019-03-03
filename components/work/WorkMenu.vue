@@ -61,6 +61,7 @@ export default {
       size $max-width-sp 24px
       margin-top: 42px
       padding-top: 32px
+      padding-bottom: 2px;
 
   .work-menu__list
     display: flex
