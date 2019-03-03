@@ -20,8 +20,8 @@
           li.item
             .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
               img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
-      .header
       keyvisual-pc
+      .header
 </template>
 
 <script>
