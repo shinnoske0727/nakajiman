@@ -82,7 +82,7 @@ export default {
     display flex
     font-size 14px
     line-height 1
-    margin-bottom: 29px
+    margin-bottom: 28px
     +sp-layout()
       justify-content: center
   .bar
