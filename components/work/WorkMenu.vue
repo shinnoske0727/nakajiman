@@ -53,7 +53,7 @@ export default {
     background-color: $bg-white;
     box-sizing: content-box
     +pc-layout()
-      size 100% 51px
+      size 100% 52px
       sticky top 0 left 0;
       padding-top: 40px
     +sp-layout()
@@ -82,7 +82,7 @@ export default {
     &::after
       content ""
       display block
-      absolute bottom -33px left 0
+      absolute bottom -34px left 0
       size: 100% 3px
       background-color $bg-black;
       transition transform .4s cubic-bezier(.165, .84, .44, 1)
