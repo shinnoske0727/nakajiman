@@ -77,6 +77,7 @@ export default {
       padding-top: 64px
 
   .header
+    background-color: #fff;
     +pc-layout()
       display: none
     +sp-layout()
