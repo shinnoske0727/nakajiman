@@ -7,6 +7,8 @@
       img(src=`${path}icn_arrow_right.svg`)
     button.arrow--left(@click="goPrev")
       img(src=`${path}icn_arrow_left.svg`)
+    .button-wrap
+      button.close(@click="close")
 
 </template>
 
@@ -18,6 +20,7 @@ import _ from 'lodash'
 
 export default {
     name: 'Work',
+    layout: 'hasModalLayout',
     asyncData: async function({ params }) {
         const workData = _.find(dammyData, data => data.id == params.id)
         const pageIdArray = _.map(dammyData, data => data.id)
@@ -52,13 +55,23 @@ export default {
         },
         goNext() {
             this.changeWindow('right')
-            const next = this.isLast ? this.first : Number(this.currentPageId) + 1
+            const next = this.isLast
+                ? this.first
+                : Number(this.currentPageId) + 1
             this.move(next)
         },
         goPrev() {
             this.changeWindow('left')
-            const prev = this.isFirst ? this.last : Number(this.currentPageId) - 1
+            const prev = this.isFirst
+                ? this.last
+                : Number(this.currentPageId) - 1
             this.move(prev)
+        },
+        close() {
+            this.changeWindow('left')
+            setTimeout(() => {
+                this.$router.push({ name: 'works' })
+            }, 800)
         }
     }
 }
@@ -142,4 +155,39 @@ export default {
       left: 16px
       & > img
         margin-right: 2px;
+
+  .button-wrap
+    cursor: pointer
+    +pc-layout()
+      fixed top 38px left 32px
+      size: $menu-width 16px;
+    +sp-layout()
+      fixed top 24px right 16px
+      size: $menu-width-sp 16px;
+
+  .close
+    absolute top 7px
+    background-color: transparent
+    +pc-layout()
+      size: $menu-width $bar-length
+    +sp-layout()
+      size: $menu-width-sp $bar-length-sp
+
+    &::before,
+    &::after
+      content: ""
+      absolute top 0 left 50%
+      display: block
+      size: 100% $bar-length
+      background-color: $text-black
+      transform-origin: 50% 50%
+      +sp-layout()
+        size: 100% $bar-length-sp
+
+    &::before
+      transform: translate(-50%, 0) rotate(45deg);
+
+    &::after
+      transform: translate(-50%, 0) rotate(-45deg);
+
 </style>

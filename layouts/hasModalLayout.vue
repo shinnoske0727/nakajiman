@@ -1,11 +1,16 @@
 <template lang="pug">
   div
     nuxt
+    slider
 </template>
 
 <script>
-  export default {
-  }
+import Slider from '@/components/Slider'
+export default {
+    components: {
+        Slider
+    }
+}
 </script>
 
 <style lang="stylus">
