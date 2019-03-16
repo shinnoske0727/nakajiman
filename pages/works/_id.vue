@@ -7,8 +7,8 @@
       img(src=`${path}icn_arrow_right.svg`)
     button.arrow--left(@click="goPrev")
       img(src=`${path}icn_arrow_left.svg`)
-    .button-wrap
-      button.close(@click="close")
+    .button-wrap(@click="close")
+      button.close
 
 </template>
 
@@ -20,7 +20,6 @@ import _ from 'lodash'
 
 export default {
     name: 'Work',
-    layout: 'hasModalLayout',
     asyncData: async function({ params }) {
         const workData = _.find(dammyData, data => data.id == params.id)
         const pageIdArray = _.map(dammyData, data => data.id)
@@ -87,6 +86,7 @@ export default {
     fixed top 0
     size 100% 92px
     background-color $bg-white
+    pointer-events none
     +sp-layout()
       size 100% 64px
 
