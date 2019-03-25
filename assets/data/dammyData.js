@@ -36,8 +36,9 @@ export const dammyData = [
             pic: [
                 'sail/01.jpg',
                 'sail/02.jpg',
-                'sail/03.gif',
-                'sail/04.gif'
+                'sail/03.jpg',
+                'sail/04.gif',
+                'sail/05.gif'
             ]
         },
         link: 'https://sail.helte.jp/guide/'
