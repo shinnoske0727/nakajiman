@@ -85,7 +85,7 @@ export default {
     size 100%
     +pc-layout()
       display grid
-      grid-template-columns: auto auto auto
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
     +sp-layout()
       padding-top: 100px
 
