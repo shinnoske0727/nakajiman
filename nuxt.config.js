@@ -87,7 +87,8 @@ module.exports = {
         [
             'nuxt-stylus-resources-loader',
             [path.resolve(__dirname, 'assets/stylus/base.styl')]
-        ]
+        ],
+        ['@nuxtjs/dotenv']
     ],
 
     /*
