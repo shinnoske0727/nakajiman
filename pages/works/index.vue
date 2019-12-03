@@ -15,6 +15,7 @@ import WorkMenu from '@/components/work/WorkMenu'
 import Menus from '@/components/menu/Menus'
 import { dammyData } from '@/assets/data/dammyData'
 import WorkThumbnail from '@/components/work/WorkThumbnail'
+import { fetchEntries } from '@/assets/helper/api'
 
 export default {
     name: 'Works',
@@ -44,6 +45,12 @@ export default {
         visibleData: function(newData) {
             this.loadWorksData(newData)
         }
+    },
+    mounted() {
+        fetchEntries().then(hoge => {
+          // ここに記事が入るよ
+          console.log(hoge.items)
+        })
     },
     methods: {
         ...mapActions(['loadWorksData', 'registerWorksId']),
@@ -85,7 +92,7 @@ export default {
     size 100%
     +pc-layout()
       display grid
-      grid-template-columns: auto auto auto
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
     +sp-layout()
       padding-top: 100px
 

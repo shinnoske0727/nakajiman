@@ -84,7 +84,6 @@ export default {
 <style lang="stylus" scoped>
   .image-wrapper
     position: relative
-    min-size 480px 270px
     box-sizing border-box
     line-height: 270px;
     text-align: center
