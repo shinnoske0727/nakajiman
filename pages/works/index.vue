@@ -10,7 +10,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import filter from 'lodash/filter'
 import WorkMenu from '@/components/work/WorkMenu'
 import Menus from '@/components/menu/Menus'
 import { dammyData } from '@/assets/data/dammyData'
