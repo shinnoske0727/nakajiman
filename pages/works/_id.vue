@@ -17,15 +17,17 @@ import { mapActions } from 'vuex'
 import WorkContent from '@/components/work/WorkContent'
 import { dammyData } from '@/assets/data/dammyData'
 import _ from 'lodash'
+import { fetchPostById } from '@/assets/helper/api'
 
 export default {
     name: 'Work',
     asyncData: async function({ params }) {
+        const currentData = await fetchPostById(params.id)
         const workData = _.find(dammyData, data => data.id == params.id)
         const pageIdArray = _.map(dammyData, data => data.id)
         const currentPageId = params.id
 
-        return { workData, pageIdArray, currentPageId }
+        return { workData, pageIdArray, currentPageId, currentData }
     },
     components: { WorkContent },
     computed: {

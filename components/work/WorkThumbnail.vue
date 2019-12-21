@@ -1,11 +1,11 @@
 <template lang="pug">
   .work-thumbnail
-    .image-wrapper(:data-category="contentData.category" @mouseenter="showInfo" @mouseleave="hideInfo")
-      template(v-if="contentData.works && contentData.works.kv")
+    .image-wrapper(:data-category="contentData.postCategory.fields.categoryName" @mouseenter="showInfo" @mouseleave="hideInfo")
+      template(v-if="contentData.postKv")
         img.image(:src="imageSrc")
-        .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.id}})")
-          p.link-text(ref="text") {{ contentData.name }}
-    .title {{ contentData.name }}
+        .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.postOrder}})")
+          p.link-text(ref="text") {{ contentData.postTitle }}
+    .title {{ contentData.postTitle }}
 </template>
 
 <script>
@@ -51,8 +51,8 @@ export default {
     },
     computed: {
         imageSrc() {
-            if (!this.contentData.works.kv) return
-            return require(`@/assets/data/${this.contentData.works.kv}`)
+            if (!this.contentData.postKv) return
+            return this.contentData.postKv.fields.file.url
         }
     },
     methods: {
@@ -82,43 +82,42 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .image-wrapper
-    position: relative
-    box-sizing border-box
-    line-height: 270px;
-    text-align: center
+.image-wrapper
+  position: relative
+  box-sizing border-box
+  line-height: 270px;
+  text-align: center
 
-    +sp-layout()
-      size 343px 193px
-      min-size 343px 193px
-      line-height: 193px;
-      margin-bottom: 16px
+  +sp-layout()
+    size 343px 193px
+    min-size 343px 193px
+    line-height: 193px;
+    margin-bottom: 16px
 
-  .image
-    display: block
-    size 100% auto
+.image
+  display: block
+  size 100% auto
 
-  .link
-    absolute top 0 left 0
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items center
-    size 100%
-    text-decoration: none
-    background-color: rgba(0, 0, 0, 0.9);
-    opacity 0
-    cursor pointer
+.link
+  absolute top 0 left 0
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items center
+  size 100%
+  text-decoration: none
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity 0
+  cursor pointer
 
-  .link-text
-    font-size: 16px
-    color: $text-white
+.link-text
+  font-size: 16px
+  color: $text-white
 
-  .title
-    +pc-layout()
-      display: none
-    margin-bottom: 56px
-    text-align: center
-    font-size 12px
-
+.title
+  +pc-layout()
+    display: none
+  margin-bottom: 56px
+  text-align: center
+  font-size 12px
 </style>
