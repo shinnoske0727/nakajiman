@@ -5,5 +5,6 @@ export default () => ({
     isChangeWindow: {},
     KVImages: [],
     currentKVImages: [],
-    currentCategory: null
+    currentCategory: null,
+    KVLinks: []
 })

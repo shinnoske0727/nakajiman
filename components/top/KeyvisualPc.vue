@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
 import GridItem from './GridItem'
 
@@ -75,11 +75,13 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages', 'currentKVImages'])
+        ...mapState(['KVImages', 'currentKVImages']),
+        ...mapGetters(['KVImageMap'])
     },
     mounted() {
         this.timer = setInterval(() => {
-            const images = pickRandomItems(this.KVImages, 7)
+            const kvImages = Array.from(this.KVImageMap.keys())
+            const images = pickRandomItems(kvImages, 7)
             this.registerCurrentKVImages(images)
             this.counter += 1
         }, 3000)
@@ -95,43 +97,43 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .keyvisual--pc
-    size: 391px 634px
-    display: grid;
-    grid-template-areas: "a a a a" "d e e b" "d g f b" "c c c b";
-    grid-template-columns: 91px 19px 34px 241px
-    grid-template-rows: 391px 55px 34px 148px
-    justify-content space-between
-    align-content space-between;
-    +sp-layout()
-      display: none
+.keyvisual--pc
+  size: 391px 634px
+  display: grid;
+  grid-template-areas: "a a a a" "d e e b" "d g f b" "c c c b";
+  grid-template-columns: 91px 19px 34px 241px
+  grid-template-rows: 391px 55px 34px 148px
+  justify-content space-between
+  align-content space-between;
+  +sp-layout()
+    display: none
 
-  .grid
-    position: relative
-    overflow: hidden
+.grid
+  position: relative
+  overflow: hidden
 
-  .grid1
-    grid-area: a
+.grid1
+  grid-area: a
 
-  .grid2
-    grid-area: b
+.grid2
+  grid-area: b
 
-  .grid3
-    grid-area: c
+.grid3
+  grid-area: c
 
-  .grid4
-    grid-area: d
+.grid4
+  grid-area: d
 
-  .grid5
-    grid-area: e
+.grid5
+  grid-area: e
 
-  .grid6
-    grid-area: f
+.grid6
+  grid-area: f
 
-  .grid7
-    grid-area: g
+.grid7
+  grid-area: g
 
-  .grid-inner
-    absolute top -100% left 0
-    line-height: 0
+.grid-inner
+  absolute top -100% left 0
+  line-height: 0
 </style>
