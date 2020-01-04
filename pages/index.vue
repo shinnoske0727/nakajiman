@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import { mapActions } from 'vuex'
 import { dammyData } from '@/assets/data/dammyData'
 import { preloadImages } from '@/assets/helper/preloadImage'

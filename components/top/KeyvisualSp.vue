@@ -3,13 +3,13 @@
     .inner(ref="item")
       template(v-for="( image, index ) in KVImages")
         .image-wrapper
-          img(:src="image" width="343" height="343"  :data-num="index")
+          img(:src="image" width="343" height="343"  :data-num="index" @click="moveLink(image)")
 </template>
 
 <script>
 import _ from 'lodash'
 import { TweenMax, Power2, Power4 } from 'gsap'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
     name: 'KeyvisualSp',
@@ -24,7 +24,8 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages'])
+        ...mapState(['KVImages']),
+        ...mapGetters(['KVImageMap'])
     },
     mounted() {
         this.init()
@@ -137,6 +138,10 @@ export default {
                 left: '0',
                 x: '0'
             })
+        },
+        moveLink(imagePath) {
+            const id = this.KVImageMap.get(imagePath)
+            this.$router.push(`/works/${id}`)
         }
     }
 }
@@ -161,5 +166,6 @@ export default {
 
     & > img
       absolute top 0 left 0
+      cursor pointer
 
 </style>

@@ -20,7 +20,7 @@ export default {
     },
     KVImageMap(state) {
         return state.KVLinks.reduce(
-            (arr, cur, index) => arr.set(state.KVImages[index], cur),
+            (acc, cur, index) => acc.set(state.KVImages[index], cur),
             new Map()
         )
     }
