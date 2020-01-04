@@ -30,5 +30,8 @@ export default {
     },
     registerCurrentKVImages({ commit }, array) {
         commit('setCurrentKVImages', array)
+    },
+    registerCurrentCategory({ commit }, category) {
+        commit('setCurrentCategory', category)
     }
 }

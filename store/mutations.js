@@ -16,5 +16,8 @@ export default {
     },
     setCurrentKVImages(state, array) {
         state.currentKVImages = array
+    },
+    setCurrentCategory(state, category) {
+        state.currentCategory = category
     }
 }
