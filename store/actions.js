@@ -33,5 +33,8 @@ export default {
     },
     registerCurrentCategory({ commit }, category) {
         commit('setCurrentCategory', category)
+    },
+    registerKVLinks({ commit }, array) {
+        commit('setKVLinks', array)
     }
 }

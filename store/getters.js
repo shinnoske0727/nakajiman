@@ -1,6 +1,6 @@
 import _ from 'lodash'
 export default {
-    currentIndex: function(state) {
+    currentIndex: state => {
         const currentId = state.worksId
         return _.findIndex(state.worksData, works => works.id === currentId)
     },
@@ -17,5 +17,11 @@ export default {
     },
     modalData(state, getters) {
         return [getters.prevData, getters.currentData, getters.nextData]
+    },
+    KVImageMap(state) {
+        return state.KVLinks.reduce(
+            (arr, cur, index) => arr.set(state.KVImages[index], cur),
+            new Map()
+        )
     }
 }
