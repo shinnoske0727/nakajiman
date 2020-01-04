@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import WorkMenu from '@/components/work/WorkMenu'
 import Menus from '@/components/menu/Menus'
 import { dammyData } from '@/assets/data/dammyData'
@@ -19,8 +19,11 @@ import { orderBy } from 'lodash'
 
 export default {
     name: 'Works',
-    async fetch({ store }) {
-        return store.dispatch('loadWorksData', dammyData)
+    async fetch({ store, params }) {
+        if (params.id) {
+            await store.dispatch('registerCurrentCategory', params.id)
+        }
+        await store.dispatch('loadWorksData', dammyData)
     },
     async asyncData() {
         const postData = await fetchEntries()
@@ -35,15 +38,13 @@ export default {
         Menus,
         WorkMenu
     },
-    data() {
-        return {
-            currentCategory: this.$route.params.id
-        }
+    computed: {
+        ...mapState(['currentCategory'])
     },
     methods: {
-        ...mapActions(['loadWorksData', 'registerWorksId']),
+        ...mapActions(['loadWorksData', 'registerCurrentCategory']),
         changeCategory(val) {
-            this.currentCategory = val
+            this.registerCurrentCategory(val)
         }
     }
 }

@@ -4,5 +4,6 @@ export default () => ({
     isShowMenu: true,
     isChangeWindow: {},
     KVImages: [],
-    currentKVImages: []
+    currentKVImages: [],
+    currentCategory: null
 })
