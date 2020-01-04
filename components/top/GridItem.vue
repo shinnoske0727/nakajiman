@@ -80,7 +80,7 @@ export default {
         }
     },
     mounted() {
-        this.firstImgSrc = this.KVImages[this.KVImages.length - this.index -1]
+        this.firstImgSrc = this.KVImages[this.KVImages.length - this.index - 1]
         this.nextImgSrc = this.KVImages[this.index]
     },
     methods: {
@@ -100,6 +100,7 @@ export default {
             }
         },
         reset() {
+            if (!this.$refs) return
             const firstImage = this.$refs.item.querySelector('img')
             const secondImage = this.$refs.item.querySelector('img:last-child')
             this.replaceImage(firstImage, secondImage)
@@ -125,21 +126,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .grid-inner
-    line-height: 0
+.grid-inner
+  line-height: 0
 
-    &[data-type="top"]
-      absolute top -100% left 0
-    &[data-type="bottom"]
-      absolute top 0 left 0
-    &[data-type="left"]
-      absolute top 0 left -100%
-      display: flex
-    &[data-type="right"]
-      absolute top 0 left 0
-      display: flex
+  &[data-type="top"]
+    absolute top -100% left 0
+  &[data-type="bottom"]
+    absolute top 0 left 0
+  &[data-type="left"]
+    absolute top 0 left -100%
+    display: flex
+  &[data-type="right"]
+    absolute top 0 left 0
+    display: flex
 
-    & > img[data-is-last="true"]
-      transform: translateX(-8px)
-
+  & > img[data-is-last="true"]
+    transform: translateX(-8px)
 </style>
