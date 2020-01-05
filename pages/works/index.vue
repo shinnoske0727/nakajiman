@@ -36,7 +36,7 @@ export default {
     async asyncData() {
         const postData = await fetchEntries()
         const posts = orderBy(
-            postData.items.map(post => post.fields),
+            postData.items.map(post => ({ ...post.fields, id: post.sys.id })),
             'postOrder'
         )
         return { posts }

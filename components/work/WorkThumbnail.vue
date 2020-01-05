@@ -3,7 +3,7 @@
     .image-wrapper(:data-category="contentData.postCategory.fields.categoryName" @mouseenter="showInfo" @mouseleave="hideInfo")
       template(v-if="contentData.postKv")
         img.image(:src="imageSrc")
-        .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.postOrder}})")
+        .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.id}})")
           p.link-text(ref="text") {{ contentData.postTitle }}
     .title {{ contentData.postTitle }}
 </template>
