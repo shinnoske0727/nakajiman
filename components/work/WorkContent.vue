@@ -75,7 +75,7 @@ export default {
       padding-bottom: 73px
     +sp-layout()
       width: $max-width-sp
-      padding: 64px 16px 32px
+      padding: 64px 0 32px
     &[data-is-picture="true"]
       padding-bottom: 0
   .kv
