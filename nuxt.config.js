@@ -1,14 +1,20 @@
-import { dammyData } from './assets/data/dammyData'
+import { fetchEntries } from './assets/helper/api'
 const path = require('path')
+require('dotenv').config()
 
 module.exports = {
     mode: 'spa',
     generate: {
-        routes: dammyData.map(d => `/works/${d.id}`)
+        routes: fetchEntries().then(posts => [
+            ...posts.items.map(post => ({
+                route: `works/${post.sys.id}`,
+                payload: post
+            }))
+        ])
     },
     /*
-  ** Headers of the page
-  */
+     ** Headers of the page
+     */
     head: {
         title: 'KENTA NAKAJIMA',
         meta: [
@@ -66,23 +72,23 @@ module.exports = {
     },
 
     /*
-  ** Customize the progress-bar color
-  */
+     ** Customize the progress-bar color
+     */
     loading: { color: '#fff' },
 
     /*
-  ** Global CSS
-  */
+     ** Global CSS
+     */
     css: ['@/assets/stylus/base.styl'],
 
     /*
-  ** Plugins to load before mounting the App
-  */
+     ** Plugins to load before mounting the App
+     */
     plugins: [],
 
     /*
-  ** Nuxt.js modules
-  */
+     ** Nuxt.js modules
+     */
     modules: [
         [
             'nuxt-stylus-resources-loader',
@@ -92,12 +98,12 @@ module.exports = {
     ],
 
     /*
-  ** Build configuration
-  */
+     ** Build configuration
+     */
     build: {
         /*
-    ** You can extend webpack config here
-    */
+         ** You can extend webpack config here
+         */
         extend(config, ctx) {
             // Run ESLint on save
             if (ctx.isDev && ctx.isClient) {
