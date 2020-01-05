@@ -11,7 +11,7 @@
           li.item
             .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
               img(src=`${path}ui-white.svg` alt="UI")
-          li.tem
+          li.item
             .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
               img(src=`${path}web-white.svg` alt="WEB")
           li.item
