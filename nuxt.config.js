@@ -1,6 +1,17 @@
-import { fetchEntries } from './assets/helper/api'
+import { createClient } from 'contentful'
 const path = require('path')
 require('dotenv').config()
+
+const client = createClient({
+    space: process.env.NUXT_ENV_SPACE_ID,
+    accessToken: process.env.NUXT_ENV_ACCESS_TOKEN
+})
+
+const fetchEntries = (content_type = 'post', options) =>
+    client.getEntries({
+        ...options,
+        content_type
+    })
 
 module.exports = {
     mode: 'spa',
