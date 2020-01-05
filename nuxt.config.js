@@ -1,14 +1,33 @@
-import { dammyData } from './assets/data/dammyData'
+import { createClient } from 'contentful'
 const path = require('path')
+require('dotenv').config()
+
+const client = createClient({
+    space: process.env.NUXT_ENV_SPACE_ID,
+    accessToken: process.env.NUXT_ENV_ACCESS_TOKEN
+})
+
+const fetchEntries = (content_type = 'post', options) =>
+    client.getEntries({
+        ...options,
+        content_type
+    })
 
 module.exports = {
     mode: 'spa',
     generate: {
-        routes: dammyData.map(d => `/works/${d.id}`)
+        async routes() {
+            const posts = await fetchEntries()
+            return [
+                ...posts.items.map(post => ({
+                    route: `/works/${post.sys.id}`
+                }))
+            ]
+        }
     },
     /*
-  ** Headers of the page
-  */
+     ** Headers of the page
+     */
     head: {
         title: 'KENTA NAKAJIMA',
         meta: [
@@ -66,23 +85,23 @@ module.exports = {
     },
 
     /*
-  ** Customize the progress-bar color
-  */
+     ** Customize the progress-bar color
+     */
     loading: { color: '#fff' },
 
     /*
-  ** Global CSS
-  */
+     ** Global CSS
+     */
     css: ['@/assets/stylus/base.styl'],
 
     /*
-  ** Plugins to load before mounting the App
-  */
+     ** Plugins to load before mounting the App
+     */
     plugins: [],
 
     /*
-  ** Nuxt.js modules
-  */
+     ** Nuxt.js modules
+     */
     modules: [
         [
             'nuxt-stylus-resources-loader',
@@ -92,12 +111,12 @@ module.exports = {
     ],
 
     /*
-  ** Build configuration
-  */
+     ** Build configuration
+     */
     build: {
         /*
-    ** You can extend webpack config here
-    */
+         ** You can extend webpack config here
+         */
         extend(config, ctx) {
             // Run ESLint on save
             if (ctx.isDev && ctx.isClient) {
