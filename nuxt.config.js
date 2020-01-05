@@ -16,16 +16,13 @@ const fetchEntries = (content_type = 'post', options) =>
 module.exports = {
     mode: 'spa',
     generate: {
-        async route() {
+        async routes() {
             const posts = await fetchEntries()
-            return {
-                routes: [
-                    ...posts.items.map(post => ({
-                        path: `/works/${post.sys.id}`,
-                        component: 'pages/works/_id.vue'
-                    }))
-                ]
-            }
+            return [
+                ...posts.items.map(post => ({
+                    route: `/works/${post.sys.id}`
+                }))
+            ]
         }
     },
     /*
