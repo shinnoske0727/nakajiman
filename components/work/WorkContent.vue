@@ -98,14 +98,16 @@ export default {
   font-size 20px
   text-align: center
   +sp-layout()
-    margin-bottom: 40px
-    font-size: 14px
+    margin-bottom: 4px
+    font-size: 16px
 
 .subTitle
   font-family HiraginoSans-W6
   font-size 10px
   text-align: center
   color: $text-gray
+  +sp-layout()
+    transform scale(0.8)
 
 .explain,
 .role
@@ -123,10 +125,9 @@ export default {
   word-wrap: break-word;
   line-height: 2
   +pc-layout()
-    margin-top: 56px
-    margin-bottom: 96px;
+    margin: 56px 0 96px
   +sp-layout()
-    margin-bottom: 48px;
+    margin: 40px 0 48px
     font-size: 12px
     line-height: 1.83
     max-width: $max-width-sp
