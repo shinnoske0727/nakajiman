@@ -9,7 +9,7 @@
           img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
         ul.list
           li.item
-            .link(data-type="uiux" @click="move({ name: 'works', params: { id: 'uiux' } })")
+            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
               img(src=`${path}uiux-white.svg` alt="UIUX")
           li.item
             .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
