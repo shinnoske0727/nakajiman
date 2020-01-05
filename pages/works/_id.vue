@@ -21,11 +21,13 @@ import { fetchEntries } from '../../assets/helper/api'
 
 export default {
     name: 'Work',
-    asyncData: async function({ params }) {
+    asyncData: async function({ params, store }) {
         const { fields: currentData } = await fetchPostById(params.id)
-        const { items: sameCategoryPosts } = await fetchEntries('post', {
-            'fields.postCategory.sys.id': currentData.postCategory.sys.id
-        })
+        const { items: sameCategoryPosts } = store.state.currentCategory
+            ? await fetchEntries('post', {
+                  'fields.postCategory.sys.id': currentData.postCategory.sys.id
+              })
+            : await fetchEntries()
         const pageIdArray = orderBy(
             sameCategoryPosts.map(post => ({
                 ...post.fields,
@@ -52,7 +54,9 @@ export default {
             return _.last(this.pageIdArray)
         },
         currentIndex() {
-            return this.pageIdArray.findIndex(pageId => pageId === this.currentPageId)
+            return this.pageIdArray.findIndex(
+                pageId => pageId === this.currentPageId
+            )
         }
     },
     methods: {
