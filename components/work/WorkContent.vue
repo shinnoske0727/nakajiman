@@ -64,34 +64,34 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .work-content
-    margin: 0 auto
-    +pc-layout()
-      max-width: $max-width
-      padding-top: 92px
-      padding-bottom: 73px
+.work-content
+  margin: 0 auto
+  +pc-layout()
+    max-width: $max-width
+    padding-top: 92px
+    padding-bottom: 73px
+  +sp-layout()
+    width: $max-width-sp
+    padding: 64px 0 32px
+  &[data-is-picture="true"]
+    padding-bottom: 0
+.kv
+  +pc-layout()
+    size 100% auto
+    margin-bottom: 96px
+  +sp-layout()
+    size $max-width-sp auto
+    margin-bottom: 40px
+
+  &[data-is-picture="true"]
+    display: block
+    size 100% auto
+    margin: 0 auto 48px
     +sp-layout()
-      width: $max-width-sp
-      padding: 64px 0 32px
-    &[data-is-picture="true"]
-      padding-bottom: 0
-  .kv
-    +pc-layout()
-      size 100% auto
-      margin-bottom: 96px
-    +sp-layout()
-      size $max-width-sp auto
+      max-size 100%
       margin-bottom: 40px
 
-    &[data-is-picture="true"]
-      display: block
-      size 100% auto
-      margin: 0 auto 48px
-      +sp-layout()
-        max-size 100%
-        margin-bottom: 40px
-
-  .title
+.title
   margin-bottom: 6px
   font-family HiraginoSans-W6
   font-size 20px
