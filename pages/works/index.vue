@@ -49,7 +49,8 @@ export default {
     data() {
         return {
             isShowList: true,
-            tempCategory: null
+            tempCategory: null,
+            canChangeMenu: true
         }
     },
     computed: {
@@ -66,8 +67,10 @@ export default {
     methods: {
         ...mapActions(['loadWorksData', 'registerCurrentCategory']),
         changeCategory(val) {
+            if (!this.canChangeMenu) return
             this.tempCategory = val
             this.isShowList = false
+            this.canChangeMenu = false
 
             setTimeout(() => {
                 this.updateCategory()
@@ -77,6 +80,7 @@ export default {
             this.registerCurrentCategory(this.tempCategory)
             this.tempCategory = null
             this.isShowList = true
+            this.canChangeMenu = true
         },
         enter(el, done) {
             const delay = el.dataset.index * 0.15 + 0.15
