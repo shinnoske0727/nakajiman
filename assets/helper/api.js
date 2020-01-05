@@ -11,8 +11,4 @@ export const fetchEntries = (content_type = 'post') =>
     })
 
 export const fetchPostById = id =>
-    client.getEntries({
-        content_type: 'post',
-        'fields.postOrder': id,
-        limit: 1
-    })
+    client.getEntry(id)
