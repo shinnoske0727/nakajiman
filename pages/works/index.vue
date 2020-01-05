@@ -3,9 +3,16 @@
   section.works
     h1.title
       img(src=`${cmnPath}txt_works.svg` alt="WORKS")
-    work-menu.menu(@change="changeCategory" :category="currentCategory")
+    work-menu.menu(@change="changeCategory" :category="tempCategory || currentCategory")
     .inner
-      work-thumbnail(v-for="data in posts" :content-data="data" :key="data.id")
+      transition-group(
+        name="list"
+        :css="false"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @leave="leave"
+      )
+        work-thumbnail(v-for="( post, index ) in visibleData" :content-data="post" :key="post.postOrder" :data-index="index" v-show="isShowList")
 </template>
 
 <script>
@@ -16,6 +23,7 @@ import { dammyData } from '@/assets/data/dammyData'
 import WorkThumbnail from '@/components/work/WorkThumbnail'
 import { fetchEntries } from '@/assets/helper/api'
 import { orderBy } from 'lodash'
+import { TweenMax } from 'gsap'
 
 export default {
     name: 'Works',
@@ -38,13 +46,55 @@ export default {
         Menus,
         WorkMenu
     },
+    data() {
+        return {
+            isShowList: true,
+            tempCategory: null
+        }
+    },
     computed: {
-        ...mapState(['currentCategory'])
+        ...mapState(['currentCategory']),
+        visibleData() {
+            if (!this.currentCategory) return this.posts
+            return this.posts.filter(
+                data =>
+                    data.postCategory.fields.categoryName ===
+                    this.currentCategory
+            )
+        }
     },
     methods: {
         ...mapActions(['loadWorksData', 'registerCurrentCategory']),
         changeCategory(val) {
-            this.registerCurrentCategory(val)
+            this.tempCategory = val
+            this.isShowList = false
+
+            setTimeout(() => {
+                this.updateCategory()
+            }, 1200)
+        },
+        updateCategory() {
+            this.registerCurrentCategory(this.tempCategory)
+            this.tempCategory = null
+            this.isShowList = true
+        },
+        enter(el, done) {
+            const delay = el.dataset.index * 0.15 + 0.15
+            TweenMax.to(el, delay, {
+                autoAlpha: 1,
+                y: 0
+            })
+        },
+        leave(el, done) {
+            const delay = el.dataset.index * 0.15 + 0.15
+            TweenMax.to(el, delay, {
+                autoAlpha: 0,
+                y: 30
+            })
+        },
+        beforeEnter(el) {
+            el.style.opacity = 0
+            TweenMax.set(el, { autoAlpha: 0, y: 30 })
         }
     }
 }
@@ -77,15 +127,16 @@ export default {
   z-index: 2;
 
 .inner
-  z-index: 1;
-  size 100%
-  +pc-layout()
-    display grid
-    grid-template-columns: repeat(auto-fit, minmax(326px, 1fr))
-  @media (min-width 980px)
-      grid-template-columns: repeat(3, 1fr)
-  +sp-layout()
-    padding-top: 100px
+  & > span
+    z-index: 1;
+    size 100%
+    +pc-layout()
+      display grid
+      grid-template-columns: repeat(auto-fit, minmax(326px, 1fr))
+    @media (min-width 980px)
+        grid-template-columns: repeat(3, 1fr)
+    +sp-layout()
+      padding-top: 100px
 
 .work-title
   +pc-layout()
@@ -93,4 +144,11 @@ export default {
   margin-bottom: 56px
   text-align: center
   font-size 12px
+
+.list-enter-active, .list-leave-active
+  transition: all 1s;
+
+.list-enter, .list-leave-to
+  opacity: 0;
+  transform: translateY(30px);
 </style>
