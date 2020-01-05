@@ -58,10 +58,10 @@ export default {
       padding-top: 40px
     +sp-layout()
       fixed left ( (375px - $max-width-sp) / 2 )
-      size $max-width-sp 24px
+      size $max-width-sp 58px
       margin-top: 42px
-      padding-top: 32px
-      padding-bottom: 2px;
+      padding: 32px 16px 2px
+      box-sizing: border-box
 
   .work-menu__list
     display: flex

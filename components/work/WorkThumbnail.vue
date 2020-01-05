@@ -89,8 +89,7 @@ export default {
   text-align: center
 
   +sp-layout()
-    size 343px 193px
-    min-size 343px 193px
+    size $max-width-sp auto
     line-height: 193px;
     margin-bottom: 16px
 

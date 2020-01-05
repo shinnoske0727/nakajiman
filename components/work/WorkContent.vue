@@ -70,27 +70,26 @@ export default {
   .work-content
     margin: 0 auto
     +pc-layout()
-      width: $max-width
+      max-width: $max-width
       padding-top: 92px
       padding-bottom: 73px
     +sp-layout()
       width: $max-width-sp
-      padding-top: 64px
-      padding-bottom: 32px
+      padding: 64px 16px 32px
     &[data-is-picture="true"]
       padding-bottom: 0
   .kv
     +pc-layout()
-      size $max-width 539px
+      size 100% auto
       margin-bottom: 96px
     +sp-layout()
-      size $max-width-sp 193px
+      size $max-width-sp auto
       margin-bottom: 40px
 
     &[data-is-picture="true"]
       display: block
       size auto
-      max-size $max-width 85vh
+      size 100% auto
       margin: 0 auto
       +sp-layout()
         max-size 100%
