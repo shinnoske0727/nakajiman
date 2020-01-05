@@ -9,8 +9,8 @@
           img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
         ul.list
           li.item
-            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
-              img(src=`${path}ui-white.svg` alt="UI")
+            .link(data-type="uiux" @click="move({ name: 'works', params: { id: 'uiux' } })")
+              img(src=`${path}uiux-white.svg` alt="UIUX")
           li.item
             .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
               img(src=`${path}web-white.svg` alt="WEB")
@@ -68,7 +68,7 @@ export default {
     justify-content: center
     align-items center
   +sp-layout()
-    padding-bottom: 24px
+    padding-bottom: 32px
 .inner
   margin: 0 auto
   +pc-layout()
@@ -108,7 +108,7 @@ export default {
       +sp-layout()
         display: block
   +sp-layout()
-    margin-bottom: 34px
+    margin-bottom: 26px
     & > img
       width: 100%
 
@@ -132,7 +132,7 @@ export default {
     position: relative
     height: 10px;
     +sp-layout()
-      size auto 9px
+      size auto 10px
 
   &::before
     content: ""
@@ -151,23 +151,23 @@ export default {
       &::before
         transform: scaleX(1)
 
-.link[data-type="ui"]
-  size 40px 26px
+.link[data-type="uiux"]
+  size 57px 26px
   +sp-layout()
-    size 40px 28px
+    size 56px 28px
 
 .link[data-type="web"]
-  size 56px 26px
+  size 46px 26px
   +sp-layout()
-    size 55px 28px
+    size 49px 28px
 
 .link[data-type="illustration"]
-  size 111px 26px
+  size 108px 26px
   +sp-layout()
-    size 119px 28px
+    size 114px 28px
 
 .link[data-type="photograph"]
-  size 110px 26px
+  size 106px 26px
   +sp-layout()
-    size 117px 28px
+    size 112px 28px
 </style>
