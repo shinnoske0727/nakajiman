@@ -4,21 +4,21 @@
     .content
       template(v-if="workData.postKv.fields.file.url")
         img.kv(:src="kvSrc" :data-is-picture="!workData.postType")
-      template(v-if="workData.postType")
         template(v-if="workData.postTitle")
           p.title {{ workData.postTitle }}
         template(v-if="workData.postCategory.fields.categoryName")
           p.subTitle {{ workData.postCategory.fields.categoryName }}
-        p.explain(v-if="workData.postDescription" v-html="nl2br(workData.postDescription)")
+        template(v-if="workData.postType")
+          p.explain(v-if="workData.postDescription" v-html="nl2br(workData.postDescription)")
 
-        .picture-wrapper
-          template(v-for="pic in picSrcArray")
-            img.picture(:src="pic")
-        template(v-if="workData.postLink")
-          a.button--site(:href="workData.postLink", target="_blank")
-            img(src=`${path}visit-site.svg` alt="visit site")
-        button.to-top(@click="moveToTop")
-          img(src=`${path}icn_arrow_top_pc.svg`)
+          .picture-wrapper
+            template(v-for="pic in picSrcArray")
+              img.picture(:src="pic")
+          template(v-if="workData.postLink")
+            a.button--site(:href="workData.postLink", target="_blank")
+              img(src=`${path}visit-site.svg` alt="visit site")
+          button.to-top(@click="moveToTop")
+            img(src=`${path}icn_arrow_top_pc.svg`)
 </template>
 
 <script>
@@ -88,9 +88,10 @@ export default {
     display: block
     size auto
     max-size $max-width 85vh
-    margin: 0 auto
+    margin: 0 auto 48px
     +sp-layout()
       max-size 100%
+      margin-bottom: 40px
 
 .title
   margin-bottom: 6px
