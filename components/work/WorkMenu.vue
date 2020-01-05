@@ -9,7 +9,7 @@
             img(src=`${path}all-works.svg` alt="ALL")
         li.work-menu__item(:data-is-current="category === 'ui'")
           button.work-menu__link(@click="changeCategory('ui')")
-            img(src=`${path}ui-works.svg` alt="UI")
+            img(src=`${path}uiux-works.svg` alt="UIUX")
         li.work-menu__item(:data-is-current="category === 'web'")
           button.work-menu__link(@click="changeCategory('web')")
             img(src=`${path}web-works.svg` alt="WEB")
