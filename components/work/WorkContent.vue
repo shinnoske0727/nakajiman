@@ -7,6 +7,8 @@
       template(v-if="workData.postType")
         template(v-if="workData.postTitle")
           .title {{ workData.postTitle }}
+        template(v-if="workData.postCategory.fields.categoryName")
+          p.subTitle {{ workData.postCategory.fields.categoryName }}
         p.explain(v-if="workData.postDescription" v-html="nl2br(workData.postDescription)")
 
         .picture-wrapper
@@ -91,13 +93,19 @@ export default {
       max-size 100%
 
 .title
-  margin-bottom: 48px
+  margin-bottom: 6px
   font-family HiraginoSans-W6
   font-size 20px
   text-align: center
   +sp-layout()
     margin-bottom: 40px
     font-size: 14px
+
+.subTitle
+  font-family HiraginoSans-W6
+  font-size 10px
+  text-align: center
+  color: $text-gray
 
 .explain,
 .role
@@ -115,6 +123,7 @@ export default {
   word-wrap: break-word;
   line-height: 2
   +pc-layout()
+    margin-top: 56px
     margin-bottom: 96px;
   +sp-layout()
     margin-bottom: 48px;
