@@ -151,7 +151,7 @@ export default {
       &::before
         transform: scaleX(1)
 
-.link[data-type="uiux"]
+.link[data-type="ui"]
   size 57px 26px
   +sp-layout()
     size 56px 28px
