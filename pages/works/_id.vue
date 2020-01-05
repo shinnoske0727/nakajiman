@@ -96,9 +96,10 @@ export default {
 <style scoped lang="stylus">
 .work
   size 100% 100%
-  padding 0 16px
   background-color $bg-white
   overflow auto
+  +sp-layout()
+    padding 0 16px
 
 .header
   fixed top 0
