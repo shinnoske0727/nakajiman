@@ -109,6 +109,7 @@ export default {
   +sp-layout()
     width: $max-width-sp
     margin: 0 auto
+    padding: 0 16px
 
 .title
   text-align: center
