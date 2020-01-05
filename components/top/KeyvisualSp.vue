@@ -140,8 +140,9 @@ export default {
             })
         },
         moveLink(imagePath) {
-            const id = this.KVImageMap.get(imagePath)
-            this.$router.push(`/works/${id}`)
+            // TODO 正しく遷移しないバグ直す
+            // const id = this.KVImageMap.get(imagePath)
+            // this.$router.push(`/works/${id}`)
         }
     }
 }
