@@ -35,8 +35,10 @@ export default {
 <style lang="stylus" scoped>
 .about
   +pc-layout()
-    width $max-width
-  margin 0 auto
+    max-width $max-width
+    margin 0 auto
+  +sp-layout()
+    padding 0 32px
 .title
   size auto 23px
   padding-top $title-padding-top
@@ -62,11 +64,11 @@ export default {
     size 351px 413px
     margin-right 31px
   +sp-layout()
-    size 295px 347px
+    max-width 295px
     margin: 0 auto
 .picture
   display block
-  size 100%
+  size 100% auto
   img
     size 100%
 .text-box
@@ -97,7 +99,7 @@ export default {
   font-size 12px
   line-height 2
   +sp-layout()
-    width: 311px
+    width: $max-width-sp
     line-height 1.83
     margin: 0 auto
     padding-bottom: 68px

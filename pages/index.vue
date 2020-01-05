@@ -76,7 +76,7 @@ export default {
     justify-content: space-between
     width: $max-width
   +sp-layout()
-    max-width: $max-width-sp
+    max-width: 343px
     padding-top: 64px
 
 .header
