@@ -136,6 +136,7 @@ export default {
     @media (min-width 980px)
         grid-template-columns: repeat(3, 1fr)
     +sp-layout()
+      display block
       padding-top: 100px
 
 .work-title
