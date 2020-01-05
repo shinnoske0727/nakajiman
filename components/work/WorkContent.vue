@@ -6,7 +6,7 @@
         img.kv(:src="kvSrc" :data-is-picture="!workData.postType")
       template(v-if="workData.postType")
         template(v-if="workData.postTitle")
-          .title {{ workData.postTitle }}
+          p.title {{ workData.postTitle }}
         template(v-if="workData.postCategory.fields.categoryName")
           p.subTitle {{ workData.postCategory.fields.categoryName }}
         p.explain(v-if="workData.postDescription" v-html="nl2br(workData.postDescription)")
@@ -125,9 +125,9 @@ export default {
   word-wrap: break-word;
   line-height: 2
   +pc-layout()
-    margin: 56px 0 96px
+    margin: 50px auto 96px
   +sp-layout()
-    margin: 40px 0 48px
+    margin: 36px auto 48px
     font-size: 12px
     line-height: 1.83
     max-width: $max-width-sp
