@@ -9,16 +9,16 @@
           img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
         ul.list
           li.item
-            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'ui' } })")
+            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'UI/UX' } })")
               img(src=`${path}uiux-white.svg` alt="UIUX")
           li.item
-            .link(data-type="web" @click="move({ name: 'works', params: { id: 'web' } })")
+            .link(data-type="web" @click="move({ name: 'works', params: { id: 'WEB' } })")
               img(src=`${path}web-white.svg` alt="WEB")
           li.item
-            .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'illustration' } })")
+            .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'ILLUSTRATION' } })")
               img(src=`${path}illust-white.svg` alt="ILLUST")
           li.item
-            .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'photograph' } })")
+            .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'PHOTOGRAPH' } })")
               img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
       keyvisual-pc
       .header
