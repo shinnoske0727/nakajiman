@@ -67,7 +67,7 @@ export default {
     methods: {
         ...mapActions(['loadWorksData', 'registerCurrentCategory']),
         changeCategory(val) {
-            if (!this.canChangeMenu) return
+            if (!this.canChangeMenu || this.currentCategory === val) return
             this.tempCategory = val
             this.isShowList = false
             this.canChangeMenu = false
