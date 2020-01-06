@@ -138,7 +138,7 @@ export default {
     +pc-layout()
       display grid
       grid-template-columns: repeat(auto-fit, minmax(326px, 1fr))
-    @media (min-width 980px)
+    @media (min-width 960px)
         grid-template-columns: repeat(3, 1fr)
     +sp-layout()
       display block
