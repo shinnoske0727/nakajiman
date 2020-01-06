@@ -35,7 +35,7 @@ export default {
     computed: {
         otherCategory() {
             return !_.includes(
-                ['ui', 'web', 'photograph', 'illustration'],
+                ['UI/UX', 'WEB', 'PHOTOGRAPH', 'ILLUSTRATION'],
                 this.category
             )
         }
