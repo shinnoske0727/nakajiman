@@ -83,7 +83,7 @@ export default {
             this.canChangeMenu = true
         },
         enter(el, done) {
-            const delay = el.dataset.index * 0.15 + 0.15
+            const delay = el.dataset.index * 0.1 + 0.5
             TweenMax.to(el, delay, {
                 autoAlpha: 1,
                 y: 0
