@@ -67,7 +67,7 @@ export default {
     methods: {
         ...mapActions(['loadWorksData', 'registerCurrentCategory']),
         changeCategory(val) {
-            if (!this.canChangeMenu) return
+            if (!this.canChangeMenu || this.currentCategory === val) return
             this.tempCategory = val
             this.isShowList = false
             this.canChangeMenu = false
@@ -138,7 +138,7 @@ export default {
     +pc-layout()
       display grid
       grid-template-columns: repeat(auto-fit, minmax(326px, 1fr))
-    @media (min-width 980px)
+    @media (min-width 960px)
         grid-template-columns: repeat(3, 1fr)
     +sp-layout()
       display block
