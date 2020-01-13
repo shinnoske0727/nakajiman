@@ -5,7 +5,7 @@
     nav.work-menu__nav
       ul.work-menu__list
         li.work-menu__item(:data-is-current="otherCategory")
-          button.work-menu__link(@click="changeCategory('')")
+          button.work-menu__link(@click="changeCategory('ALL')")
             img(src=`${path}all-works.svg` alt="ALL")
         li.work-menu__item(:data-is-current="category === 'UI/UX'")
           button.work-menu__link(@click="changeCategory('UI/UX')")

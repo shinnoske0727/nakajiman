@@ -77,7 +77,7 @@ export default {
             }, 1200)
         },
         updateCategory() {
-            this.registerCurrentCategory(this.tempCategory)
+            this.registerCurrentCategory(this.tempCategory === 'ALL' ? '' : this.tempCategory)
             this.tempCategory = null
             this.isShowList = true
             this.canChangeMenu = true
