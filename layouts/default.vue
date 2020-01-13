@@ -1,10 +1,12 @@
 <template lang="pug">
+  - path = "~/assets/img/common/";
   div
     nuxt
     template(v-if="page !== 'works-id'")
       menus
     slider
-    p.loading(v-if="isLoadedWork === 'covered'") LOADING
+    p.loading(v-if="isLoadedWork === 'covered'")
+      img.loading__image(src=`${path}txt_loading.svg` alt="LOADING")
 </template>
 
 <script>
@@ -46,4 +48,9 @@ export default {
     transform : translate(-50%, -50%)
     z-index: 4
     animation blight 0.12s infinite
+
+.loading__image
+    height 10px
+    +sp-layout()
+      height 8px
 </style>
