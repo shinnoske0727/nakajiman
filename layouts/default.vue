@@ -41,10 +41,6 @@ export default {
     align-items center
     width: 100%
     height: 100%
-    font-family: GillSans;
-    font-size: 12px;
-    letter-spacing: 1.71px;
-    color: #000000;
     transform : translate(-50%, -50%)
     z-index: 4
     animation blight 0.12s infinite
