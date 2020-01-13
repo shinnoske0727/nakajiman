@@ -45,7 +45,7 @@ export default {
                 return this.workData.postKv.fields.file.url
         },
         picSrcArray() {
-            if (!this.workData.postPhotos.length) return
+            if (!this.workData.postPhotos.length) return []
             return this.workData.postPhotos.map(photo => photo.fields.file.url)
         }
     },
