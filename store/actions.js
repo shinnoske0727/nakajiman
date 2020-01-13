@@ -26,7 +26,7 @@ export default {
         commit('setIsChangeWindow', { state: false, direction: 'right' })
     },
     updateLoadedWork({ commit }, state) {
-        // state { start : アニメーション開始, loaded: loading完了, end: アニメーション終了 }
+        // state { start : アニメーション開始, covered: アニメーション前半終了 loaded: loading完了, end: アニメーション終了 }
         commit('setIsLoadedWork', state)
     },
     registerKVImages({ commit }, array) {

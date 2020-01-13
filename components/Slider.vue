@@ -34,9 +34,9 @@ export default {
             }
         },
         isLoadedWork: function(state) {
-            if(state === 'start') {
+            if (state === 'start') {
                 this.halfTl.restart()
-            } else if(state === 'loaded'){
+            } else if (state === 'loaded') {
                 this.halfTlReverse.restart()
             }
         }
@@ -60,7 +60,12 @@ export default {
                 })
                 .to(this.$refs.slide, 0.75, {
                     scaleX: 1,
-                    ease: Power4.easeOut
+                    ease: Power4.easeOut,
+                    onStart: () => {
+                        setTimeout(() => {
+                            this.updateLoadedWork('covered')
+                        }, 250)
+                    }
                 })
                 .set(this.$refs.slide, {
                     transformOrigin: 'center right'
@@ -69,10 +74,10 @@ export default {
         slideHalfOut() {
             this.halfTlReverse = new TimelineMax({ paused: true })
             this.halfTlReverse
-                    .set(this.$refs.slide, {
-                        transformOrigin: 'center left'
-                    })
-                    .to(this.$refs.second, 0.75, {
+                .set(this.$refs.slide, {
+                    transformOrigin: 'center left'
+                })
+                .to(this.$refs.second, 0.75, {
                     scaleX: 0,
                     ease: Power4.easeOut,
                     onComplete: () => {
@@ -86,7 +91,6 @@ export default {
                         })
                     }
                 })
-
         },
         slideIn() {
             this.tl = new TimelineMax({ paused: true })
