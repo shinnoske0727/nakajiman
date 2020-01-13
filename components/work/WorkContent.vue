@@ -24,6 +24,8 @@
 <script>
 import { TweenLite, Expo } from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import { preloadImages } from '../../assets/helper/preloadImage'
+import { mapActions } from 'vuex'
 
 const plugins = [ScrollToPlugin]
 
@@ -47,7 +49,13 @@ export default {
             return this.workData.postPhotos.map(photo => photo.fields.file.url)
         }
     },
+    mounted() {
+        preloadImages([...this.picSrcArray, this.kvSrc]).then(() => {
+            this.updateLoadedWork('loaded')
+        })
+    },
     methods: {
+        ...mapActions(['updateLoadedWork']),
         moveToTop: function() {
             TweenLite.to(window, 1.0, {
                 scrollTo: this.$refs.content,
