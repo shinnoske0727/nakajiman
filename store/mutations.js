@@ -8,9 +8,6 @@ export default {
     setIsShowMenu(state, bool) {
         state.isShowMenu = bool
     },
-    setIsChangeWindow(state, payload) {
-        state.isChangeWindow = payload
-    },
     setIsLoadedWork(state, payload) {
         state.isLoadedWork = payload
     },
