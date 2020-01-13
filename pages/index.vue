@@ -50,7 +50,7 @@ export default {
     methods: {
         ...mapActions(['updateLoadedWork']),
         move(option) {
-            this.updateLoadedWork('start')
+            this.updateLoadedWork({ state: 'start', direction: 'next' })
             setTimeout(() => {
                 this.$router.push(option)
             }, 800)

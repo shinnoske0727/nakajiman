@@ -65,10 +65,14 @@ export default {
         }
     },
     mounted() {
-        this.updateLoadedWork('loaded')
+        this.updateLoadedWork({ state: 'loaded' })
     },
     methods: {
-        ...mapActions(['loadWorksData', 'registerCurrentCategory', 'updateLoadedWork']),
+        ...mapActions([
+            'loadWorksData',
+            'registerCurrentCategory',
+            'updateLoadedWork'
+        ]),
         changeCategory(val) {
             if (!this.canChangeMenu || this.currentCategory === val) return
             this.tempCategory = val
@@ -99,7 +103,7 @@ export default {
             const delay = el.dataset.index * 0.15 + 0.15
             TweenMax.to(el, delay, {
                 autoAlpha: 0,
-                y: 30,
+                y: 30
             })
         },
         beforeEnter(el) {

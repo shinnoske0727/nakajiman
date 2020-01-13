@@ -52,7 +52,7 @@ export default {
     },
     mounted() {
         preloadImages([...this.picSrcArray, this.kvSrc]).then(() => {
-            this.updateLoadedWork('loaded')
+            this.updateLoadedWork({ state: 'loaded' })
         })
     },
     methods: {

@@ -70,21 +70,21 @@ export default {
             }, 800)
         },
         goNext() {
-            this.updateLoadedWork('start')
+            this.updateLoadedWork({ state: 'start', direction: 'next'})
             const next = this.isLast
                 ? this.first
                 : this.pageIdArray[this.currentIndex + 1]
             this.move(next)
         },
         goPrev() {
-            this.updateLoadedWork('start')
+            this.updateLoadedWork({ state: 'start', direction: 'prev'})
             const prev = this.isFirst
                 ? this.last
                 : this.pageIdArray[this.currentIndex - 1]
             this.move(prev)
         },
         close() {
-            this.updateLoadedWork('start')
+            this.updateLoadedWork({ state: 'start', direction: 'prev'})
             setTimeout(() => {
                 this.$router.push({ name: 'works' })
             }, 800)
