@@ -68,7 +68,7 @@ export default {
         })
     },
     methods: {
-        ...mapActions(['changeWindow']),
+        ...mapActions(['updateLoadedWork']),
         showInfo() {
             if (UA.isSP || !this.$refs.info || !this.$refs.text) return
             const $info = this.$refs.info
@@ -84,7 +84,7 @@ export default {
             TweenMax.fromTo($text, 0.5, showOption.text, hideOption.text)
         },
         move(option) {
-            this.changeWindow()
+            this.updateLoadedWork('start')
             setTimeout(() => {
                 this.$router.push(option)
             }, 800)

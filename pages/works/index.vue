@@ -23,7 +23,7 @@ import { dammyData } from '@/assets/data/dammyData'
 import WorkThumbnail from '@/components/work/WorkThumbnail'
 import { fetchEntries } from '@/assets/helper/api'
 import { orderBy } from 'lodash'
-import { TweenMax } from 'gsap'
+import { TweenMax, Expo } from 'gsap'
 
 export default {
     name: 'Works',
@@ -77,7 +77,9 @@ export default {
             }, 1200)
         },
         updateCategory() {
-            this.registerCurrentCategory(this.tempCategory)
+            this.registerCurrentCategory(
+                this.tempCategory === 'ALL' ? '' : this.tempCategory
+            )
             this.tempCategory = null
             this.isShowList = true
             this.canChangeMenu = true
@@ -86,14 +88,15 @@ export default {
             const delay = el.dataset.index * 0.1 + 0.5
             TweenMax.to(el, delay, {
                 autoAlpha: 1,
-                y: 0
+                y: 0,
+                ease: Expo.easeOut
             })
         },
         leave(el, done) {
             const delay = el.dataset.index * 0.15 + 0.15
             TweenMax.to(el, delay, {
                 autoAlpha: 0,
-                y: 30
+                y: 30,
             })
         },
         beforeEnter(el) {

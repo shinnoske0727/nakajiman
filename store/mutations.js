@@ -11,6 +11,9 @@ export default {
     setIsChangeWindow(state, payload) {
         state.isChangeWindow = payload
     },
+    setIsLoadedWork(state, payload) {
+        state.isLoadedWork = payload
+    },
     setKVImages(state, array) {
         state.KVImages = array
     },
