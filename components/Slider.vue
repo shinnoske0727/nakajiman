@@ -26,16 +26,16 @@ export default {
     watch: {
         isLoadedWork: function(value) {
             if (value.state === 'start' && value.direction === 'next') {
-                this.halfTlIn.restart()
+                this.halfTlInReverse.restart()
                 this.pageDirection = 'next'
             } else if (value.state === 'start' && value.direction === 'prev') {
-                this.halfTlInReverse.restart()
+                this.halfTlIn.restart()
                 this.pageDirection = 'prev'
             } else if (value.state === 'loaded') {
                 if (this.pageDirection === 'next') {
-                    this.halfTlOut.restart()
-                } else {
                     this.halfTlOutReverse.restart()
+                } else {
+                    this.halfTlOut.restart()
                 }
                 this.pageDirection = ''
             }
