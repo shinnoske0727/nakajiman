@@ -19,12 +19,6 @@ export default {
     hideMenu({ commit }) {
         commit('setIsShowMenu', false)
     },
-    changeWindow({ commit }, direction = 'right') {
-        commit('setIsChangeWindow', { state: true, direction })
-    },
-    waitWindow({ commit }) {
-        commit('setIsChangeWindow', { state: false, direction: 'right' })
-    },
     updateLoadedWork({ commit }, state) {
         // state { start : アニメーション開始, covered: アニメーション前半終了 loaded: loading完了, end: アニメーション終了 }
         commit('setIsLoadedWork', state)

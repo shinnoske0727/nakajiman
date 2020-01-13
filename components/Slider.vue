@@ -20,19 +20,9 @@ export default {
         }
     },
     computed: {
-        ...mapState(['isChangeWindow', 'isLoadedWork'])
+        ...mapState(['isLoadedWork'])
     },
     watch: {
-        isChangeWindow: function(payload) {
-            if (payload.state) {
-                this.direction = payload.direction
-                if (this.direction === 'left') {
-                    this.tl.restart()
-                } else {
-                    this.tlReverse.restart()
-                }
-            }
-        },
         isLoadedWork: function(state) {
             if (state === 'start') {
                 this.halfTl.restart()
@@ -42,13 +32,11 @@ export default {
         }
     },
     mounted() {
-        this.slideIn()
-        this.slideOut()
         this.slideHalfIn()
         this.slideHalfOut()
     },
     methods: {
-        ...mapActions(['waitWindow', 'updateLoadedWork']),
+        ...mapActions(['updateLoadedWork']),
         slideHalfIn() {
             this.halfTl = new TimelineMax({ paused: true })
             this.halfTl
@@ -82,68 +70,6 @@ export default {
                     ease: Power4.easeOut,
                     onComplete: () => {
                         this.updateLoadedWork('end')
-                    },
-                    onStart: () => {
-                        TweenMax.to(this.$refs.slide, 0.75, {
-                            delay: 0.25,
-                            scaleX: 0,
-                            ease: Power4.easeOut
-                        })
-                    }
-                })
-        },
-        slideIn() {
-            this.tl = new TimelineMax({ paused: true })
-            this.tl
-                .set(this.$refs.slide, {
-                    scaleX: 0
-                })
-                .set(this.$refs.second, {
-                    scaleX: 1
-                })
-                .to(this.$refs.slide, 0.75, {
-                    scaleX: 1,
-                    ease: Power4.easeOut
-                })
-                .set(this.$refs.slide, {
-                    transformOrigin: 'center right'
-                })
-                .to(this.$refs.second, 0.75, {
-                    scaleX: 0,
-                    ease: Power4.easeOut,
-                    onComplete: () => {
-                        this.waitWindow()
-                    },
-                    onStart: () => {
-                        TweenMax.to(this.$refs.slide, 0.75, {
-                            delay: 0.25,
-                            scaleX: 0,
-                            ease: Power4.easeOut
-                        })
-                    }
-                })
-        },
-        slideOut() {
-            this.tlReverse = new TimelineMax({ paused: true })
-            this.tlReverse
-                .set(this.$refs.slide, {
-                    scaleX: 0
-                })
-                .set(this.$refs.second, {
-                    scaleX: 1
-                })
-                .to(this.$refs.slide, 0.75, {
-                    scaleX: 1,
-                    ease: Power4.easeOut
-                })
-                .set(this.$refs.slide, {
-                    transformOrigin: 'center left'
-                })
-                .to(this.$refs.second, 0.75, {
-                    scaleX: 0,
-                    ease: Power4.easeOut,
-                    onComplete: () => {
-                        this.waitWindow()
                     },
                     onStart: () => {
                         TweenMax.to(this.$refs.slide, 0.75, {

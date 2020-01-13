@@ -64,8 +64,11 @@ export default {
             )
         }
     },
+    mounted() {
+        this.updateLoadedWork('loaded')
+    },
     methods: {
-        ...mapActions(['loadWorksData', 'registerCurrentCategory']),
+        ...mapActions(['loadWorksData', 'registerCurrentCategory', 'updateLoadedWork']),
         changeCategory(val) {
             if (!this.canChangeMenu || this.currentCategory === val) return
             this.tempCategory = val
