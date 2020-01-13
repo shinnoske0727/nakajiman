@@ -60,7 +60,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['changeWindow']),
+        ...mapActions(['updateLoadedWork']),
         move(id) {
             setTimeout(() => {
                 this.$router.push({
@@ -70,21 +70,21 @@ export default {
             }, 800)
         },
         goNext() {
-            this.changeWindow('right')
+            this.updateLoadedWork('start')
             const next = this.isLast
                 ? this.first
                 : this.pageIdArray[this.currentIndex + 1]
             this.move(next)
         },
         goPrev() {
-            this.changeWindow('left')
+            this.updateLoadedWork('start')
             const prev = this.isFirst
                 ? this.last
                 : this.pageIdArray[this.currentIndex - 1]
             this.move(prev)
         },
         close() {
-            this.changeWindow('left')
+            this.updateLoadedWork('start')
             setTimeout(() => {
                 this.$router.push({ name: 'works' })
             }, 800)

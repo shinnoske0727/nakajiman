@@ -48,9 +48,9 @@ export default {
     },
     components: { KeyvisualSp, KeyvisualPc },
     methods: {
-        ...mapActions(['changeWindow']),
+        ...mapActions(['updateLoadedWork']),
         move(option) {
-            this.changeWindow()
+            this.updateLoadedWork('start')
             setTimeout(() => {
                 this.$router.push(option)
             }, 800)
