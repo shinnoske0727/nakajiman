@@ -2,7 +2,7 @@ export default () => ({
     worksData: [],
     worksId: null,
     isShowMenu: true,
-    isLoadedWork: false,
+    isLoadedWork: {},
     KVImages: [],
     currentKVImages: [],
     currentCategory: null,

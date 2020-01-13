@@ -19,9 +19,9 @@ export default {
     hideMenu({ commit }) {
         commit('setIsShowMenu', false)
     },
-    updateLoadedWork({ commit }, state) {
+    updateLoadedWork({ commit }, payload) {
         // state { start : アニメーション開始, covered: アニメーション前半終了 loaded: loading完了, end: アニメーション終了 }
-        commit('setIsLoadedWork', state)
+        commit('setIsLoadedWork', payload)
     },
     registerKVImages({ commit }, array) {
         commit('setKVImages', array)

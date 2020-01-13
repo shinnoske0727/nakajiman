@@ -5,7 +5,7 @@
     template(v-if="page !== 'works-id'")
       menus
     slider
-    p.loading(v-if="isLoadedWork === 'covered'")
+    p.loading(v-if="isLoadedWork.state === 'covered'")
       img.loading__image(src=`${path}txt_loading.svg` alt="LOADING")
 </template>
 

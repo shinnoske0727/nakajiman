@@ -84,7 +84,7 @@ export default {
             TweenMax.fromTo($text, 0.5, showOption.text, hideOption.text)
         },
         move(option) {
-            this.updateLoadedWork('start')
+            this.updateLoadedWork({ state: 'start', direction: 'next' })
             setTimeout(() => {
                 this.$router.push(option)
             }, 800)

@@ -12,36 +12,49 @@ export default {
     name: 'Slider',
     data() {
         return {
-            tl: '',
-            tlReverse: '',
-            halfTl: '',
-            halfTlReverse: '',
-            direction: 'right'
+            halfTlIn: '',
+            halfTlOut: '',
+            halfTlInReverse: '',
+            halfTlOutReverse: '',
+            direction: 'right',
+            pageDirection: ''
         }
     },
     computed: {
         ...mapState(['isLoadedWork'])
     },
     watch: {
-        isLoadedWork: function(state) {
-            if (state === 'start') {
-                this.halfTl.restart()
-            } else if (state === 'loaded') {
-                this.halfTlReverse.restart()
+        isLoadedWork: function(value) {
+            if (value.state === 'start' && value.direction === 'next') {
+                this.halfTlIn.restart()
+                this.pageDirection = 'next'
+            } else if (value.state === 'start' && value.direction === 'prev') {
+                this.halfTlInReverse.restart()
+                this.pageDirection = 'prev'
+            } else if (value.state === 'loaded') {
+                if (this.pageDirection === 'next') {
+                    this.halfTlOut.restart()
+                } else {
+                    this.halfTlOutReverse.restart()
+                }
+                this.pageDirection = ''
             }
         }
     },
     mounted() {
         this.slideHalfIn()
         this.slideHalfOut()
+        this.slideHalfInReverse()
+        this.slideHalfOutReverse()
     },
     methods: {
         ...mapActions(['updateLoadedWork']),
         slideHalfIn() {
-            this.halfTl = new TimelineMax({ paused: true })
-            this.halfTl
+            this.halfTlIn = new TimelineMax({ paused: true })
+            this.halfTlIn
                 .set(this.$refs.slide, {
-                    scaleX: 0
+                    scaleX: 0,
+                    transformOrigin: 'center left'
                 })
                 .set(this.$refs.second, {
                     scaleX: 1
@@ -51,17 +64,55 @@ export default {
                     ease: Power4.easeOut,
                     onStart: () => {
                         setTimeout(() => {
-                            this.updateLoadedWork('covered')
+                            this.updateLoadedWork({ state: 'covered' })
                         }, 250)
                     }
                 })
+        },
+        slideHalfOut() {
+            this.halfTlOut = new TimelineMax({ paused: true })
+            this.halfTlOut
                 .set(this.$refs.slide, {
                     transformOrigin: 'center right'
                 })
+                .to(this.$refs.second, 0.75, {
+                    scaleX: 0,
+                    ease: Power4.easeOut,
+                    onComplete: () => {
+                        this.updateLoadedWork({ state: 'end' })
+                    },
+                    onStart: () => {
+                        TweenMax.to(this.$refs.slide, 0.75, {
+                            delay: 0.25,
+                            scaleX: 0,
+                            ease: Power4.easeOut
+                        })
+                    }
+                })
         },
-        slideHalfOut() {
-            this.halfTlReverse = new TimelineMax({ paused: true })
-            this.halfTlReverse
+        slideHalfInReverse() {
+            this.halfTlInReverse = new TimelineMax({ paused: true })
+            this.halfTlInReverse
+                .set(this.$refs.slide, {
+                    scaleX: 0,
+                    transformOrigin: 'center right'
+                })
+                .set(this.$refs.second, {
+                    scaleX: 1
+                })
+                .to(this.$refs.slide, 0.75, {
+                    scaleX: 1,
+                    ease: Power4.easeOut,
+                    onStart: () => {
+                        setTimeout(() => {
+                            this.updateLoadedWork({ state: 'covered' })
+                        }, 250)
+                    }
+                })
+        },
+        slideHalfOutReverse() {
+            this.halfTlOutReverse = new TimelineMax({ paused: true })
+            this.halfTlOutReverse
                 .set(this.$refs.slide, {
                     transformOrigin: 'center left'
                 })
@@ -69,7 +120,7 @@ export default {
                     scaleX: 0,
                     ease: Power4.easeOut,
                     onComplete: () => {
-                        this.updateLoadedWork('end')
+                        this.updateLoadedWork({ state: 'end' })
                     },
                     onStart: () => {
                         TweenMax.to(this.$refs.slide, 0.75, {
