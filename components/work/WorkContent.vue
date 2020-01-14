@@ -94,7 +94,7 @@ export default {
 
   &[data-is-picture="true"]
     display: block
-    size 100% auto
+    max-size $max-width 85vh
     margin: 0 auto 48px
     +sp-layout()
       max-size 100%
