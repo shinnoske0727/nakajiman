@@ -41,6 +41,9 @@ export default {
     },
     computed: {
         kvSrc() {
+            if (!this.workData.postType) {
+                return this.workData.postPhotos[0].fields.file.url
+            }
             if (this.workData.postKv.fields.file.url)
                 return this.workData.postKv.fields.file.url
         },
@@ -94,7 +97,8 @@ export default {
 
   &[data-is-picture="true"]
     display: block
-    max-size $max-width 85vh
+    size: auto
+    max-size $max-width 75vh
     margin: 0 auto 48px
     +sp-layout()
       max-size 100%
