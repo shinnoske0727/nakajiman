@@ -73,11 +73,13 @@ export default {
   .work-menu__item
     position: relative
     padding: 0 4px;
-    opacity 0.3
-    transition opacity 0.2s ease-in
 
     &:last-of-type
       margin-right: 0
+
+    & .work-menu__link
+      opacity 0.3
+      transition opacity 0.2s ease-in
 
     &::after
       content ""
@@ -89,7 +91,8 @@ export default {
       transform scaleX(0)
 
     &[data-is-current="true"]
-      opacity 1
+      & .work-menu__link
+          opacity 1
 
       &::after
         opacity 1
@@ -97,7 +100,8 @@ export default {
     +pc-layout()
       margin-right: 48px
       &:hover
-        opacity 1
+        & .work-menu__link
+          opacity 1
         &::after
           opacity 1
           transform scaleX(1)
