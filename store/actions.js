@@ -34,5 +34,8 @@ export default {
     },
     registerKVLinks({ commit }, array) {
         commit('setKVLinks', array)
+    },
+    registerTopKVData({ commit }, array) {
+        commit('setTopKVData', array)
     }
 }

@@ -22,5 +22,8 @@ export default {
     },
     setKVLinks(state, array) {
         state.KVLinks = array
+    },
+    setTopKVData(state, array) {
+        state.topKVData = array
     }
 }
