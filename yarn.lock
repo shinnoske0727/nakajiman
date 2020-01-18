@@ -1420,6 +1420,11 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+basic-ftp@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-4.5.1.tgz#951d1ad8c9c2372b82755bc3bec5aefc29e410d2"
+  integrity sha512-+Qzbv7TlPpuF8gEy2oUAvu8il1NwwhIjM2A+PN4ihmAMF2rrbTUMg+PNx6DsJpQIF2OGeUOJAZVVoC19rp1wwg==
+
 bfj@^6.1.1:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/bfj/-/bfj-6.1.2.tgz#325c861a822bcb358a41c78a33b8e6e2086dde7f"
@@ -2655,7 +2660,7 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv@^8.1.0:
+dotenv@^8.1.0, dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
 
