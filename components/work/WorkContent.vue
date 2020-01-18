@@ -46,6 +46,7 @@ export default {
             }
             if (this.workData.postKv.fields.file.url)
                 return this.workData.postKv.fields.file.url
+            return ''
         },
         picSrcArray() {
             if (!(this.workData.postPhotos && this.workData.postPhotos.length))
