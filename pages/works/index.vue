@@ -19,7 +19,6 @@
 import { mapActions, mapState } from 'vuex'
 import WorkMenu from '@/components/work/WorkMenu'
 import Menus from '@/components/menu/Menus'
-import { dammyData } from '@/assets/data/dammyData'
 import WorkThumbnail from '@/components/work/WorkThumbnail'
 import { fetchEntries } from '@/assets/helper/api'
 import { orderBy } from 'lodash'
@@ -31,7 +30,6 @@ export default {
         if (params.id) {
             await store.dispatch('registerCurrentCategory', params.id)
         }
-        await store.dispatch('loadWorksData', dammyData)
     },
     async asyncData() {
         const postData = await fetchEntries()

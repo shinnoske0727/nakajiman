@@ -6,8 +6,8 @@
 
 <script>
 import _ from 'lodash'
-import { mapState, mapActions, mapGetters } from 'vuex'
-import { TweenMax, Expo, Power4 } from 'gsap'
+import { mapState, mapActions } from 'vuex'
+import { TweenMax, Power4 } from 'gsap'
 
 export default {
     name: 'GridItem',
@@ -48,8 +48,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['currentKVImages', 'KVImages']),
-        ...mapGetters(['KVImageMap']),
+        ...mapState(['currentKVImages', 'KVImages', 'topKVData']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -97,11 +96,11 @@ export default {
                 secondImage.src = firstImage.src
             }
         },
-        resetImage(firstImage, secondImage) {
+        resetImage() {
             if (_.includes(['bottom', 'right'], this.direction)) {
-                secondImage.src = this.currentKVImages[this.index]
+                this.nextImgSrc = this.currentKVImages[this.index]
             } else {
-                firstImage.src = this.currentKVImages[this.index]
+                this.firstImgSrc = this.currentKVImages[this.index]
             }
         },
         reset() {
@@ -113,7 +112,7 @@ export default {
                 x: 0,
                 y: 0
             })
-            this.resetImage(firstImage, secondImage)
+            this.resetImage()
         },
         slide() {
             const option = {
@@ -127,9 +126,8 @@ export default {
             return TweenMax.to(this.$refs.item, 1.5, option)
         },
         moveLink(imagePath) {
-            // TODO 正しく遷移しないバグ直す
-            // const id = this.KVImageMap.get(imagePath)
-            // this.$router.push(`/works/${id}`)
+            const current = this.topKVData.find(d => d.url === imagePath)
+            this.$router.push(`/works/${current.id}`)
         }
     }
 }

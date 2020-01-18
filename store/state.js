@@ -5,6 +5,7 @@ export default () => ({
     isLoadedWork: {},
     KVImages: [],
     currentKVImages: [],
+    topKVData: [],
     currentCategory: null,
     KVLinks: []
 })

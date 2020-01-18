@@ -30,17 +30,26 @@ import { dammyData } from '@/assets/data/dammyData'
 import { preloadImages } from '@/assets/helper/preloadImage'
 import KeyvisualPc from '../components/top/KeyvisualPc'
 import KeyvisualSp from '@/components/top/KeyvisualSp'
+import { orderBy } from 'lodash'
+import { fetchEntries } from '../assets/helper/api'
 
 export default {
     name: 'Top',
     async fetch({ store }) {
-        const filteredKvArray = dammyData.filter(data => data.top.kv)
-        const kvImageArray = filteredKvArray.map(data =>
-            require(`@/assets/data/${data.top.kv}`)
+        const postData = await fetchEntries()
+        const kvData = orderBy(
+            postData.items.map(post => ({
+                ...post.fields.postTopThumbnail.fields.file,
+                ...post.fields.postCategory.fields,
+                id: post.sys.id
+            })),
+            'postOrder'
         )
-        const images = await preloadImages(kvImageArray)
-        const kvLinks = filteredKvArray.map(data => data.id)
-        await store.dispatch('registerKVLinks', kvLinks)
+        const images = await preloadImages(kvData.map(d => d.url))
+        await store.dispatch(
+            'registerTopKVData',
+            kvData.map((d, i) => ({ ...d, url: images[i].src }))
+        )
         await store.dispatch(
             'registerKVImages',
             images.map(img => img.src)

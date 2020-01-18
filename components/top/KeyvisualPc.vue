@@ -75,14 +75,44 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages', 'currentKVImages']),
-        ...mapGetters(['KVImageMap'])
+        ...mapState(['KVImages', 'currentKVImages', 'topKVData'])
     },
     mounted() {
         this.timer = setInterval(() => {
-            const kvImages = Array.from(this.KVImageMap.keys())
-            const images = pickRandomItems(kvImages, 7)
-            this.registerCurrentKVImages(images)
+            const images = this.currentKVImages.length
+                ? this.topKVData.filter(
+                      d => !this.currentKVImages.includes(d.url)
+                  )
+                : this.topKVData
+            const uiImages = pickRandomItems(
+                images.filter(d => d.categoryName === 'UI/UX').map(d => d.url),
+                2
+            )
+            const webImages = pickRandomItems(
+                images.filter(d => d.categoryName === 'WEB').map(d => d.url),
+                2
+            )
+            const illustImages = pickRandomItems(
+                images
+                    .filter(d => d.categoryName === 'ILLUSTRATION')
+                    .map(d => d.url),
+                2
+            )
+            const photoImages = pickRandomItems(
+                images
+                    .filter(d => d.categoryName === 'PHOTOGRAPH')
+                    .map(d => d.url),
+                1
+            )
+            this.registerCurrentKVImages([
+                uiImages[0],
+                webImages[0],
+                illustImages[0],
+                uiImages[1],
+                webImages[1],
+                illustImages[1],
+                photoImages[0]
+            ])
             this.counter += 1
         }, 3000)
     },
