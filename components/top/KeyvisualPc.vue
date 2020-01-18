@@ -75,12 +75,11 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages', 'currentKVImages']),
-        ...mapGetters(['KVImageMap'])
+        ...mapState(['KVImages', 'currentKVImages', 'topKVData']),
     },
     mounted() {
         this.timer = setInterval(() => {
-            const kvImages = Array.from(this.KVImageMap.keys())
+            const kvImages = this.topKVData.map(d => d.url)
             const images = pickRandomItems(kvImages, 7)
             this.registerCurrentKVImages(images)
             this.counter += 1
