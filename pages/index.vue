@@ -38,13 +38,18 @@ export default {
     async fetch({ store }) {
         const postData = await fetchEntries()
         const kvData = orderBy(
-            postData.items.map(post => ({ ...post.fields.postTopThumbnail.fields.file, id: post.sys.id })),
+            postData.items.map(post => ({
+                ...post.fields.postTopThumbnail.fields.file,
+                ...post.fields.postCategory.fields,
+                id: post.sys.id
+            })),
             'postOrder'
         )
         const images = await preloadImages(kvData.map(d => d.url))
-        const kvLinks = kvData.map(data => data.id)
-        await store.dispatch('registerTopKVData', kvData.map((d, i) => ({ ...d, url: images[i].src })))
-        await store.dispatch('registerKVLinks', kvLinks)
+        await store.dispatch(
+            'registerTopKVData',
+            kvData.map((d, i) => ({ ...d, url: images[i].src }))
+        )
         await store.dispatch(
             'registerKVImages',
             images.map(img => img.src)
