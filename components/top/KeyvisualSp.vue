@@ -9,7 +9,7 @@
 <script>
 import _ from 'lodash'
 import { TweenMax, Power2, Power4 } from 'gsap'
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     name: 'KeyvisualSp',

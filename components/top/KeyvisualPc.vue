@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
 import GridItem from './GridItem'
 
