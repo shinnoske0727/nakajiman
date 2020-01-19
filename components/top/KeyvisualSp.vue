@@ -24,8 +24,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages']),
-        ...mapGetters(['KVImageMap'])
+        ...mapState(['KVImages', 'topKVData']),
     },
     mounted() {
         this.init()
@@ -140,9 +139,8 @@ export default {
             })
         },
         moveLink(imagePath) {
-            // TODO 正しく遷移しないバグ直す
-            // const id = this.KVImageMap.get(imagePath)
-            // this.$router.push(`/works/${id}`)
+            const current = this.topKVData.find(d => d.url === imagePath)
+            this.$router.push(`/works/${current.id}`)
         }
     }
 }
