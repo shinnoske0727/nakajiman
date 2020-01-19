@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
 import GridItem from './GridItem'
 
@@ -75,7 +75,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages', 'currentKVImages', 'topKVData'])
+        ...mapState(['currentKVImages', 'topKVData'])
     },
     mounted() {
         this.timer = setInterval(() => {
