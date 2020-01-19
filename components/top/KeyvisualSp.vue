@@ -1,7 +1,7 @@
 <template lang="pug">
   .image-box--sp
     .inner(ref="item")
-      template(v-for="( image, index ) in KVImages")
+      template(v-for="( image, index ) in filteredKVImages")
         .image-wrapper
           img(:src="image" width="343" height="343"  :data-num="index" @click="moveLink(image)")
 </template>
@@ -25,6 +25,13 @@ export default {
     },
     computed: {
         ...mapState(['KVImages', 'topKVData']),
+        filteredKVImages() {
+            return this.topKVData
+                .filter(d =>
+                    ['UI/UX', 'WEB', 'ILLUSTRATION'].includes(d.categoryName)
+                )
+                .map(d => d.url)
+        }
     },
     mounted() {
         this.init()
@@ -147,24 +154,23 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .image-box--sp
-    position: relative
-    size: 343px
-    margin-bottom: 32px
-    overflow: hidden
-    +pc-layout()
-      display: none
+.image-box--sp
+  position: relative
+  size: 343px
+  margin-bottom: 32px
+  overflow: hidden
+  +pc-layout()
+    display: none
 
-  .inner
-    size 100%
+.inner
+  size 100%
 
-  .image-wrapper
+.image-wrapper
+  absolute top 0 left 0
+  size 0 100%
+  overflow: hidden
+
+  & > img
     absolute top 0 left 0
-    size 0 100%
-    overflow: hidden
-
-    & > img
-      absolute top 0 left 0
-      cursor pointer
-
+    cursor pointer
 </style>

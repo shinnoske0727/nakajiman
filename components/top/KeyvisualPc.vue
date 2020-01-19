@@ -75,7 +75,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['KVImages', 'currentKVImages', 'topKVData'])
+        ...mapState(['currentKVImages', 'topKVData'])
     },
     mounted() {
         this.timer = setInterval(() => {
