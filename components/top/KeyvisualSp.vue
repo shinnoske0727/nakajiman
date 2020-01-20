@@ -3,7 +3,7 @@
     .inner(ref="item")
       template(v-for="( image, index ) in filteredKVImages")
         .image-wrapper
-          img(:src="image" width="343" height="343"  :data-num="index" @click="moveLink(image)")
+          img(:src="image" width="343" height="343"  :data-num="index")
 </template>
 
 <script>
@@ -144,10 +144,6 @@ export default {
                 left: '0',
                 x: '0'
             })
-        },
-        moveLink(imagePath) {
-            const current = this.topKVData.find(d => d.url === imagePath)
-            this.$router.push(`/works/${current.id}`)
         }
     }
 }
@@ -172,5 +168,4 @@ export default {
 
   & > img
     absolute top 0 left 0
-    cursor pointer
 </style>

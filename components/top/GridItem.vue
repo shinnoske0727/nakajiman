@@ -1,7 +1,7 @@
 <template lang="pug">
   .grid-inner(v-if="firstImgSrc" ref="item" :data-type="direction")
-    img(:src="firstImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast" @click="moveLink(firstImgSrc)")
-    img(:src="nextImgSrc" :idth="!isLast ? width : ''" :height="height" :data-is-last="isLast" @click="moveLink(nextImgSrc)")
+    img(:src="firstImgSrc" :width="!isLast ? width : ''" :height="height" :data-is-last="isLast")
+    img(:src="nextImgSrc" :idth="!isLast ? width : ''" :height="height" :data-is-last="isLast")
 </template>
 
 <script>
@@ -124,10 +124,6 @@ export default {
                 }
             }
             return TweenMax.to(this.$refs.item, 1.5, option)
-        },
-        moveLink(imagePath) {
-            const current = this.topKVData.find(d => d.url === imagePath)
-            this.$router.push(`/works/${current.id}`)
         }
     }
 }
@@ -147,9 +143,6 @@ export default {
   &[data-type="right"]
     absolute top 0 left 0
     display: flex
-
-  & > img
-      cursor pointer
 
   & > img[data-is-last="true"]
     transform: translateX(-8px)
