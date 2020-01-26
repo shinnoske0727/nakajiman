@@ -27,9 +27,10 @@ jobs:
                       - node_modules
                   key: v1-dependencies-{{ checksum "package.json" }}
 
-            # run tests!
             - run: yarn generate
-
+            - run:
+                name: upload Static Files through SFTP
+                command: yarn generate
         filters:
             branches:
                 only: master
