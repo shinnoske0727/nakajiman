@@ -17,7 +17,7 @@ const upload = async () => {
             'kenta-nakajima.com/public_html/'
         )
     } catch (err) {
-        throw new Error(err)
+        console.log(err)
     }
     client.close()
 }
