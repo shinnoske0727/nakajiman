@@ -1,5 +1,6 @@
-require('dotenv').config();
-const ftp = require("basic-ftp")
+require('dotenv').config()
+const ftp = require('basic-ftp')
+const path = require('path')
 
 const upload = async () => {
     const client = new ftp.Client()
@@ -11,11 +12,11 @@ const upload = async () => {
             password: process.env.FTP_PASS,
             secure: true
         })
-        console.log(await client.list())
-        await client.uploadFrom("README.md", "README_FTP.md")
-        await client.downloadTo("README_COPY.md", "README_FTP.md")
-    }
-    catch(err) {
+        await client.uploadFromDir(
+            path.resolve(__dirname, '../dist/'),
+            'kenta-nakajima.com/public_html/'
+        )
+    } catch (err) {
         console.log(err)
     }
     client.close()
