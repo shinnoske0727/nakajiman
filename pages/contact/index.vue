@@ -80,7 +80,7 @@ export default {
     padding-top: $title-padding-top
     +sp-layout()
       max-width: $max-width-sp
-      padding-top: $title-padding-top-sp;
+      padding: $title-padding-top-sp 16px 0;
       overflow: hidden
   .title
     size auto 23px
