@@ -25,7 +25,7 @@ ${message}
     };
     await sgMail.send(msg);
 
-    res.set('Access-Control-Allow-Origin', 'http://kenta-nakajima.com/');
+    res.set('Access-Control-Allow-Origin', 'https://kenta-nakajima.com');
     res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
     // dataフィールドに渡したい値は入れる
