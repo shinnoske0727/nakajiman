@@ -17,8 +17,10 @@ export const sendMail = functions.region('asia-northeast1').https.onRequest(asyn
         text: `
 NAME:
 ${name}
+
 EMAIL ADDRESS:
 ${mail}
+
 MESSAGE:
 ${message}
         `
