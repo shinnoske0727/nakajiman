@@ -53,14 +53,15 @@ export default {
             this.message = msg
         },
         sendMessage() {
-            const params = new URLSearchParams()
-            params.append('form-name', 'contact')
-            params.append('name', this.name)
-            params.append('email', this.email)
-            params.append('message', this.message)
-
             axios
-                .post('/', params)
+                .post(
+                    'https://asia-northeast1-nakaj1man3.cloudfunctions.net/sendMail',
+                    {
+                        name: this.name,
+                        mail: this.mail,
+                        message: this.message
+                    }
+                )
                 .then(response => {
                     this.isSubmit = true
                     this.$router.push('/contact/complete/')
@@ -74,89 +75,89 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .contact
-    max-width: $max-width
-    margin: 0 auto
-    padding-top: $title-padding-top
-    +sp-layout()
-      max-width: $max-width-sp
-      padding: $title-padding-top-sp 16px 0;
-      overflow: hidden
-  .title
-    size auto 23px
-    margin 0 auto 88px
-    line-height 0
+.contact
+  max-width: $max-width
+  margin: 0 auto
+  padding-top: $title-padding-top
+  +sp-layout()
+    max-width: $max-width-sp
+    padding: $title-padding-top-sp 16px 0;
+    overflow: hidden
+.title
+  size auto 23px
+  margin 0 auto 88px
+  line-height 0
+  & > img
+    size 100%
+  +sp-layout()
+    size auto 16px
+    margin 0 auto 84px
+.inner
+  size 546px auto
+  margin 0 auto
+  +sp-layout()
+    size 100% auto
+
+.name-box,
+.mail-box
+  margin-bottom 56px
+  +sp-layout()
+    margin-bottom: 42px
+
+.message-box
+  margin-bottom 149px
+  +sp-layout()
+    margin-bottom: 116px
+
+.name,
+.mail,
+.message
+  display: block
+  margin-bottom: 15px
+  +sp-layout()
+    margin-bottom: 11px
+    line-height: 0
+    height: 8px
     & > img
-      size 100%
-    +sp-layout()
-      size auto 16px
-      margin 0 auto 84px
-  .inner
-    size 546px auto
-    margin 0 auto
-    +sp-layout()
-      size 100% auto
-
-  .name-box,
-  .mail-box
-    margin-bottom 56px
-    +sp-layout()
-      margin-bottom: 42px
-
-  .message-box
-    margin-bottom 149px
-    +sp-layout()
-      margin-bottom: 116px
-
-  .name,
-  .mail,
-  .message
-    display: block
-    margin-bottom: 15px
-    +sp-layout()
-      margin-bottom: 11px
-      line-height: 0
       height: 8px
-      & > img
-        height: 8px
 
-  .input-name,
-  .input-mail
-    resetInput()
+.input-name,
+.input-mail
+  resetInput()
 
-  .input-message
-    resetTextarea()
+.input-message
+  resetTextarea()
 
-  .input-name,
-  .input-mail,
-  .input-message
-    display: block
-    size: 100% auto
-    margin-bottom: 14px
-    font-size 14px
-    +ks-placeholder()
-      color: rgba(0, 0, 0, 0.5)
-    +sp-layout()
-      font-size: 12px
+.input-name,
+.input-mail,
+.input-message
+  display: block
+  size: 100% auto
+  margin-bottom: 14px
+  font-size 14px
+  +ks-placeholder()
+    color: rgba(0, 0, 0, 0.5)
+  +sp-layout()
+    font-size: 12px
 
-  .bar
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.bar
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-  .input-message
-    height 17px
+.input-message
+  height 17px
 
-  .button
-    absolute top 576px left 50%
-    display block
-    size 200px 40px
-    margin: 0 auto
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: translateX(-50%)
-    &[data-can-submit="true"]
-      background-color: $bg-black;
-    +sp-layout()
-      absolute top 474px left 50%
-      size 152px 36px
-      & > img
-        height: 10px
+.button
+  absolute top 576px left 50%
+  display block
+  size 200px 40px
+  margin: 0 auto
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%)
+  &[data-can-submit="true"]
+    background-color: $bg-black;
+  +sp-layout()
+    absolute top 474px left 50%
+    size 152px 36px
+    & > img
+      height: 10px
 </style>
