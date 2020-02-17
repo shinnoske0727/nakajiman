@@ -10,8 +10,8 @@
           a.link(data-href="/works/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_works.svg` alt="WORKS")
         li.item(:data-is-current="current === 'about'")
           a.link(data-href="/about/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_about.svg` alt="ABOUT")
-        li.item.disabled(:data-is-current="current === 'contact'")
-          a.link(href="javascript:void(0)"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
+        li.item(:data-is-current="current === 'contact'")
+          a.link(data-href="/contact/" @click.prevent="clickLink"): img(src=`${cmnPath}txt_contact.svg` alt="CONTACT")
       ul.sns
         a.sns-link(href="https://twitter.com/nakaj1_man" target="_blank"): img(src=`${path}twitter.svg` alt="twitter")
         a.sns-link(href="https://www.facebook.com/kenta.nakajima.7399" target="_blank"): img(src=`${path}facebook.svg` alt="facebook")
