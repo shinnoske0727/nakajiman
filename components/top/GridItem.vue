@@ -6,8 +6,9 @@
 
 <script>
 import _ from 'lodash'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import { TweenMax, Power4 } from 'gsap'
+import pickRandomItems from '../../assets/helper/pickRandomItems'
 
 export default {
     name: 'GridItem',
@@ -88,7 +89,6 @@ export default {
         this.nextImgSrc = this.KVImages[this.index]
     },
     methods: {
-        ...mapActions(['registerCurrentKVImages']),
         replaceImage(firstImage, secondImage) {
             if (_.includes(['bottom', 'right'], this.direction)) {
                 firstImage.src = secondImage.src
