@@ -19,6 +19,9 @@
         li.work-menu__item(:data-is-current="isPHOTOGRAPH")
           button.work-menu__link(@click="changePHOTOGRAPH")
             img(src=`${path}photo-works.svg` alt="PHOTOGRAPH")
+        li.work-menu__item(:data-is-current="isOTHER")
+          button.work-menu__link(@click="changeOTHER")
+            img(src=`${path}other-works.svg` alt="other")
 </template>
 
 <script>
@@ -40,7 +43,8 @@ export default {
                     CATEGORY.UI,
                     CATEGORY.WEB,
                     CATEGORY.PHOTOGRAPH,
-                    CATEGORY.ILLUSTRATION
+                    CATEGORY.ILLUSTRATION,
+                    CATEGORY.OTHER
                 ],
                 this.category
             )
@@ -56,6 +60,9 @@ export default {
         },
         isPHOTOGRAPH() {
             return this.category === CATEGORY.PHOTOGRAPH
+        },
+        isOTHER() {
+            return this.category === CATEGORY.OTHER
         }
     },
     methods: {
@@ -101,11 +108,18 @@ export default {
   justify-content: center
   margin: 0 auto
   +sp-layout()
-    justify-content: space-between
+    padding-bottom 16px
+    justify-content flex-start
+    overflow auto
+    scrollbar-width none
+    &::-webkit-scrollbar
+        display none
 
 .work-menu__item
   position: relative
   padding: 0 4px;
+  +sp-layout()
+    margin-right: 20px
 
   &:last-of-type
     margin-right: 0
