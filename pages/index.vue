@@ -9,16 +9,16 @@
           img.isSP(src=`${path}title-sp.svg` alt="I AM A DESIGNER KENTA NAKAJIMA")
         ul.list
           li.item
-            .link(data-type="ui" @click="move({ name: 'works', params: { id: 'UI/UX' } })")
+            .link(data-type="ui" @click="moveUI")
               img(src=`${path}uiux-white.svg` alt="UIUX")
           li.item
-            .link(data-type="web" @click="move({ name: 'works', params: { id: 'WEB' } })")
+            .link(data-type="web" @click="moveWEB")
               img(src=`${path}web-white.svg` alt="WEB")
           li.item
-            .link(data-type="illustration" @click="move({ name: 'works', params: { id: 'ILLUSTRATION' } })")
+            .link(data-type="illustration" @click="moveILLUSTRATION")
               img(src=`${path}illust-white.svg` alt="ILLUST")
           li.item
-            .link(data-type="photograph" @click="move({ name: 'works', params: { id: 'PHOTOGRAPH' } })")
+            .link(data-type="photograph" @click="movePHOTOGRAPH")
               img(src=`${path}photograph-white.svg` alt="PHOTOGRAPH")
       keyvisual-pc
       .header
@@ -26,12 +26,12 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { dammyData } from '@/assets/data/dammyData'
 import { preloadImages } from '@/assets/helper/preloadImage'
 import KeyvisualPc from '../components/top/KeyvisualPc'
 import KeyvisualSp from '@/components/top/KeyvisualSp'
 import { orderBy } from 'lodash'
 import { fetchEntries } from '../assets/helper/api'
+import { CATEGORY } from '../assets/helper/const'
 
 export default {
     name: 'Top',
@@ -63,7 +63,19 @@ export default {
             setTimeout(() => {
                 this.$router.push(option)
             }, 800)
-        }
+        },
+        moveUI() {
+            this.move({ name: 'works', params: { id: CATEGORY.UI } })
+        },
+        moveWEB() {
+            this.move({ name: 'works', params: { id: CATEGORY.WEB } })
+        },
+        moveILLUSTRATION() {
+            this.move({ name: 'works', params: { id: CATEGORY.ILLUSTRATION } })
+        },
+        movePHOTOGRAPH() {
+            this.move({ name: 'works', params: { id: CATEGORY.PHOTOGRAPH } })
+        },
     }
 }
 </script>

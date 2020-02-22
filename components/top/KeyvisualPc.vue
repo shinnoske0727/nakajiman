@@ -64,6 +64,7 @@
 import { mapState, mapActions } from 'vuex'
 import pickRandomItems from '@/assets/helper/pickRandomItems'
 import GridItem from './GridItem'
+import { CATEGORY } from '../../assets/helper/const'
 
 export default {
     name: 'KeyvisualPc',
@@ -84,22 +85,22 @@ export default {
             )
             : this.topKVData
         const uiImages = pickRandomItems(
-            images.filter(d => d.categoryName === 'UI/UX').map(d => d.url),
+            images.filter(d => d.categoryName === CATEGORY.UI).map(d => d.url),
             4
         )
         const webImages = pickRandomItems(
-            images.filter(d => d.categoryName === 'WEB').map(d => d.url),
+            images.filter(d => d.categoryName === CATEGORY.WEB).map(d => d.url),
             4
         )
         const illustImages = pickRandomItems(
             images
-                .filter(d => d.categoryName === 'ILLUSTRATION')
+                .filter(d => d.categoryName === CATEGORY.ILLUSTRATION)
                 .map(d => d.url),
             4
         )
         const photoImages = pickRandomItems(
             images
-                .filter(d => d.categoryName === 'PHOTOGRAPH')
+                .filter(d => d.categoryName === CATEGORY.PHOTOGRAPH)
                 .map(d => d.url),
             2
         )
@@ -130,22 +131,22 @@ export default {
                   )
                 : this.topKVData
             const uiImages = pickRandomItems(
-                images.filter(d => d.categoryName === 'UI/UX').map(d => d.url),
+                images.filter(d => d.categoryName === CATEGORY.UI).map(d => d.url),
                 2
             )
             const webImages = pickRandomItems(
-                images.filter(d => d.categoryName === 'WEB').map(d => d.url),
+                images.filter(d => d.categoryName === CATEGORY.WEB).map(d => d.url),
                 2
             )
             const illustImages = pickRandomItems(
                 images
-                    .filter(d => d.categoryName === 'ILLUSTRATION')
+                    .filter(d => d.categoryName === CATEGORY.ILLUSTRATION)
                     .map(d => d.url),
                 2
             )
             const photoImages = pickRandomItems(
                 images
-                    .filter(d => d.categoryName === 'PHOTOGRAPH')
+                    .filter(d => d.categoryName === CATEGORY.PHOTOGRAPH)
                     .map(d => d.url),
                 1
             )
