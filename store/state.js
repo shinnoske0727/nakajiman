@@ -7,5 +7,6 @@ export default () => ({
     currentKVImages: [],
     topKVData: [],
     currentCategory: null,
-    KVLinks: []
+    firstKVImages: [],
+    nextKVImages: [],
 })

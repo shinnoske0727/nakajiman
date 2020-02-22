@@ -6,7 +6,7 @@
 
 <script>
 import _ from 'lodash'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import { TweenMax, Power4 } from 'gsap'
 
 export default {
@@ -48,7 +48,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['currentKVImages', 'KVImages', 'topKVData']),
+        ...mapState(['currentKVImages', 'firstKVImages', 'nextKVImages']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -84,11 +84,10 @@ export default {
         }
     },
     mounted() {
-        this.firstImgSrc = this.KVImages[this.KVImages.length - this.index - 1]
-        this.nextImgSrc = this.KVImages[this.index]
+        this.firstImgSrc = this.firstKVImages[this.index]
+        this.nextImgSrc = this.nextKVImages[this.index]
     },
     methods: {
-        ...mapActions(['registerCurrentKVImages']),
         replaceImage(firstImage, secondImage) {
             if (_.includes(['bottom', 'right'], this.direction)) {
                 firstImage.src = secondImage.src
