@@ -8,7 +8,6 @@
 import _ from 'lodash'
 import { mapState } from 'vuex'
 import { TweenMax, Power4 } from 'gsap'
-import pickRandomItems from '../../assets/helper/pickRandomItems'
 
 export default {
     name: 'GridItem',
@@ -49,7 +48,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['currentKVImages', 'KVImages', 'topKVData']),
+        ...mapState(['currentKVImages', 'firstKVImages', 'nextKVImages']),
         positionX() {
             let x = 0
             switch (this.direction) {
@@ -85,8 +84,8 @@ export default {
         }
     },
     mounted() {
-        this.firstImgSrc = this.KVImages[this.KVImages.length - this.index - 1]
-        this.nextImgSrc = this.KVImages[this.index]
+        this.firstImgSrc = this.firstKVImages[this.index]
+        this.nextImgSrc = this.nextKVImages[this.index]
     },
     methods: {
         replaceImage(firstImage, secondImage) {

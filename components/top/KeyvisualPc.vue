@@ -77,6 +77,51 @@ export default {
     computed: {
         ...mapState(['currentKVImages', 'topKVData'])
     },
+    created() {
+        const images = this.currentKVImages.length
+            ? this.topKVData.filter(
+                d => !this.currentKVImages.includes(d.url)
+            )
+            : this.topKVData
+        const uiImages = pickRandomItems(
+            images.filter(d => d.categoryName === 'UI/UX').map(d => d.url),
+            4
+        )
+        const webImages = pickRandomItems(
+            images.filter(d => d.categoryName === 'WEB').map(d => d.url),
+            4
+        )
+        const illustImages = pickRandomItems(
+            images
+                .filter(d => d.categoryName === 'ILLUSTRATION')
+                .map(d => d.url),
+            4
+        )
+        const photoImages = pickRandomItems(
+            images
+                .filter(d => d.categoryName === 'PHOTOGRAPH')
+                .map(d => d.url),
+            2
+        )
+        this.registerFirstKVImages([
+            uiImages[0],
+            webImages[0],
+            illustImages[0],
+            uiImages[1],
+            webImages[1],
+            illustImages[1],
+            photoImages[0]
+        ])
+        this.registerNextKVImages([
+            uiImages[2],
+            webImages[2],
+            illustImages[2],
+            uiImages[3],
+            webImages[3],
+            illustImages[3],
+            photoImages[1]
+        ])
+    },
     mounted() {
         this.timer = setInterval(() => {
             const images = this.currentKVImages.length
@@ -121,7 +166,7 @@ export default {
         this.timer = null
     },
     methods: {
-        ...mapActions(['registerCurrentKVImages'])
+        ...mapActions(['registerCurrentKVImages', 'registerFirstKVImages','registerNextKVImages'])
     }
 }
 </script>

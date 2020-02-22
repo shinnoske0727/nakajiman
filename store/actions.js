@@ -32,10 +32,13 @@ export default {
     registerCurrentCategory({ commit }, category) {
         commit('setCurrentCategory', category)
     },
-    registerKVLinks({ commit }, array) {
-        commit('setKVLinks', array)
-    },
     registerTopKVData({ commit }, array) {
         commit('setTopKVData', array)
+    },
+    registerFirstKVImages({ commit }, array) {
+        commit('setFirstKVImages', array)
+    },
+    registerNextKVImages({ commit }, array) {
+        commit('setNextKVImages', array)
     }
 }

@@ -20,8 +20,11 @@ export default {
     setCurrentCategory(state, category) {
         state.currentCategory = category
     },
-    setKVLinks(state, array) {
-        state.KVLinks = array
+    setFirstKVImages(state, array) {
+        state.firstKVImages = array
+    },
+    setNextKVImages(state, array) {
+        state.nextKVImages = array
     },
     setTopKVData(state, array) {
         state.topKVData = array
