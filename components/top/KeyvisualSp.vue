@@ -10,6 +10,7 @@
 import _ from 'lodash'
 import { TweenMax, Power2, Power4 } from 'gsap'
 import { mapState } from 'vuex'
+import { CATEGORY } from '../../assets/helper/const'
 
 export default {
     name: 'KeyvisualSp',
@@ -28,7 +29,9 @@ export default {
         filteredKVImages() {
             return this.topKVData
                 .filter(d =>
-                    ['UI/UX', 'WEB', 'ILLUSTRATION'].includes(d.categoryName)
+                    [CATEGORY.UI, CATEGORY.WEB, CATEGORY.ILLUSTRATION].includes(
+                        d.categoryName
+                    )
                 )
                 .map(d => d.url)
         }

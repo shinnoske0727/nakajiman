@@ -29,13 +29,17 @@ export default {
         this.textareaResize()
     },
     methods: {
-        textareaResize() {
+        textareaResize(e) {
+
             const maxHeight = UA.isPC ? 84 : 72
-            const height = _.clamp(
+            let height = _.clamp(
                 this.$refs.textarea.scrollHeight,
                 0,
                 maxHeight
             )
+            if(e && e.currentTarget.value === '') {
+                height = 0
+            }
             this.$refs.textarea.style.minHeight = height + 'px'
         },
         isFocus(bool) {
