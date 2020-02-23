@@ -14,7 +14,7 @@ const fetchEntries = (content_type = 'post', options) =>
     })
 
 module.exports = {
-    mode: 'universal',
+    mode: 'spa',
     generate: {
         fallback: true,
         async routes() {
