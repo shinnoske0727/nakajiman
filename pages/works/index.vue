@@ -26,6 +26,11 @@ import { TweenMax, Expo } from 'gsap'
 
 export default {
     name: 'Works',
+    components: {
+        WorkThumbnail,
+        Menus,
+        WorkMenu
+    },
     async fetch({ store, params }) {
         if (params.id) {
             await store.dispatch('registerCurrentCategory', params.id)
@@ -38,11 +43,6 @@ export default {
             'postOrder'
         )
         return { posts }
-    },
-    components: {
-        WorkThumbnail,
-        Menus,
-        WorkMenu
     },
     data() {
         return {

@@ -21,6 +21,7 @@ import { fetchEntries } from '../../assets/helper/api'
 
 export default {
     name: 'Work',
+    components: { WorkContent },
     asyncData: async function({ params, store }) {
         const { fields: currentData } = await fetchPostById(params.id)
         const { items: sameCategoryPosts } = store.state.currentCategory
@@ -39,7 +40,6 @@ export default {
 
         return { pageIdArray, currentPageId, currentData }
     },
-    components: { WorkContent },
     computed: {
         isFirst() {
             return this.currentPageId === this.first

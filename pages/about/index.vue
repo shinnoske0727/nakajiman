@@ -21,13 +21,13 @@
 import { fetchEntries } from '@/assets/helper/api'
 
 export default {
+    components: {
+        name: 'about'
+    },
     async asyncData() {
         const data = await fetchEntries('about')
         if (!data) return { description: {} }
         return { description: data.items[0].fields.description }
-    },
-    components: {
-        name: 'about'
     }
 }
 </script>

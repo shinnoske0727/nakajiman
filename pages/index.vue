@@ -35,6 +35,7 @@ import { CATEGORY } from '../assets/helper/const'
 
 export default {
     name: 'Top',
+    components: { KeyvisualSp, KeyvisualPc },
     async fetch({ store }) {
         const postData = await fetchEntries()
         const kvData = orderBy(
@@ -55,7 +56,6 @@ export default {
             images.map(img => img.src)
         )
     },
-    components: { KeyvisualSp, KeyvisualPc },
     methods: {
         ...mapActions(['updateLoadedWork']),
         move(option) {
