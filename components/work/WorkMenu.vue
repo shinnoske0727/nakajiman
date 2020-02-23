@@ -145,7 +145,7 @@ export default {
       opacity 1
       transform scaleX(1)
   +pc-layout()
-    margin-right: 48px
+    margin-right: 49px
     &:hover
       & .work-menu__link
         opacity 1
