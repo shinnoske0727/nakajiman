@@ -52,7 +52,7 @@ export default {
 <style lang="stylus" scoped>
   .label
     display: block
-    margin-bottom: 15px
+    margin-bottom: 8px
     +sp-layout()
       margin-bottom: 6px
       line-height: 0
