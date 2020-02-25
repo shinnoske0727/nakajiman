@@ -54,7 +54,7 @@ export default {
     display: block
     margin-bottom: 8px
     +sp-layout()
-      margin-bottom: 6px
+      margin-bottom: 3px
       line-height: 0
       height: 8px
       & > img
@@ -72,6 +72,7 @@ export default {
       color: rgba(0, 0, 0, 0.5)
     +sp-layout()
       width: 133%
+      margin-bottom: 13px;
       font-size: 16px
       transform: scale(0.75)
       transform-origin: left bottom
