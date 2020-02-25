@@ -85,7 +85,7 @@ export default {
     overflow: hidden
 .title
   size auto 23px
-  margin 0 auto 88px
+  margin 0 auto 85px
   line-height 0
   & > img
     size 100%

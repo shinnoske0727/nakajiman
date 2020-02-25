@@ -33,13 +33,13 @@ export default {
 
 <style lang="stylus" scoped>
   .form-mail
-    margin-bottom 56px
+    margin-bottom 52px
     +sp-layout()
-      margin-bottom: 46px
+      margin-bottom: 48px
 
   .label
     display: block
-    margin-bottom: 15px
+    margin-bottom: 12px
     +sp-layout()
       margin-bottom: 6px
       line-height: 0
