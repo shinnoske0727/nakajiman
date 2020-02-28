@@ -59,6 +59,11 @@ export default {
                         name: this.name,
                         mail: this.mail,
                         message: this.message
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }
                     }
                 )
                 .then(response => {

@@ -30,6 +30,7 @@ export default {
     },
     methods: {
         textareaResize(e) {
+            this.$refs.textarea.style.height = '21px'
 
             const maxHeight = UA.isPC ? 84 : 72
             let height = _.clamp(
@@ -37,10 +38,7 @@ export default {
                 0,
                 maxHeight
             )
-            if(e && e.currentTarget.value === '') {
-                height = 0
-            }
-            this.$refs.textarea.style.minHeight = height + 'px'
+            this.$refs.textarea.style.height = height + 'px'
         },
         isFocus(bool) {
             this.isFocused = bool
