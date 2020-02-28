@@ -78,14 +78,14 @@ export default {
             return y
         }
     },
-    watch: {
-        counter: function() {
-            this.slide()
-        }
-    },
     mounted() {
         this.firstImgSrc = this.firstKVImages[this.index]
         this.nextImgSrc = this.nextKVImages[this.index]
+        this.$nextTick(() => {
+            this.$watch('counter', () => {
+                this.slide()
+            })
+        })
     },
     methods: {
         replaceImage(firstImage, secondImage) {

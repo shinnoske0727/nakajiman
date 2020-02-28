@@ -32,6 +32,7 @@ import KeyvisualSp from '@/components/top/KeyvisualSp'
 import { orderBy } from 'lodash'
 import { fetchEntries } from '../assets/helper/api'
 import { CATEGORY } from '../assets/helper/const'
+import pickRandomItems from '../assets/helper/pickRandomItems'
 
 export default {
     name: 'Top',
@@ -47,14 +48,54 @@ export default {
             'postOrder'
         )
         const images = await preloadImages(kvData.map(d => d.url))
-        await store.dispatch(
-            'registerTopKVData',
-            kvData.map((d, i) => ({ ...d, url: images[i].src }))
-        )
+        const kvDatas = kvData.map((d, i) => ({ ...d, url: images[i].src }))
+        await store.dispatch('registerTopKVData', kvDatas)
         await store.dispatch(
             'registerKVImages',
             images.map(img => img.src)
         )
+
+        const uiImages = pickRandomItems(
+            kvDatas.filter(d => d.categoryName === CATEGORY.UI).map(d => d.url),
+            4
+        )
+        const webImages = pickRandomItems(
+            kvDatas
+                .filter(d => d.categoryName === CATEGORY.WEB)
+                .map(d => d.url),
+            4
+        )
+        const illustImages = pickRandomItems(
+            kvDatas
+                .filter(d => d.categoryName === CATEGORY.ILLUSTRATION)
+                .map(d => d.url),
+            4
+        )
+        const photoImages = pickRandomItems(
+            kvDatas
+                .filter(d => d.categoryName === CATEGORY.PHOTOGRAPH)
+                .map(d => d.url),
+            2
+        )
+        await store.dispatch('registerFirstKVImages', [
+            uiImages[0],
+            webImages[0],
+            illustImages[0],
+            uiImages[1],
+            webImages[1],
+            illustImages[1],
+            photoImages[0]
+        ])
+
+        await store.dispatch('registerNextKVImages', [
+            uiImages[2],
+            webImages[2],
+            illustImages[2],
+            uiImages[3],
+            webImages[3],
+            illustImages[3],
+            photoImages[1]
+        ])
     },
     methods: {
         ...mapActions(['updateLoadedWork']),
@@ -75,7 +116,7 @@ export default {
         },
         movePHOTOGRAPH() {
             this.move({ name: 'works', params: { id: CATEGORY.PHOTOGRAPH } })
-        },
+        }
     }
 }
 </script>
