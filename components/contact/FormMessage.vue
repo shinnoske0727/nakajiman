@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         textareaResize(e) {
-            this.$refs.textarea.style.height = '21px'
+            this.$refs.textarea.style.height = UA.isPC ? '20px' : '21px'
 
             const maxHeight = UA.isPC ? 84 : 80
             let height = _.clamp(
