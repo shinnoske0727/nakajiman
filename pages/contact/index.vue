@@ -52,14 +52,14 @@ export default {
             this.message = msg
         },
         sendMessage() {
+            const formData = new FormData()
+            formData.append('name', this.name);
+            formData.append('mail', this.mail);
+            formData.append('message', this.message);
             axios
                 .post(
                     'https://asia-northeast1-nakaj1man3.cloudfunctions.net/sendMail',
-                    {
-                        name: this.name,
-                        mail: this.mail,
-                        message: this.message
-                    },
+                    formData,
                     {
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'

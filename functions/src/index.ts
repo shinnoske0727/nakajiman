@@ -8,7 +8,6 @@ sgMail.setApiKey(functions.config().api.sendgrid);
 export const sendMail = functions.region('asia-northeast1').https.onRequest(async (req, res) => {
     let { message, mail, name } = req.body
 
-    if(!name || !mail) return
     const msg = {
         to: 'nicosanco4567@gmail.com',
         from: 'client@kenta-nakajima.com',
