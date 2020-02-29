@@ -52,7 +52,7 @@ export default {
             this.message = msg
         },
         sendMessage() {
-            const formData = new FormData()
+            const formData = new URLSearchParams()
             formData.append('name', this.name);
             formData.append('mail', this.mail);
             formData.append('message', this.message);

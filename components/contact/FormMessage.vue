@@ -50,10 +50,9 @@ export default {
 <style lang="stylus" scoped>
   .label
     display: block
-    margin-bottom: 9px
+    margin-bottom: 8px
     +sp-layout()
       line-height: 0
-      margin-bottom: 8px
       height: 8px
       & > img
         height: 8px
@@ -68,6 +67,8 @@ export default {
     font-size 14px
     +ks-placeholder()
       color: rgba(0, 0, 0, 0.5)
+    +pc-layout()
+      padding-top: 1px
     +sp-layout()
       font-size 12px
       margin-bottom: 8px
