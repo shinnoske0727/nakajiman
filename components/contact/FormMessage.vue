@@ -50,7 +50,7 @@ export default {
 <style lang="stylus" scoped>
   .label
     display: block
-    margin-bottom: 8px
+    margin-bottom: 9px
     +sp-layout()
       line-height: 0
       height: 8px
@@ -63,16 +63,14 @@ export default {
   .input
     display: block
     size: 100% 17px
-    margin-bottom: 14px
+    margin-bottom: 12px
     font-size 14px
     +ks-placeholder()
       color: rgba(0, 0, 0, 0.5)
-    +pc-layout()
-      padding-top: 1px
     +sp-layout()
-      font-size 12px
+      font-size: 12px
       margin-bottom: 8px
-      line-height: 1.67;
+      line-height: 1.67
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);

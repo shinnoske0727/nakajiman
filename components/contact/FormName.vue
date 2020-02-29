@@ -35,7 +35,7 @@ export default {
   .form-name
     margin-bottom 52px
     +sp-layout()
-      margin-bottom: 46px
+      margin-bottom: 48px
 
   .label
     display: block
