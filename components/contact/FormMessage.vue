@@ -32,7 +32,7 @@ export default {
         textareaResize(e) {
             this.$refs.textarea.style.height = '21px'
 
-            const maxHeight = UA.isPC ? 84 : 72
+            const maxHeight = UA.isPC ? 84 : 80
             let height = _.clamp(
                 this.$refs.textarea.scrollHeight,
                 0,
@@ -69,7 +69,8 @@ export default {
       color: rgba(0, 0, 0, 0.5)
     +sp-layout()
       font-size 12px
-      margin-bottom: 16px
+      margin-bottom: 8px
+      line-height: 1.67;
 
   .bar
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
