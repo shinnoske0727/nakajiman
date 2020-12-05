@@ -34,7 +34,7 @@
     "lodash": "^4.17.15",
     "nodemon": "2.0.2",
     "nuxt-stylus-resources-loader": "2.0.0",
-    "nuxt-svg-loader": "1.0.1",
+    "nuxt-svg-loader": "1.2.0",
     "prettier": "1.19.1",
     "pug": "2.0.4",
     "pug-loader": "2.4.0",
