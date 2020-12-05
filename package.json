@@ -20,7 +20,7 @@
     "nuxt": "2.10.2"
   },
   "devDependencies": {
-    "axios": "0.19.0",
+    "axios": "0.21.0",
     "babel-eslint": "10.0.3",
     "basic-ftp": "4.5.1",
     "dotenv": "8.2.0",
