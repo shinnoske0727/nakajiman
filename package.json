@@ -17,7 +17,7 @@
     "@nuxtjs/dotenv": "1.4.1",
     "contentful": "7.15.2",
     "cross-env": "7.0.3",
-    "nuxt": "2.14.11"
+    "nuxt": "2.14.12"
   },
   "devDependencies": {
     "axios": "0.21.0",
