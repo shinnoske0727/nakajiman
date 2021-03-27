@@ -1910,10 +1910,10 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basic-ftp@4.6.5:
-  version "4.6.5"
-  resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-4.6.5.tgz#962a2edda4d1fa770f50dfa7ec06deacdd191942"
-  integrity sha512-R4AwZjxH5DGJFDDWxsERJyc+WhTMIBhI1CyPY7Vm8a8BPXe5C3vpGGrAmRcrgwPuHa3HKO36+v1d8YEIBd7B6Q==
+basic-ftp@4.6.6:
+  version "4.6.6"
+  resolved "https://registry.yarnpkg.com/basic-ftp/-/basic-ftp-4.6.6.tgz#c37abae3b3bffa131027adb6a5b60938d9109501"
+  integrity sha512-5nTclY5mVxjeFoq9cBTzgQvcM1UfeGTd4hCCvb8AgC88wHMDQCD4UX5hZo2jaiSh96Nf+gFy1joNI9iH639bvQ==
 
 bfj@^6.1.1:
   version "6.1.2"
