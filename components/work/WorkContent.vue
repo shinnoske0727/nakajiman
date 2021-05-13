@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import { TweenLite, Expo } from 'gsap'
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import { gsap, TweenLite, Expo } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
 import { preloadImages } from '../../assets/helper/preloadImage'
 import { mapActions } from 'vuex'
 
-const plugins = [ScrollToPlugin]
+gsap.registerPlugin(ScrollToPlugin)
 
 export default {
     name: 'WorkContent',
