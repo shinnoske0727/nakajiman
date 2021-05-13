@@ -14,7 +14,8 @@ const fetchEntries = (content_type = 'post', options) =>
     })
 
 module.exports = {
-    mode: 'spa',
+    ssr: false,
+    target: 'static',
     generate: {
         fallback: true,
         async routes() {
@@ -103,14 +104,11 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: [
-        [
-            'nuxt-stylus-resources-loader',
-            [path.resolve(__dirname, 'assets/stylus/base.styl')]
-        ],
-        ['@nuxtjs/dotenv']
-    ],
+    modules: [['@nuxtjs/style-resources'], ['@nuxtjs/dotenv']],
 
+    styleResources: {
+        stylus: ['~assets/stylus/base.styl']
+    },
     /*
      ** Build configuration
      */
