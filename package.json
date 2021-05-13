@@ -17,10 +17,10 @@
     "@nuxtjs/dotenv": "1.4.1",
     "contentful": "7.15.2",
     "cross-env": "7.0.3",
-    "nuxt": "^2.15.6"
+    "nuxt": "2.15.6"
   },
   "devDependencies": {
-    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/style-resources": "1.0.0",
     "axios": "0.21.1",
     "babel-eslint": "10.1.0",
     "basic-ftp": "4.6.6",
@@ -30,7 +30,7 @@
     "eslint-loader": "2.2.1",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-vue": "6.2.2",
-    "gsap": "^3.6.1",
+    "gsap": "3.6.1",
     "kouto-swiss": "1.1.0",
     "lodash": "4.17.21",
     "nodemon": "2.0.7",
