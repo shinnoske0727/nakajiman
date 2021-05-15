@@ -3,7 +3,9 @@
   .work-content(ref="content" v-if="workData" :data-is-picture="!workData.postType")
     .content
       template(v-if="workData.postKv.fields.file.url")
-        img.kv(:src="kvSrc" :data-is-picture="!workData.postType")
+        picture
+          source(:srcset="`${kvSrc}?fm=webp`" type='image/webp')
+          img.kv(:src="kvSrc" :data-is-picture="!workData.postType")
         template(v-if="workData.postTitle")
           p.title {{ workData.postTitle }}
         template(v-if="workData.postCategory.fields.categoryName")
@@ -13,7 +15,9 @@
 
           .picture-wrapper
             template(v-for="pic in picSrcArray")
-              img.picture(:src="pic")
+              picture
+                source(:srcset="`${pic}?fm=webp`" type='image/webp')
+                img.picture(:src="pic" alt="" decoding="async")
           template(v-if="workData.postLink")
             a.button--site(:href="workData.postLink", target="_blank")
               img(src=`${path}visit-site.svg` alt="visit site")
@@ -26,6 +30,7 @@ import { gsap, TweenLite, Expo } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 import { preloadImages } from '../../assets/helper/preloadImage'
+import { supportFormatWebp } from '../../assets/helper/supportFormatWebp'
 import { mapActions } from 'vuex'
 
 gsap.registerPlugin(ScrollToPlugin)
@@ -56,7 +61,10 @@ export default {
         }
     },
     mounted() {
-        preloadImages([...this.picSrcArray, this.kvSrc]).then(() => {
+        const array = [...this.picSrcArray, this.kvSrc].map(
+            img => `${img}${supportFormatWebp() ? '?fm=webp' : ''}`
+        )
+        preloadImages(array).then(() => {
             this.updateLoadedWork({ state: 'loaded' })
         })
     },
@@ -92,10 +100,10 @@ export default {
 .kv
   +pc-layout()
     size 100% auto
-    margin-bottom: 96px
+    margin-bottom 96px
   +sp-layout()
     size $max-width-sp auto
-    margin-bottom: 40px
+    margin-bottom 40px
 
   &[data-is-picture="true"]
     display: block
