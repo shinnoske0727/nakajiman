@@ -104,10 +104,6 @@ export default {
   +sp-layout()
     size $max-width-sp auto
     margin-bottom 40px
-  source
-    width 100%
-  img
-    width 100%
 
   &[data-is-picture="true"]
     display: block
