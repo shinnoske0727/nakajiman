@@ -2,7 +2,9 @@
   .work-thumbnail
     .image-wrapper(:data-category="contentData.postCategory.fields.categoryName" @mouseenter="showInfo" @mouseleave="hideInfo")
       template(v-if="contentData.postKv")
-        img.image(:src="imageSrc" )
+        picture
+          source(:srcset="`${imageSrc}?fm=webp`" type="image/webp" )
+          img.image(:src="`${imageSrc}`")
         .loading(:data-active="!this.isLoaded")
         .link(ref="info" @click="move({name: 'works-id', params: {id: contentData.id}})")
           p.link-text(ref="text") {{ contentData.postTitle }}
@@ -14,6 +16,7 @@ import { mapActions } from 'vuex'
 import { TweenMax, Power1 } from 'gsap'
 import UA from '@/assets/helper/getUA'
 import { preloadImage } from '@/assets/helper/preloadImage'
+import { supportFormatWebp } from '../../assets/helper/supportFormatWebp'
 
 const ease = Power1.easeOut
 const easeReverse = Power1.easeIn
@@ -63,7 +66,7 @@ export default {
         }
     },
     mounted() {
-        preloadImage(this.contentData.postKv.fields.file.url).then(() => {
+        preloadImage(`${this.contentData.postKv.fields.file.url}${supportFormatWebp() ? '?fm=webp' : ''}`).then(() => {
             this.isLoaded = true
         })
     },
