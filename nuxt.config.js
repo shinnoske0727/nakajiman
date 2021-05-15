@@ -106,8 +106,6 @@ module.exports = {
      */
     modules: [['@nuxtjs/style-resources'], ['@nuxtjs/dotenv']],
 
-    buildModules: ['@nuxt/image'],
-
     styleResources: {
         stylus: ['~assets/stylus/base.styl']
     },
